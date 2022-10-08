@@ -1,0 +1,237 @@
+<section class="admin">
+  <div class="container bg-dark-mode rounded p-4">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-events-tab" data-bs-toggle="tab" data-bs-target="#nav-events"
+          type="button" role="tab" aria-controls="nav-events" aria-selected="true">Evenements</button>
+        <button class="nav-link d-none" id="nav-categories-tab" data-bs-toggle="tab" data-bs-target="#nav-categories"
+          type="button" role="tab" aria-controls="nav-categories" aria-selected="false">Catégories</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
+        <div class="my-4">
+          <small class="rounded status-event status-pending fw-bold">En attente de validation</small>
+          <div class="row mt-3">
+            <div *ngFor="let event of arrayEventNotValidate" class="col-xl-6 col-xxl-4 text-center mt-3 mt-xl-0"
+              id={{event._id}}>
+              <div class="shadow rounded py-3 px-5 img-category hover-card">
+                <h4 class="my-2 fw-bold">{{event.name}}</h4>
+                <div class="d-flex justify-content-center align-items-center mb-4">
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16">
+                    <img [src]="event.categoryComplet.url_icon" height="10">
+                  </div>
+                  <p class="fw-bold text-uppercase m-0 px-2">{{ event.categoryComplet.name }}</p>
+                </div>
+                <div>
+                  <img class="rounded" *ngIf="!event.url_image.length" [src]="event.categoryComplet.url_image"
+                    height="150" width="120">
+                  <img class="rounded" *ngIf="event.url_image.length" [src]="event.url_image[0]" height="150"
+                    width="120">
+                </div>
+                <p class="mb-0 mt-2">{{ event.date_time | date: 'dd/MM/yyyy'}}</p>
+                <p>{{event.place}}</p>
+                <div class="d-flex justify-content-center">
+                  <a class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-1 hover-zoom"
+                    href="#">
+                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/info.svg" height="15">
+                  </a>
+                  <div
+                    class="d-flex justify-content-center align-items-center rounded-circle status-validated square-30 mx-1 text-decoration-none hover-zoom"
+                    (click)="validate(event._id)">
+                    <b class="mb-1 text-white">+</b>
+                  </div>
+                  <a class="d-flex justify-content-center align-items-center rounded-circle status-denied square-30 ms-1 text-decoration-none hover-zoom"
+                    href="#">
+                    <b class="mb-1 text-white">x</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <small class="rounded status-event status-validated fw-bold">Validé(s)</small>
+          <div class="row mt-3" id="eventValidate">
+            <div *ngFor="let event of arrayEventValidate" class="col-xl-6 col-xxl-4 text-center mt-3 mt-xl-0">
+              <div class="shadow rounded py-3 px-5 img-category hover-card">
+                <h4 class="my-2 fw-bold">{{event.name}}</h4>
+                <div class="d-flex justify-content-center align-items-center mb-4">
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16">
+                    <img [src]="event.categoryComplet.url_icon" height="10">
+                  </div>
+                  <p class="fw-bold text-uppercase m-0 px-2">{{ event.categoryComplet.name }}</p>
+                </div>
+                <div>
+                  <img class="rounded" *ngIf="!event.url_image.length" [src]="event.categoryComplet.url_image"
+                    height="150" width="120">
+                  <img class="rounded" *ngIf="event.url_image.length" [src]="event.url_image[0]" height="150"
+                    width="120">
+                </div>
+                <p class="mb-0 mt-2">{{ event.date_time | date: 'dd/MM/yyyy'}}</p>
+                <p>{{event.place}}</p>
+                <div class="d-flex justify-content-center">
+                  <a class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-1 hover-zoom"
+                    href="#">
+                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/info.svg" height="15">
+                  </a>
+                  <a class="d-flex justify-content-center align-items-center rounded-circle status-denied square-30 ms-1 text-decoration-none hover-zoom"
+                    href="#">
+                    <b class="mb-1 text-white">x</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div hidden class="mb-4">
+          <small class="rounded status-event status-denied fw-bold">Refusé(s)</small>
+          <div class="row mt-3">
+            <div class="col-xl-6 col-xxl-4 text-center mt-3 mt-xl-0">
+              <div class="shadow rounded py-3 px-5 img-category hover-card">
+                <h4 class="my-2 fw-bold">Marvel : Les Eternels</h4>
+                <div class="d-flex justify-content-center align-items-center mb-4">
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16">
+                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="10">
+                  </div>
+                  <p class="fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+                </div>
+                <div>
+                  <img class="rounded"
+                    src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg"
+                    height="150">
+                </div>
+                <p class="mb-0 mt-2">jj/mm/yyyy hh:mm</p>
+                <p>Code Postal - Adresse</p>
+                <div class="d-flex justify-content-center">
+                  <a class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-1 hover-zoom"
+                    href="#">
+                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/info.svg" height="15">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
+        <h2 class="my-5">Ajouter une catégorie</h2>
+        <div class="row my-5">
+          <div class="col-12">
+            <form>
+              <div class="row form-group">
+                <div class="col-12">
+                  <label for="pseudo">Nom</label>
+                  <input type="text" formControlName="nomCategorie" name="nomCategorie" id="nomCategorie"
+                    class="form-control" required>
+                </div>
+                <div class="col-12">
+                  <div class="row align-items-end">
+                    <div class="col-8 col-sm-10">
+                      <label>Icône</label>
+                      <file-upload [control]="fileUploadControl" class="heigthly-form m-0 text-center"
+                        [multiple]="multiple" [animation]="animation">
+                        <ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+                          <span *ngIf="arrayFile.length==0">Glisse ou dépose une image</span>
+                        </ng-template>
+                      </file-upload>
+                    </div>
+                    <div class="col-4 col-sm-2 text-end">
+                      <img class="rounded"
+                        src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+                        height="60">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-5">
+                <button class="btn btn-main" type="submit">Ajouter</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <h2 class="my-5">Supprimer une catégorie</h2>
+        <div class="row my-5">
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Séance de cinéma</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/video-game.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Partie de jeux-vidéo</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/escape-game.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Escape Game</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/laser-game.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Laser Game</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/concert.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Concert</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-4 col-lg-2 text-center">
+            <div
+              class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/parc-attraction.svg" height="50">
+            </div>
+            <p class="fw-bold mt-3 text-uppercase">Parc d'attraction</p>
+            <div class="mb-4 mb-lg-0 d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom"
+                href="#">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

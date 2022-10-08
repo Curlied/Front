@@ -1,0 +1,22 @@
+.footer {
+	background: linear-gradient(rgba(21,32,43,0.6), rgba(21,32,43,0.6)), url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement3.jpg");
+    height: 10vh;
+	background-attachment: fixed !important;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-white);
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--main-color);
+}
+
+p {
+    color: var(--main-color);
+}

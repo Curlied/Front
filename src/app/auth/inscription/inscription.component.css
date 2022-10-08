@@ -1,0 +1,20 @@
+.bg-img {
+	background: linear-gradient(rgba(21,32,43,0.6), rgba(21,32,43,0.6)), url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement1.jpg");
+	height: 100vh;
+	background-attachment: fixed !important;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* FORCE LE FORM A BIEN CE METTRE EN PLACE 
+	PAS LE CAS EN CAS DE REDIRECTION
+*/
+form{
+	display: block !important; 
+}

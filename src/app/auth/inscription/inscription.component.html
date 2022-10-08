@@ -1,0 +1,51 @@
+<div class="d-flex align-items-center bg-img">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center m-auto">
+            <div class="col-12 col-md-10 col-lg-7 col-xl-5 bg-dark-mode rounded p-5">
+                <div class="d-flex justify-content-center align-items-center flex-wrap mb-5">
+                    <h1 class="fw-bold">Bienvenue sur</h1>
+                    <img class="logo"
+                        src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/logos/inline_white.png">
+                </div>
+                <form (ngSubmit)="register()" [formGroup]="profileForm">
+                    <div class="row form-group">
+                        <div class="col-6">
+                            <label for="pseudo">Pseudo*</label>
+                            <input type="text" formControlName="username" name="pseudo" id="pseudo" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="email">Adresse email*</label>
+                            <input type="email" formControlName="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="password">Mot de passe*</label>
+                            <input type="password" formControlName="password" name="password" id="password" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="confirm_password">Confirmer mot de passe*</label>
+                            <input type="password" formControlName="confirm_password" name="confirm_password" id="confirm_password" class="form-control"
+                                required>
+                        </div>
+                        <div class="col-6">
+                            <label for="birth_date">Date de naissance*</label>
+                            <input type="date" formControlName="birth_date" max="{{currentDate | date:'yyyy-MM-dd'}}" name="birth_date" id="birth_date" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="telephone">Téléphone*</label>
+                            <input type="tel" formControlName="telephone" name="telephone" id="telephone" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile_pic">Photo de profil</label>
+                        <input type="file" name="profile_pic" (change)="uploadFile($event)" id="profile_pic" class="form-control">
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <button class="btn btn-main w-100" type="submit">Inscription</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

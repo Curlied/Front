@@ -1,0 +1,242 @@
+<div class="d-flex align-items-center bg-img">
+	<div class="container">
+		<div class="row justify-content-between align-items-center m-auto">
+			<div class="col-xl-6 mt-5 responsive-center">
+                <h1>Retrouve des personnes qui te correspondent !</h1>
+                <p class="txt-banner mt-4">Tu ne sais pas avec qui partager une expérience qui
+                    te tiens à coeur et tu souhaites passer un bon moment avec d’autres personnes ?
+                    Alors rejoins la communauté de Curlied !
+                </p>
+                <a class="btn btn-main mt-4" routerLink="evenements">Rejoindre un événément</a>
+            </div>
+            <div class="col-xl-6 position-relative images-banner d-flex justify-content-end">
+                <img class="img-events position-absolute rounded hover-card" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg">
+                <img class="img-events position-absolute rounded hover-card" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/league-of-legends.jpg">
+                <img class="img-events rounded hover-card" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/billie-eilish.jpg">
+            </div>
+		</div>
+	</div>
+</div>
+
+<section class="viewport-height">
+    <div class="container">
+        <h2>Choisis une catégorie d'événement</h2>
+        <div class="row justify-content-center">
+            <div *ngFor="let category of arrayCategories" class="col-sm-4 col-lg-2 text-center">
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-100 hover-zoom">
+                    <img [src]="category.url_icon" height="50">
+                </div>
+                <p class="fw-bold mt-3 text-uppercase">{{category.name}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+            <a class="btn btn-main" routerLink="evenements">Voir tous les événéments</a>
+        </div>
+    </div>
+</section>
+
+<section class="bg-img-2 viewport-height">
+    <div class="container">
+        <div class="row align-items-center responsive-reverse">
+            <div class="col-lg-6">
+                <div class="row justify-content-end responsvie-justify-center">
+                    <div class="col-10 d-flex bg-dark-mode rounded p-0 my-2">
+                        <div>
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg" height="150">
+                        </div>
+                        <div class="d-flex flex-wrap py-2 px-4">
+                            <p class="f-size20 w-100 m-0">Marvel : Les Eternels</p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="10">
+                                </div>
+                                <p class="w-100 fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+                            </div>
+                            <small class="f-size14 w-100">02 DEC 2021 - 16h : Pathé Lyon Bellecour</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row responsvie-justify-center">
+                    <div class="col-10 d-flex bg-dark-mode rounded p-0 my-2">
+                        <div>
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/league-of-legends.jpg" height="150">
+                        </div>
+                        <div class="d-flex flex-wrap py-2 px-4">
+                            <p class="f-size20 w-100 m-0">League of Legends</p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/jeuvideo.svg" height="10">
+                                </div>
+                                <p class="w-100 fw-bold text-uppercase m-0 px-2">Partie de jeux-vidéo</p>
+                            </div>
+                            <small class="f-size14 w-100">16 NOV 2021 - 20h</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end responsvie-justify-center">
+                    <div class="col-10 d-flex bg-dark-mode rounded p-0 my-2">
+                        <div>
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/billie-eilish.jpg" height="150">
+                        </div>
+                        <div class="d-flex flex-wrap py-2 px-4">
+                            <p class="f-size20 w-100 m-0">Billie Eilish</p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                                    <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/concert.svg" height="10">
+                                </div>
+                                <p class="w-100 fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+                            </div>
+                            <small class="f-size14 w-100">19 DEC 2021 - 20h : Paris Accor Arena</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 px-5 responsive-center">
+                <h2 class="title-left">Organise ou participe à divers événements</h2>
+                <p>Si aucun de tes amis n’est disponible ou que tu ne sais pas avec qui sortir, tu peux venir
+                    sur Curlied, consulter les événements disponibles et demander à rejoindre celui qui te plait.
+                    Il t’est également possible d’organiser ton propre événement, en précisant le lieu et la date,
+                    et de choisir le nombre de personnes avec qui tu veux le partager. Afin de faciliter les
+                    échanges, le numéro de téléphone des personnes que tu accepteras dans ton événement te sera
+                    donné pour que tu puisses prendre contact avec eux.
+                    </p>
+                <a class="btn btn-main mt-5" routerLink="evenements">Voir tous les événéments</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="viewport-height">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 px-5 responsive-center">
+                <h2 class="title-left">Intéragis avec des utilisateurs de confiance</h2>
+                <p>Afin d’instaurer un climat de confiance, les utilisateurs peuvent être notés. En effet, tu peux faire un retour sur ton expérience ainsi que sur ses participants :</p>
+                <ul class="ps-4">
+                    <li>Est-ce que la personne est arrivée à l’heure ?</li>
+                    <li>Était-elle respectueuse ?</li>
+                    <li>Est-ce que l’organisation était bonne ?</li>
+                    <li>…</li>
+                </ul>
+                <a class="btn btn-main mt-5" routerLink="evenements">Rejoindre un événément</a>
+            </div>
+            <div class="col-lg-6 responsive-comments">
+                <div class="row position-relative d-flex align-items-center justify-content-center">
+                    <div class="col-10 bg-dark-mode rounded px-0 py-2 my-2 border-main-color position-absolute bottom-0 start-0 z-index-0">
+                        <div class="py-2 px-4 d-flex align-items-center">
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg" height="50">
+                            <div class="px-2">
+                                <p class="m-0 fw-bold">Léa Durand</p>
+                                <div class="d-flex">
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2 px-4">
+                            <p>L'événement s'est bien passé. Cependant, Benjamin est arrivé 10 minutes en retard, ce qui fait que nous avons dû nous dépécher.</p>
+                        </div>
+                    </div>
+                    <div class="col-10 bg-dark-mode rounded px-0 py-2 my-2 border-main-color position-absolute z-index-1">
+                        <div class="py-2 px-4 d-flex align-items-center">
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg" height="50">
+                            <div class="px-2">
+                                <p class="m-0 fw-bold">Hugo Dupont</p>
+                                <div class="d-flex">
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2 px-4">
+                            <p>Tous les participants étaient super sympas. Après la séance de cinéma, nous sommes même allés prendre un verre ! Merci encore.</p>
+                        </div>
+                    </div>
+                    <div class="col-10 bg-dark-mode rounded px-0 py-2 my-2 border-main-color position-absolute top-0 end-0 z-index-2">
+                        <div class="py-2 px-4 d-flex align-items-center">
+                            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg" height="50">
+                            <div class="px-2">
+                                <p class="m-0 fw-bold">Tom Dupuis</p>
+                                <div class="d-flex">
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                    <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2 px-4">
+                            <p>Génial ! Corentin est une personne agréable et marrante. Nous avons décidé de garder contact :)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--#region MODAL INFOS  -->
+
+<button type="button" class="btn btn-secondary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnEnvironnement">
+    infos
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informations environnement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <h3>Partie FRONT:</h3>
+        <div class="d-flex">
+          <b>Nom environnement:</b>
+          <span class="ms-1">{{ InfoEnvironnement.nomEnvironnement}}</span>
+        </div>
+        <div class="d-flex">
+          <b>Adresse API:</b>
+          <span class="ms-1">{{ InfoEnvironnement.AdresseAPI}}</span>
+        </div>
+        <div class="d-flex">
+          <b>Version:</b>
+          <span class="ms-1">{{ InfoEnvironnement.appVersion}}</span>
+        </div>
+        <hr>
+
+        <h3>Partie BACK:</h3>
+        <div class="d-flex">
+          <b>Message:</b>
+          <span class="ms-1">{{ data.message }}</span>
+        </div>
+        <div class="d-flex">
+          <b>environnement:</b>
+          <span class="ms-1">{{ data.env }}</span>
+        </div>
+        <div class="d-flex">
+          <b>Port:</b>
+          <span class="ms-1">{{data.port}}</span>
+        </div>
+        <div class="d-flex">
+          <b>Version:</b>
+          <span class="ms-1">{{ data.version }}</span>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--#endregion -->

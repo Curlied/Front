@@ -1,0 +1,183 @@
+<section class="details-event viewport-height" [style.backgroundImage]="event ? 'linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.6)), url('+ event.category.url_image +')' : 'linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.6)),url(https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement2.jpg)' ">
+  <div class="container">
+    <div class="text-center" *ngIf="!event || !event.category">
+      <div class="spinner-grow text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="row justify-content-between" *ngIf="event && event.category">
+      <div class="col-lg-8 col-xl-4">
+        <h1>{{ event.name }}</h1>
+        <div class="d-flex align-items-center mb-5">
+          <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-30">
+            <img src="{{ event.category.url_icon }}" height="20">
+          </div>
+          <p class="w-100 fw-bold text-uppercase m-0 px-2">{{ event.category.name }}</p>
+        </div>
+        <p>
+          {{ event.description }}
+        </p>
+        <div class="mt-5 d-flex justify-content-between">
+          <div >
+            <p> <b>{{ event.date_time | date: 'dd/MM/yyyy HH:mm' }}</b> - {{ event.place }}</p>
+            <p> {{ event.code }}</p>
+          </div>
+          <p class="fw-bold color-main">{{ event.price }} €</p>
+        </div>
+      </div>
+      <div class="col-4 col-xl-3 d-none d-lg-block">
+        <img class="rounded img-fluid" src="{{ event.url_image[0] || event.category.url_image }}">
+        <div class="d-none d-xl-block" *ngIf="!event.CurrentUserIsAdmin">
+
+          <ng-template [ngIf]="event.CurrentUserHasParticipant == true" [ngIfElse]="RequestParticipe">
+            <button class="btn btn-radius-style btn-danger w-100 mt-5" 
+              (click)="cancelParticipate(event._id)">Annuler votre participation</button>
+            <div class="text-danger text-center mt-2 d-none d-xl-block">
+              <small>En annulant la participation à l'événement, vous céderez votre place à un autre
+                curlietos</small>
+            </div>
+          </ng-template>
+
+          <ng-template #RequestParticipe>
+            <button class="btn btn-main w-100 mt-5" *ngIf="canParticipate"
+              (click)="requestParticipate(event._id)">Rejoindre l'évenement</button>
+            <div class="color-main text-center mt-2 d-none d-xl-block">
+              <small>En demandant à rejoindre un événement, vous acceptez que votre numéro de téléphone
+                soit divilgué à l'hôte</small>
+            </div> 
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-12 d-block d-xl-none" *ngIf="!event.CurrentUserIsAdmin">
+        <ng-template [ngIf]="event.CurrentUserHasParticipant == true" [ngIfElse]="RequestParticipe">
+          <button class="btn btn-radius-style btn-danger w-100 mt-5"
+            (click)="cancelParticipate(event._id)">Annuler votre participation</button>
+          <div class="text-danger text-center mt-2 d-none d-xl-block">
+            <small>En annulant la participation à l'événement, vous céderez votre place à un autre
+              curlietos</small>
+          </div>
+        </ng-template>
+        <ng-template #RequestParticipe>
+          <button class="btn btn-main w-100 mt-5" *ngIf="canParticipate"
+            (click)="requestParticipate(event._id)">Rejoindre l'évenement</button>
+          <div class="color-main text-center mt-2 d-none d-xl-block">
+            <small>En demandant à rejoindre un événement, vous acceptez que votre numéro de téléphone
+              soit divilgué à l'hôte</small>
+          </div>
+        </ng-template>
+      </div>
+      <div class="col-lg-12 col-xl-4 mt-4 mt-xl-0">
+        <div class="bg-dark-mode px-4 py-3 rounded">
+          <div class="py-2 d-flex align-items-center">
+            <div class="d-flex flex-column align-items-center">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/crown.svg" height="20">
+              <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+                height="50">
+            </div>
+            <div class="px-2">
+              <p class="m-0 fw-bold username">{{ event.creator.username }}</p>
+              <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1"></div>
+              </div>
+            </div>
+          </div>
+          <hr class="color-main opacity-100">
+          <p>Participants</p>
+          <div class="py-2 d-flex align-items-center" *ngFor="let participant of event.users">
+            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+              height="50">
+            <div class="px-2">
+              <p class="m-0 fw-bold username">{{ participant.username || "Aucun" }}  {{  participant.telephone }}</p>
+              <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1"></div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1"></div>
+              </div>
+            </div>
+          </div>
+          <hr class="color-main opacity-100">
+          <div class="d-flex justify-content-between">
+            <p>Places restantes</p>
+            <p class="color-main fw-bold">{{ event.user_max - (event.users.length + 1) }}/{{ event.user_max
+              }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="similar-events">
+  <div class="container">
+    <h2>Evenements similaires</h2>
+    <div class="row">
+      <div class="col-lg-6 col-xl-4 p-0 my-4">
+        <a routerLink="/detailsEvenement"
+          class="bg-dark-mode rounded shadow d-flex mx-4 text-decoration-none text-white hover-card">
+          <div>
+            <img class="rounded"
+              src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg"
+              height="150">
+          </div>
+          <div class="d-flex flex-wrap py-2 px-4">
+            <p class="f-size20 w-100 m-0">Marvel : Les Eternels</p>
+            <div class="d-flex align-items-center mb-4">
+              <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="10">
+              </div>
+              <p class="w-100 fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+            </div>
+            <small class="f-size14 w-100">02 DEC 2021 - 16h : Pathé Lyon Bellecour</small>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-6 col-xl-4 p-0 my-4">
+        <a routerLink="/detailsEvenement"
+          class="bg-dark-mode rounded shadow d-flex mx-4 text-decoration-none text-white hover-card">
+          <div>
+            <img class="rounded"
+              src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg"
+              height="150">
+          </div>
+          <div class="d-flex flex-wrap py-2 px-4">
+            <p class="f-size20 w-100 m-0">Marvel : Les Eternels</p>
+            <div class="d-flex align-items-center mb-4">
+              <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="10">
+              </div>
+              <p class="w-100 fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+            </div>
+            <small class="f-size14 w-100">02 DEC 2021 - 16h : Pathé Lyon Bellecour</small>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-6 col-xl-4 p-0 my-4">
+        <a routerLink="/detailsEvenement"
+          class="bg-dark-mode rounded shadow d-flex mx-4 text-decoration-none text-white hover-card">
+          <div>
+            <img class="rounded"
+              src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/photo-evenement/marvel-eternels.jpg"
+              height="150">
+          </div>
+          <div class="d-flex flex-wrap py-2 px-4">
+            <p class="f-size20 w-100 m-0">Marvel : Les Eternels</p>
+            <div class="d-flex align-items-center mb-4">
+              <div class="d-flex justify-content-center align-items-center rounded-circle bg-main m-auto square-16">
+                <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/cinema.svg" height="10">
+              </div>
+              <p class="w-100 fw-bold text-uppercase m-0 px-2">Séance de cinéma</p>
+            </div>
+            <small class="f-size14 w-100">02 DEC 2021 - 16h : Pathé Lyon Bellecour</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

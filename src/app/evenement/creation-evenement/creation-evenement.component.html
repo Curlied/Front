@@ -1,0 +1,98 @@
+<div class="d-flex align-items-center viewport-height bg-img">
+	<div class="container-fluid">
+		<div class="row justify-content-center align-items-end">
+			<div class="formstyle d-flex flex-column rounded col-10 col-md-10 col-lg-7 col-xl-5 bg-dark-mode rounded px-5 py-4">
+				<div class="d-flex justify-content-center align-items-center flex-wrap">
+					<h1 class="f-bold">Crée ton événement !</h1>
+				</div>
+				<form (ngSubmit)="send()" [formGroup]="eventForm">
+					<div class="row form-group justify-content-center align-content-center">
+						<div class="col-12 test">
+							<label for="name">Nom de l'évenement*</label>
+							<input type="text" formControlName="name" class="form-control" required>
+						</div>
+						<div class="col-md-6 form-group">
+							<label for="category">Catégories</label>
+							<select class="form-select" formControlName="category" aria-label="Default select example">
+								<option *ngFor="let category of arrayCategories" [value]="category._id">
+									{{category.name}}</option>
+							</select>
+						</div>
+
+						<div class="col-md-6 test">
+							<label for="price">Prix*</label>
+							<input type="number" min="1" max="9999" formControlName="price" class="form-control" required>
+						</div>
+
+						<div class="col-md-6">
+							<label for="department">Département*</label>
+							<select class="form-select" required (change)="changeDepartment()" aria-label="departements" formControlName="department" *ngIf="arrayDepartement">
+                                <option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">{{departement.nom}}</option>
+                            </select>
+						</div>
+						<div class="col-md-6">
+							<label for="code">Commune*</label>
+
+							<select *ngIf="!arrayCommune" class="form-select" required aria-label="code" formControlName="code" >
+                            </select>
+							<select *ngIf="arrayCommune"  class="form-select" required aria-label="code" formControlName="code" >
+                                	<option *ngFor="let commune of arrayCommune; let i = index;" value="{{commune.codesPostaux[0]}}-{{commune.nom}}">{{commune.codesPostaux[0]}}-{{commune.nom}}</option>
+                            </select>
+
+						</div>
+
+
+						<div class="col-12">
+							<label for="adress">Adresse*</label>
+							<input type="text" formControlName="adress" class="form-control" required>
+						</div>
+
+						<div class="col-md-6">
+							<label for="date">Date*</label>
+							<input type="date" formControlName="date" min="{{currentDate | date:'yyyy-MM-dd'}}" class="form-control" required>
+						</div>
+
+						<div class="col-md-6">
+							<label for="hour">Heure*</label>
+							<input type="time" formControlName="hour" class="form-control" required>
+						</div>
+
+						<div class="col-md-6">
+							<label for="time">Durée (en heure)*</label>
+							<input type="number" min="1" max="9999" formControlName="time" class="form-control" required>
+						</div>
+
+						<div class="col-md-6">
+							<label for="user_max">Place* <span class="my-badge badge badge-pill" title="En tant que créateur vous êtes inclus dans le nombre de place, si vous selectionnez 2 places, il y aura vous et un autre curlietos">ℹ️</span></label>
+
+							<select class="form-select" formControlName="user_max" aria-label="Default select example" placeholder="Vous inclus">
+								<option *ngFor="let item of [].constructor(49); let i = index" [value]="i +2">{{i+2}}
+								</option>
+							</select>
+						</div>
+
+						<div class="col-12">
+							<label for="description">Description*</label>
+							<input type="text" formControlName="description" minlength="50" maxlength="500" placeholder="50 caractères min et 500 max" class="form-control heigthly-form"
+								required>
+						</div>
+
+						<div class="col-12">
+							<file-upload [control]="fileUploadControl" class="heigthly-form" [multiple]="false"
+								[animation]="true">
+								<ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+									<span *ngIf="arrayFile.length==0">Glisse ou dépose un poster ou une photo du
+										lieu</span>
+								</ng-template>
+							</file-upload>
+						</div>
+
+						<div class="col-12 mt-4">
+							<button class="btn btn-main w-100" type="submit">Créer</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

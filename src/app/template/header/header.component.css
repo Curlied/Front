@@ -1,0 +1,57 @@
+/* Header */
+
+.navbar {
+  position: fixed;
+  padding: 20px 40px;
+  width: 100%;
+  background-color: rgba(21, 32, 43, 0.6);
+  z-index: 99;
+}
+
+.event-nav {
+  color: var(--main-white);
+  text-decoration: none;
+  margin-left: 30px;
+  transition: 0.3s;
+}
+
+.event-nav:hover {
+  color: var(--main-color);
+}
+
+.search-input img {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  width: 20px;
+  height: 20px;
+}
+
+.search-input input {
+  border-color: var(--main-white) !important;
+  padding-left: 40px;
+  background: none !important;
+}
+
+.search-input input::placeholder {
+  color: var(--main-white);
+  font-size: 14px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 992px) {
+  .event-nav {
+    margin-left: 0;
+  }
+}
+
+a {
+  pointer-events: pointer;
+  text-decoration: none;
+}

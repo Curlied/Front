@@ -1,0 +1,82 @@
+.bg-img {
+  background: linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.6)),
+    url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement1.jpg");
+  background-attachment: fixed !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.form-control,
+.form-select {
+  margin-bottom: 10px !important;
+}
+
+.heigthly-form {
+  height: 60px;
+  border-radius: 800px !important;
+}
+
+.formstyle {
+  margin-top: 100px;
+  padding: 30px 60px 30px 60px;
+}
+
+app-footer {
+  display: none !important;
+}
+
+.upload-input {
+  width: 100% !important;
+  text-align: center !important;
+  color: var(--main-color) !important;
+}
+
+.upload-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+file-upload-list-item {
+  padding: 0px !important;
+}
+
+.file-info {
+  display: flex;
+  color: transparent !important;
+}
+
+.remove-btn {
+  color: red !important;
+}
+
+.file-name {
+  font-size: 12px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30px !important;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+option,
+.form-select {
+  color: var(--main-color) !important;
+}
+
+.my-badge {
+  border-radius: 20px;
+  border: 1px solid var(--main-color);
+  margin: 0px 0px 0px 10px;
+}

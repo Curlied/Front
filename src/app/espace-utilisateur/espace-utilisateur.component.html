@@ -1,0 +1,433 @@
+<section class="user-space">
+  <div class="container">
+    <h2>Espace utilisateur</h2>
+    <div class="row align-items-start">
+      <div class="col-xl-3 user-nav">
+        <div class="nav flex-column nav-pills me-xl-3 mb-5 mb-xl-0 shadow rounded px-3 py-2" id="v-pills-tab"
+          role="tablist" aria-orientation="vertical">
+          <button (click)="myProfil()" class="nav-link active d-flex align-items-center" id="v-pills-profile-tab"
+            data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
+            aria-controls="v-pills-profile" aria-selected="false">
+            <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-2">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/profile.svg" height="15">
+            </div>
+            Mon Profil
+          </button>
+          <hr class="color-main">
+          <button (click)="personnalInformations()" class="nav-link d-flex align-items-center" id="v-pills-info-tab"
+            data-bs-toggle="pill" data-bs-target="#v-pills-info" type="button" role="tab" aria-controls="v-pills-info"
+            aria-selected="true">
+            <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-2">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/info.svg" height="15">
+            </div>
+            Informations Personnelles
+          </button>
+          <hr class="color-main">
+          <button (click)="myEvents()" class="nav-link d-flex align-items-center" id="v-pills-events-tab"
+            data-bs-toggle="pill" data-bs-target="#v-pills-events" type="button" role="tab"
+            aria-controls="v-pills-events" aria-selected="false">
+            <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-2">
+              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/calendar.svg" height="15">
+            </div>
+            Mes Evenements
+          </button>
+        </div>
+      </div>
+      <div class="col-xl-9">
+        <div class="tab-content shadow rounded p-5" id="v-pills-tabContent">
+
+          <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
+            aria-labelledby="v-pills-profile-tab">
+            <h3>Mon Profil</h3>
+            <div class="row" *ngIf="profilData">
+              <div class="col-12">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="{{ profilData.url_image }}" height="70">
+                  <div class="px-2">
+                    <p class="m-0 fw-bold text-capitalize">{{ profilData.username }}</p>
+                    <p class="m-0">{{ profilData.age}} ans</p>
+                    <div class="d-flex">
+                      <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16"
+                        style="margin-right:3px;"></div>
+                      <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16"
+                        style="margin-right:3px;"></div>
+                      <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16"
+                        style="margin-right:3px;"></div>
+                      <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16"
+                        style="margin-right:3px;"></div>
+                      <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16"
+                        style="margin-right:3px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="position-relative mt-3">
+                  <p class="display-1 position-absolute fw-bold">"</p>
+                  <p class="pt-5 m-0">
+                    {{ profilData.description}}.</p>
+                  <p class="display-1 position-absolute end-0 fw-bold">"</p>
+                </div>
+              </div>
+              <div class="col-12 mt-2">
+                <hr class="my-4">
+                <h4 class="fw-bold">Evénements Organisés</h4>
+                <div class="col-12 row">
+                  <div class="col-xl-6 mb-2" *ngFor="let event of profilData.eventInProgress">
+                    <a class="bg-dark-mode rounded border-main-color d-flex text-decoration-none text-white hover-card"
+                      routerLink="/detailsEvenement" [queryParams]="{event: event._id}">
+                      <div>
+                        <img class="rounded" *ngIf="!event.url_image.length" src="{{ event.categoryInfo.url_image }}"
+                          height="120" width="180">
+                        <img class="rounded" *ngIf="event.url_image.length" src="{{ event.url_image[0] }}" height="120"
+                          width="180">
+                      </div>
+                      <div class="d-flex flex-wrap py-2 px-4 overflow-ellipsis">
+                        <p class="f-size20 w-100 m-0">{{event.name}}</p>
+                        <div class="d-flex align-items-center mb-4">
+                          <img [src]="event.categoryInfo.url_icon" height="20">  
+                          <p class="w-100 fw-bold text-uppercase m-0 px-2">{{ event.categoryInfo.name }}</p>
+                        </div>
+                        <small class="f-size14 w-100 overflow-ellipsis">{{ event.date_time | date: 'dd/MM/yyyy HH' }}H : {{ event.place
+                          }}</small>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-info" role="tabpanel" aria-labelledby="v-pills-info-tab">
+            <h3>Informations personnelles</h3>
+            <form [formGroup]="eventForm" *ngIf="personalInfoData">
+              <div class="row form-group mb-5">
+                <div class="col-md-6">
+                  <label for="pseudo">Pseudo</label>
+                  <input type="text" formControlName="username" readonly name="pseudo" id="pseudo"
+                    class="form-control text-capitalize" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="birth_date">Date de naissance</label>
+                  <input type="date" readonly formControlName="birth_date" name="birth_date" id="birth_date"
+                    class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email">Adresse email</label>
+                  <input type="email" formControlName="email" readonly name="email" id="email" autocomplete="new-email"
+                    class="form-control" required value="123">
+                </div>
+                <div class="col-md-6">
+                  <label for="telephone">Téléphone</label>
+                  <input type="tel" formControlName="telephone" readonly name="telephone" id="telephone" class="form-control"
+                    required>
+                </div>
+                <!-- <div class="col-md-6">
+                  <label for="old_password">Ancien mot de passe</label>
+                  <input type="password" autocomplete="new-password" formControlName="old_password" name="old_password"
+                    id="old_password" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="new_password">Nouveau mot de passe</label>
+                  <input type="password" formControlName="new_password" autocomplete="new-password" name="new_password"
+                    id="new_password" class="form-control" required>
+                </div> -->
+                <div class="col-12">
+                  <label for="about_me">A propos de moi</label>
+                  <textarea class="form-control rounded-pill" readonly formControlName="aboutMe" name="about_me" id="about_me"
+                    rows="2"></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="row align-items-end">
+                    <!-- <div class="col-8 col-sm-10">
+                      <label>Photo de profil</label>
+                      <file-upload [control]="fileUploadControl" class="heigthly-form m-0 text-center"
+                        [multiple]="multiple" [animation]="animation">
+                        <ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+                          <span *ngIf="arrayFile?.length==0">Glisse ou dépose une image</span>
+                        </ng-template>
+                      </file-upload>
+                    </div> -->
+                    <!-- <div class="col-4 col-sm-2 text-end">
+                      <img class="rounded" src="{{ personalInfoData.url_image}}" height="60">
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- <button class="btn btn-main" type="submit">Modifier informations</button> -->
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-events" role="tabpanel" aria-labelledby="v-pills-events-tab">
+            <h3>Mes événements</h3>
+            <div class="row">
+              <div class="col-12">
+                <h4 class="fw-bold mb-3">Evénements Crées</h4>
+                <div class="row" *ngIf="allEventsData">
+                  <div *ngFor="let eventCreate of allEventsData.eventsCreate"
+                    class="col-xl-6 col-xxl-4 text-center mt-3 mt-xl-0">
+                    <div class="shadow rounded py-3 px-5 img-category hover-card"
+                      [style.backgroundImage]="'linear-gradient(rgba(21, 32, 43, 0.8), rgba(21, 32, 43, 0.8)), url('+ eventCreate.categoryInfo.url_image +')'">
+                      <small [ngClass]="eventCreate.is_validate ? 'status-validated' : 'status-pending'"
+                        class="rounded status-event fw-bold">{{eventCreate.is_validate ? 'Validé' : 'En attente de
+                        validation'}}</small>
+                      <h4 class="my-2 fw-bold">{{ eventCreate.name }} </h4>
+                      <div class="d-flex justify-content-center align-items-center mb-4">
+                        <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16">
+                          <img [src]="eventCreate.categoryInfo.url_icon" height="10">
+                        </div>
+                        <p class="fw-bold text-uppercase m-0 px-2">{{ eventCreate.categoryInfo.name }}</p>
+                      </div>
+                      <div>
+                        <img class="rounded" *ngIf="!eventCreate.url_image.length"
+                          [src]="eventCreate.categoryInfo.url_image" height="150" width="180">
+                        <img class="rounded" *ngIf="eventCreate.url_image.length" [src]="eventCreate.url_image[0]"
+                          height="150" width="180">
+                      </div>
+                      <div class="d-flex justify-content-center align-items-center my-2">
+                        <img class="me-1"
+                          src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/profile_blue.svg"
+                          height="15">
+                        <span>X {{ eventCreate.user_max }}</span>
+                      </div>
+                      <p class="m-0">{{ eventCreate.date_time | date: 'dd/MM/yyyy HH:mm' }}</p>
+                      <p>{{ eventCreate.place }}</p>
+                      <div class="d-flex justify-content-center">
+
+                        <!-- UNCOMMENT IF HAVE TIME TO IMPLEMENT MANAGE USER PARTICIPATION
+                          
+                          <a *ngIf="eventCreate.is_validate" (click)="completeModal(eventCreate.usersComplet)"
+                          class="d-flex justify-content-center align-items-center rounded-circle status-validated square-30 me-1 text-white text-decoration-none hover-zoom"
+                          data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          <span>+</span>
+                          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/profile.svg"
+                            height="12">
+                        </a> -->
+
+
+                        <a title="Détails de l'évènement" class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-1 hover-zoom"
+                          routerLink="/detailsEvenement" [queryParams]="{event: eventCreate._id}" *ngIf="eventCreate.is_validate">
+                          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/eye.svg" height="15">
+                        </a>
+                        <button title="Annuler l'évènement" (click)="modalCancelMyEvent(eventCreate)" data-bs-toggle="modal" data-bs-target="#ModalCancelMyEvent" class="d-flex justify-content-center align-items-center border-0 rounded-circle bg-red square-30 ms-1 text-decoration-none hover-zoom">
+                          <b class="mb-1 text-white">x</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+              </div>
+
+              <div class="col-12">
+                <h4 class="fw-bold mb-3">Evénements Rejoints</h4>
+                <div class="row" *ngIf="allEventsData">
+                  <div *ngFor="let eventParticipate of allEventsData.eventsParticipate"
+                    class="mb-3 col-xl-6 col-xxl-4 text-center mt-3 mt-xl-0">
+                    <div class="shadow rounded py-3 px-5 img-category hover-card"
+                      [style.backgroundImage]="'linear-gradient(rgba(21, 32, 43, 0.8), rgba(21, 32, 43, 0.8)), url('+ eventParticipate.categoryInfo.url_image +')'">
+                      <small
+                        [ngClass]="eventParticipate.statusCurrentUser == 'Validé' ? 'status-validated' : eventParticipate.statusCurrentUser == 'Refusé' ? 'status-denied' : 'status-pending' "
+                        class="rounded status-event status-denied fw-bold text-capitalize">{{eventParticipate.statusCurrentUser}}</small>
+                      <h4 class="my-2 fw-bold">{{eventParticipate.name }}</h4>
+                      <div class="d-flex justify-content-center align-items-center mb-4">
+                        <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16">
+                          <img [src]="eventParticipate.categoryInfo.url_icon" height="10">
+                        </div>
+                        <p class="fw-bold text-uppercase m-0 px-2">{{ eventParticipate.categoryInfo.name }}</p>
+                      </div>
+                      <div>
+                        <img class="rounded" *ngIf="!eventParticipate.url_image.length"
+                          [src]="eventParticipate.categoryInfo.url_image" height="150" width="180">
+                        <img class="rounded" *ngIf="eventParticipate.url_image.length"
+                          [src]="eventParticipate.url_image[0]" height="150" width="180">
+                      </div>
+                      <div class="d-flex justify-content-center align-items-center my-2">
+                        <img class="me-1"
+                          src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/profile_blue.svg"
+                          height="15">
+                        <span>X {{ eventParticipate.user_max }}</span>
+                      </div>
+                      <p class="m-0">{{ eventParticipate.date_time | date: 'dd/MM/yyyy HH:mm' }}</p>
+                      <p>{{eventParticipate.place}}</p>
+                      <div class="d-flex justify-content-center">
+                        <a title="infos évènement" class="d-flex justify-content-center align-items-center rounded-circle bg-main square-30 me-1 hover-zoom"
+                          routerLink="/detailsEvenement" [queryParams]="{event: eventParticipate._id}">
+                          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/info.svg" height="15">
+                        </a>
+                        <button title="Annuler participation" data-bs-toggle="modal" data-bs-target="#ModalCancelParticipation" (click)="modalCancelParticpationEvent(eventParticipate)"
+                          class="d-flex justify-content-center align-items-center rounded-circle border-0 bg-red square-30 ms-1 text-decoration-none hover-zoom">
+                          <b class="mb-1 text-white">x</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Invitation -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark-mode">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Participants</h5>
+        <button type="button" class="btn btn-main border-0 bg-dark-mode fw-bold background-none"
+          data-bs-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <small class="rounded status-event status-validated fw-bold">Validé(s)</small>
+          <div class="py-2 d-flex align-items-center"
+            *ngFor="let userValidate of arrayUserValidateParticipateSpaceUser">
+            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+              height="50">
+            <div class="px-2">
+              <p class="m-0 fw-bold text-capitalize">{{ userValidate.username }}</p>
+              <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <small class="rounded status-event status-pending fw-bold">En attente de validation</small>
+          <div class="d-flex align-items-center justify-content-between"
+            *ngFor="let userPending of arrayUserPendingParticipateSpaceUser">
+            <div class="py-2 d-flex align-items-center">
+              <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+                height="50">
+              <div class="px-2">
+                <p class="m-0 fw-bold">{{ userPending.username }}</p>
+                <div class="d-flex">
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <a class="d-flex justify-content-center align-items-center rounded-circle status-validated square-30 me-1 text-decoration-none hover-zoom"
+                routerLink="">
+                <b class="mb-1 text-white">+</b>
+              </a>
+              <a class="d-flex justify-content-center align-items-center rounded-circle status-denied square-30 ms-1 text-decoration-none hover-zoom"
+                routerLink="">
+                <b class="mb-1 text-white">x</b>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <small class="rounded status-event status-denied fw-bold">Refusé(s)</small>
+          <div class="py-2 d-flex align-items-center" *ngFor="let userRefuse of arrayUserRefuseParticipateSpaceUser">
+            <img class="rounded" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg"
+              height="50">
+            <div class="px-2">
+              <p class="m-0 fw-bold">{{ userRefuse.username }}</p>
+              <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-main square-16 me-1">
+                </div>
+                <div class="d-flex justify-content-center align-items-center rounded-circle bg-white square-16 me-1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- Modal confirmCancelParticipation -->
+<div class="modal fade"  id="ModalCancelParticipation" tabindex="-1" aria-labelledby="ModalCancelParticipationLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark-mode" *ngIf="dataModalCancelParticipationEvent">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalCancelParticipationLabel">Êtes vous sur de ne plus vouloir participer à cet évènement?</h5>
+        <button type="button" class="btn btn-main border-0 bg-dark-mode fw-bold background-none"
+          data-bs-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mt-2 d-none d-xl-block">
+          <small>Vous allez annuler votre participation à l'évenement :</small>
+          <br>
+        </div>
+        <div class="text-start mt-2 d-none d-xl-block">
+          <p>Nom : {{ dataModalCancelParticipationEvent.name }} </p>          
+          <small>Date : {{ dataModalCancelParticipationEvent.date_time | date: 'dd/MM/yyyy HH:mm' }} </small>
+        </div>
+        <div class="color-main text-center mt-2 d-none d-xl-block">
+          <small>En annulant la participation à l'événement, vous acceptez de céder votre place à un autre
+            curlietos</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-main" (click)="cancelParticipate(dataModalCancelParticipationEvent._id)" data-bs-dismiss="modal">Confirmation annulation participation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal confirmDeleteEvent -->
+<div class="modal fade" id="ModalCancelMyEvent" tabindex="-1" aria-labelledby="ModalCancelMyEvent"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark-mode" *ngIf="dataModalCancelMyEvent">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalCancelMyEventLabel"> Êtes vous sur de vouloir supprimer cet évènement?</h5>
+        <button type="button" class="btn btn-main border-0 bg-dark-mode fw-bold background-none"
+          data-bs-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mt-2 d-none d-xl-block">
+          <small>Vous allez annuler votre évènement :</small>
+          <br>
+        </div>
+        <div class="text-start mt-2 d-none d-xl-block">
+          <p  >Nom : {{ dataModalCancelMyEvent.name }} </p>          
+          <small>Date : {{ dataModalCancelMyEvent.date_time | date: 'dd/MM/yyyy HH:mm' }} </small>
+        </div>
+        <div class="color-main text-center mt-2 d-none d-xl-block">
+          <small>En annulant cet événement, vous annulez également la participation des autres curlietos à celui-ci !!</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-main" (click)="cancelMyEvent(dataModalCancelMyEvent._id)" data-bs-dismiss="modal">je veux supprimer mon évènement</button>
+      </div>
+    </div>
+  </div>
+</div>

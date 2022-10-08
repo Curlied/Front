@@ -1,0 +1,86 @@
+h3 {
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+h3::after {
+  background-color: var(--main-color);
+  content: "";
+  display: block;
+  height: 2px;
+  left: 30px;
+  bottom: -50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 60px;
+  border-radius: 10px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.user-space {
+  padding: 100px 0;
+}
+
+.nav-link {
+  color: var(--main-white);
+  font-weight: bold;
+  text-align: left;
+}
+
+.nav-link:hover {
+  color: var(--main-color);
+}
+
+.nav-pills .active {
+  color: var(--main-color);
+  background-color: var(--main-dark);
+}
+
+hr {
+  width: 100%;
+  margin: 5px auto;
+  opacity: 1;
+}
+
+.img-category {
+  background: linear-gradient(rgba(21, 32, 43, 0.8), rgba(21, 32, 43, 0.8)),
+    url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-cinema.jpg");
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.status-event {
+  padding: 1px 4px;
+}
+
+.status-denied {
+  background-color: #c95a5a;
+}
+
+.status-pending {
+  background-color: #ff9547;
+}
+
+.status-validated {
+  background-color: #6bdd82;
+}
+
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media only screen and (min-width: 1200px) {
+  .user-nav {
+    position: sticky;
+    top: 100px;
+  }
+}
