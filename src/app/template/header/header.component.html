@@ -1,92 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark d-block d-lg-none d-xl-none bg-dark-mode">
-  <div class="container">
-    <a class="navbar-brand" routerLink=""><img
-        src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/logos/inline_white.png" class="logo"></a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto my-2 mb-lg-0">
-        <li class="d-flex align-items-center mb-1" *ngIf="isAdmin">
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/crown.svg" width="16" height="16">
-          <a class="event-nav mx-1" routerLink="administration">Administration</a>
-        </li>
-        <hr class="bg-white my-2">
-        <li class="d-flex align-items-center mb-1">
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/event.svg" width="16" height="16">
-          <a class="event-nav mx-1" routerLink="evenements">Evenements</a>
-        </li>
-        <hr class="bg-white my-2">
-        <li class="d-flex align-items-center mb-1">
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/new-event.svg" width="16" height="16">
-          <a class="event-nav mx-1" routerLink='creationEvenement'>Créer un événément</a>
-        </li>
-        <hr class="bg-white my-2">
-        <li class="d-flex align-items-center mb-1" *ngIf='isConnected'>
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg" width="16"
-            height="16">
-          <a class="event-nav mx-1" routerLink="espaceUtilisateur">Mon Compte</a>
-        </li>
-        <hr class="bg-white my-2" *ngIf='isConnected'>
-        <li class="d-flex align-items-center mb-1" *ngIf='isConnected'>
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/logout.svg" width="16" height="16">
-          <a class="event-nav mx-1" (click)="logout()" title="deconnexion">Deconnexion</a>
-        </li>
-        <li class="d-flex align-items-center mb-1" *ngIf='!isConnected'>
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/login.svg" width="16" height="16">
-          <a class="event-nav mx-1" routerLink="connexion">Connexion/Inscription</a>
-        </li>
-      </ul>
-      <!-- <form class="d-flex">
-        <div class="search-input d-flex position-relative w-100">
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/search.svg">
-          <input type="text" class="form-control form-input m-0" placeholder="Chercher un événement">
-        </div>
-      </form> -->
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid ">
+    <a class="navbar-brand  " href="#"><img src="./assets/images/logo.svg" alt="" width="80" height="34"></a>
+  
+    <form class="d-flex space right">
+      <input class="form-control me-4 " type="search" placeholder="Event, user,..." aria-label="Search" >
+      <button class="btn  me-5 col-4" type="submit">Créer un event</button>
+      
+    </form>
+
+    <a class="me-4 "><img src="./assets/images/accueil.svg" alt="" width="30" height="24"></a>
+    <a class=" me-4"><img src="./assets/images/Composant 43 – 1.svg" alt="" width="30" height="24"></a>
+    <a class=" me-4"><img src="./assets/images/Tracé 27.svg" alt="" width="30" height="24"></a>
+    <a class=" me-4"><img src="./assets/images/profil.svg" alt="" width="30" height="24"></a>
+    
+        
+      
+    
   </div>
 </nav>
-
-<div class="navbar d-none d-lg-block d-xl-block">
-  <div class="container">
-    <div class="row w-100">
-      <div class="col-4 d-flex align-items-center">
-        <a routerLink=''><img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/logos/inline_white.png"
-            class="logo"></a>
-        <a class="event-nav" *ngIf="isAdmin" routerLink="administration">Administration</a>
-        <a class="event-nav" routerLink="evenements">Evenements</a>
-      </div>
-      <div class="col-2 d-flex justify-content-center align-items-center">
-        <!-- <div class="search-input d-flex w-100 position-relative">
-          <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/search.svg">
-          <input type="text" class="form-control form-input m-0" placeholder="Chercher un événement">
-        </div> -->
-      </div>
-      <div class="col-6 d-flex justify-content-end align-items-center">
-        <a class="btn btn-main me-3" routerLink='/creationEvenement'>Créer un événément</a>
-
-        <ng-template [ngIf]='isConnected' [ngIfElse]="login">
-          <a class="hover-zoom d-flex flex-column align-items-center mx-3" routerLink="/espaceUtilisateur">
-            <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/user-profile.svg" width="40"
-              height="40">
-              <small class="color-main">Mon compte</small>
-          </a>
-          <a class="hover-zoom d-flex flex-column align-items-center mx-3" (click)="logout()" title="deconnexion">
-            <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/logout.svg" width="40" height="40">
-            <small class="color-main">Deconnexion</small>
-          </a>
-        </ng-template>
-
-        <ng-template #login>
-
-            <a class="hover-zoom d-flex flex-column align-items-center" routerLink="/connexion" title="connexion">
-              <img src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/svg/login.svg" width="40" height="40">
-              <small class="color-main">Connexion/Inscription</small>
-            </a>
-        </ng-template>
-      </div>
-    </div>
-  </div>
-</div>
