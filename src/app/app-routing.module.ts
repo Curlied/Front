@@ -8,6 +8,7 @@ import { ListeEvenementsComponent } from './evenement/liste-evenements/liste-eve
 import { DetailsEvenementComponent } from './evenement/details-evenement/details-evenement.component';
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
+import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { AdminComponent } from './admin/admin.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'detailsEvenement', component: DetailsEvenementComponent },
   { path: 'creationEvenement', component: CreationEvenementComponent },
   { path: 'espaceUtilisateur', component: EspaceUtilisateurComponent },
+  { path: 'profil', component: ProfilComponent },
   { path: 'administration', component: AdminComponent },
   { path: 'confirm', component: ConfirmationComponent },
   { path: '**', component: ErrorComponent }

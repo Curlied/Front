@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
+import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminComponent } from './admin/admin.component';
     ConfirmationComponent,
     ErrorComponent,
     EspaceUtilisateurComponent,
-    AdminComponent
+    AdminComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

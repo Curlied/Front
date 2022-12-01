@@ -25,15 +25,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #3796d4;
+  --main-color: #176DE2;
   --main-dark: #15202b;
   --main-white: #fff;
 }
 
 body {
   font-family: "Dosis", sans-serif;
-  color: var(--main-white) !important;
-  background-color: var(--main-dark) !important;
+  background: linear-gradient(#78BCF7, #2828C9) no-repeat;
 }
 
 section {
@@ -47,7 +46,7 @@ section {
 ----------------------------------
 */
 
-h1 {
+/*h1 {
   font-size: 32px;
 }
 
@@ -83,7 +82,7 @@ h3 {
 
 .f-size14 {
   font-size: 14px;
-}
+}*/
 
 /*
 ----------------------------------
