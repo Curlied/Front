@@ -25,10 +25,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #6EDDFF;
+  --main-color: #176DE2;
   --main-dark: #15202b;
   --main-white: #fff;
   --main-bg:transparent linear-gradient(180deg, #8BDAFB 0%, #4835FF 100%) 0% 0% no-repeat padding-box;
+  --font-family-primary: "Co Headline";
 }
 
 html{
@@ -127,17 +128,16 @@ h3 {
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 1rem 3rem;
+  font-family: var(--font-family-primary);
+  font-size: 1.5rem;
 }
 
 .btn-main:hover {
   background-color: var(--main-dark);
-  color: var(--main-color);
-  border-color: var(--main-color);
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  color: var(--main-white);
+  border-color: var(--main-dark);
+  padding: 1rem 3rem;
 }
 
 .btn-reverse {

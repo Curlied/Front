@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-center event">
 	<div class="event__card">
+		<h1 class="event__title">Crée ton événement !</h1>
 		<form (ngSubmit)="send()" [formGroup]="eventForm" class="event__form row">
 			<div class="col-12">
 				<label for="name" class="form-label">Nom de l'évenement*</label>
@@ -62,19 +63,19 @@
 				<input type="number" min="1" max="9999" formControlName="time" class="form-control " required>
 			</div>
 
-			<div class="col-6 d-flex align-items-center">
+			<div class="col-4 d-flex align-items-center">
 				<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
 				</file-upload>
 			</div>
 
-			<div class="col-6">
+			<div class="col-8">
 				<label for="description">Description*</label>
 				<textarea rows="7" formControlName="description" minlength="50" maxlength="500" placeholder="50 caractères min et 500 max" class="form-control form-textarea" required >
 				</textarea>
 			</div>
 
-			<div class="col-12 mt-4">
-				<button class="btn btn-main w-100" type="submit">Créer</button>
+			<div class="col-12 d-flex justify-content-center">
+				<button class="btn btn-main mt-3" type="submit">Créer</button>
 			</div>
 		</form>
 	</div>

@@ -1,6 +1,7 @@
 .event{
   min-height: 100vh;
-  background: var(--main-bg)
+  background: var(--main-bg);
+  align-items: flex-start;
 }
 
 .event__form{
@@ -9,10 +10,19 @@
 
 .event__card{
   background-color: var(--main-white);
-  padding: 6rem 4rem;
-  width: 53rem;
+  padding: 6rem 5rem 5rem 5rem;
+  max-width: 53rem;
   border-radius: 9rem;
   margin-top: 13rem;
+  margin-bottom: 6rem;
+}
+
+.event__title{
+  margin-bottom: 3.5rem;
+  color: var(--main-dark);
+  font-size: 3.2rem;
+  font-family: var(--font-family-primary);
+  text-align: center;
 }
 
 .form-label{
@@ -29,10 +39,8 @@
 
 .form-textarea{
   resize: vertical;
-}
-
-.form-textarea{
   padding: 2rem;
+  min-height: 20rem;
 }
 
 .form-control:focus{
@@ -68,6 +76,10 @@
   width: 105px;
   height: 105px;
   margin: auto;
+}
+
+.file .upload-text{
+  padding-left: 0!important;
 }
 
 
