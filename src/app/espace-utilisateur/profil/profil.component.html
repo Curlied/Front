@@ -2,53 +2,65 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-8">
-            <div class="user_info d-flex align-items-start bg-white py-4 px-5">
-                <img width="70" height="70" src="/assets/images/profil.svg" alt="">
-                <div class="px-4">
-                    <h2 class="fw-bold">Clément</h2>
+        <div class="col-xl-8">
+            <div class="row user_info align-items-start bg-white p-5">
+                <div class="col-3 col-lg-2">
+                    <img width="80" height="80" src="/assets/images/profil.svg" alt="">
+                </div>
+                <div class="col-9 col-lg-7">
+                    <h2 class="fw-bold mb-4">Clément</h2>
                     <p><span>19 ans</span><span class="ps-4">B1 - Informatique</span></p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue enim, consectetur ex
                     in dui et, venenatis tincidunt augue. Vivamus eu nulla eget scelerisque scelerisque.</p>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-main">Modifier</button>
-                    <button type="button"><img src="" class="img-fluid"></button>
+                <div class="col-lg-3 text-end mt-4 mt-lg-0">
+                    <button type="button" class="btn btn-main px-3 py-1">Modifier</button>
+                    <button type="button" class="border-0 bg-transparent ms-3 pe-0" data-bs-toggle="modal" data-bs-target="#settingsModal"><img width="30" src="/assets/images/parametres.svg" class="img-fluid"></button>
+                    <button type="button" class="border-0 bg-transparent ms-3 pe-0 d-xl-none" data-bs-toggle="modal"data-bs-target="#friendListModal"><img width="30" src="/assets/images/add-friend.svg" class="img-fluid"></button>
                 </div>
             </div>
             <div class="user_events mt-5">
-                <h2 class="text-white fw-bold mb-3">Mes événements</h2>
+                <h2 class="text-white fw-bold mb-4">Mes événements</h2>
                 <div class="events row justify-content-between">
-                    <div class="col-3 me-2 mb-5">
+                    <div class="col-5 col-md-3 me-2 mb-5">
                         <div class="event bg-white">
-                            <h3 class="fw-bold px-4 py-3 mb-0">Titre</h3>
+                            <div class="d-flex justify-content-between px-4 py-3">
+                                <h3 class="fw-bold mb-0">Titre</h3>
+                                <img class="img-fluid" width="20" src="/assets/images/couronne.svg">
+                            </div>
                             <img class="img-fluid" src="/assets/images/black_panther_poster.jpg">
                         </div> 
                     </div>
-                    <div class="col-3 me-2 mb-5">
+                    <div class="col-5 col-md-3 me-2 mb-5">
                         <div class="event bg-white">
-                            <h3 class="fw-bold px-4 py-3 mb-0">Titre</h3>
+                            <div class="d-flex justify-content-between px-4 py-3">
+                                <h3 class="fw-bold mb-0">Titre</h3>
+                            </div>
                             <img class="img-fluid" src="/assets/images/black_panther_poster.jpg">
                         </div>
                     </div>
-                    <div class="col-3 me-2 mb-5">
+                    <div class="col-5 col-md-3 me-2 mb-5">
                         <div class="event bg-white">
-                            <h3 class="fw-bold px-4 py-3 mb-0">Titre</h3>
+                            <div class="d-flex justify-content-between px-4 py-3">
+                                <h3 class="fw-bold mb-0">Titre</h3>
+                            </div>
                             <img class="img-fluid" src="/assets/images/black_panther_poster.jpg">
                         </div>
                     </div>
-                    <div class="col-3 me-2 mb-5">
+                    <div class="col-5 col-md-3 me-2 mb-5">
                         <div class="event bg-white">
-                            <h3 class="fw-bold px-4 py-3 mb-0">Titre</h3>
+                            <div class="d-flex justify-content-between px-4 py-3">
+                                <h3 class="fw-bold mb-0">Titre</h3>
+                            </div>
                             <img class="img-fluid" src="/assets/images/black_panther_poster.jpg">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-3 offset-1">
-            <div class="user_friends bg-white py-4 px-5 h-100">
-                <h2 class="fw-bold text-center">Amis</h2>
+        <div class="col-xl-4 ps-xl-5 mt-5 mt-xl-0 d-none d-xl-block">
+            <div class="user_friends bg-white p-5 h-100">
+                <h2 class="fw-bold text-center mb-4">Amis</h2>
                 <div class="text-center position-relative">
                     <label class="position-absolute ps-1"><img width="20" height="20" src="/assets/images/loupe.svg"></label>
                     <input class="search_friend w-100 ps-4" type="search">
@@ -68,7 +80,272 @@
                         </div>
                         <button type="button" class="btn-close" aria-label="Close"></button>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
                 </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 px-4 py-2">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="settingsModalLabel">Paramètres</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills border-end me-4 pe-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link ps-0 active" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications"
+                            type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="true">Notifications</button>
+                        <button class="nav-link ps-0" id="v-pills-accessibilite-tab" data-bs-toggle="pill" data-bs-target="#v-pills-accessibilite"
+                            type="button" role="tab" aria-controls="v-pills-accessibilite" aria-selected="false">Accessibilité</button>
+                        <button class="nav-link ps-0" id="v-pills-securite-tab" data-bs-toggle="pill" data-bs-target="#v-pills-securite"
+                            type="button" role="tab" aria-controls="v-pills-securite" aria-selected="false">Confidentialité & Sécurité</button>
+                        <button class="nav-link ps-0" id="v-pills-report-tab" data-bs-toggle="pill" data-bs-target="#v-pills-report"
+                            type="button" role="tab" aria-controls="v-pills-report" aria-selected="false">Signaler un problème</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">...
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-accessibilite" role="tabpanel" aria-labelledby="v-pills-accessibilite-tab">...</div>
+                        <div class="tab-pane fade" id="v-pills-securite" role="tabpanel" aria-labelledby="v-pills-securite-tab">...
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-report" role="tabpanel" aria-labelledby="v-pills-report-tab">...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Friend List Modal -->
+
+<div class="modal fade" id="friendListModal" tabindex="-1" aria-labelledby="friendListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 px-4 py-2">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="friendListModalLabel">Amis</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="friends">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                
+                </div>
             </div>
         </div>
     </div>

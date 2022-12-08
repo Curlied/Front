@@ -240,27 +240,6 @@ file-upload {
 
 /*
 ----------------------------------
-7. Scroll Bar
-----------------------------------
-*/
-
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--main-dark);
-  border: 1px solid var(--main-color);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--main-color);
-  border-color: var(--main-color);
-}
-
-/*
-----------------------------------
 8. Hover Effet
 ----------------------------------
 */

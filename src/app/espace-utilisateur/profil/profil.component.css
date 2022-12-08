@@ -2,9 +2,14 @@
   padding: 100px 0;
 }
 
-.user_info, .event, .user_friends {
-    border-radius: 30px;
+.user_info, .user_friends {
+    border-radius: 70px;
     box-shadow: 0px 0px 10px #00000040;
+}
+
+.event {
+  border-radius: 35px;
+  box-shadow: 0px 0px 10px #00000040;
 }
 
 .events {
@@ -44,6 +49,24 @@
 }
 
 .friends {
-    max-height: 62vh;
+    max-height: 600px;
     overflow-y: scroll;
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.nav-link {
+  color: black;
+  text-align: start;
+}
+
+.nav-link:hover {
+  color: var(--main-color);
+}
+
+.nav-pills .active {
+  color: var(--main-color);
+  background-color: transparent;
 }
