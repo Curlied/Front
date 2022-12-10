@@ -21,6 +21,7 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
 import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
+import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
     ErrorComponent,
     EspaceUtilisateurComponent,
     AdminComponent,
-    ProfilComponent
+    ProfilComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
