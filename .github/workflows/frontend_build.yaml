@@ -11,7 +11,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: '> 💬 Starting CI workflow for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See progress at https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}.'
+          args: "> 💬 Starting CI workflow for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See progress at https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}."
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -22,4 +22,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: '> Sonarcloud analysis finished for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See results at https://sonarcloud.io/summary/new_code?id=curlied-back&branch=${{ github.ref_name }}.'
+          args: "> Sonarcloud analysis finished for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See results at https://sonarcloud.io/summary/new_code?id=curlied-front&branch=${{ github.ref_name }}."
