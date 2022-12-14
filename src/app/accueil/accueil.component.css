@@ -1,7 +1,7 @@
 .card {
    /* margin-top: 10px;  */
   margin-left: 500px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 0.5rem;
+  border-radius: 25px;
 }
 
 .gradient {
@@ -20,3 +21,55 @@
 .space{
   padding: 10px;
 }
+
+.positionIcone {
+ 
+    width : 80px;
+    height : 80px;
+    padding: 2px;
+    padding-bottom: 2%;
+    margin-top: 50px;
+    margin-left: 18px;
+    
+    
+
+}
+.spaceBetweenIcone{
+  margin-left: 50px;
+}
+
+.positionInfos{
+  margin-left: 20px;
+    padding: 3px;
+    color: #176DE2;
+    padding-bottom: 50%;
+
+}
+
+.spaceBetweenInfos{
+  margin-left: 1px;
+}
+
+.img{
+  width : 220px;
+  height : 480px;
+  border-radius: 25px;
+  margin-left: 2px;
+}
+
+.card-text{
+  margin-left: 15px;
+}
+
+.card-title{
+  margin-left: 15px;
+  
+}
+
+.border{
+  border-radius: 10px;
+}
+
+
+
+
