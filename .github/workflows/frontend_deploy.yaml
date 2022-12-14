@@ -1,0 +1,30 @@
+name: Deployed on Vercel
+on:
+  - deployment_status
+jobs:
+  production-deploy-succes:
+    needs: [backend-build]
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Discord notification deployed
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '> The site as been deployed on : `${{
+            github.event.deployment_status.target_url }}`'
+  production-deploy-failed:
+    if: github.event.deployment_status.state == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Discord notification deployed
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '> An error occured during the deployment of the site '
