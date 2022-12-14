@@ -2,43 +2,74 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xl-3">
-                <div class="users_tchat bg-white py-4 h-100">
-                    <h2 class="text-center fw-bold mb-4">Discussions</h2>
+            <div class="col-xl-3 mb-4 mb-xl-0">
+                <div class="users_list bg-white py-4 px-5 px-xl-0 h-100">
+                    <div class="d-flex align-items-center justify-content-between justify-content-xl-center mb-xl-4">
+                        <h2 class="text-center fw-bold">Discussions</h2>
+                        <div class="navbar d-xl-none">
+                            <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarToggleExternalContent"
+                                aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <img src="/assets/images/hamburger-menu.svg" width="50" class="img-fluid">
+                            </button>
+                        </div>
+                    </div>
 
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <button class="nav-link active d-flex align-items-center mb-3 px-5" id="v-pills-maxime-tab" data-bs-toggle="pill"
+                    <div class="nav flex-column nav-pills d-none d-xl-flex" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical">
+                        <button class="nav-link active d-flex align-items-center mb-3 px-5" id="v-pills-maxime-tab"
+                            data-bs-toggle="pill" data-bs-target="#v-pills-maxime" type="button" role="tab"
+                            aria-controls="v-pills-maxime" aria-selected="true">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </button>
+                        <button class="nav-link d-flex align-items-center mb-3 px-5" id="v-pills-lisa-tab"
+                            data-bs-toggle="pill" data-bs-target="#v-pills-lisa" type="button" role="tab"
+                            aria-controls="v-pills-lisa" aria-selected="false">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </button>
+                    </div>
+
+                    <div class="collapse nav nav-pills d-xl-none" id="navbarToggleExternalContent">
+                        <button class="nav-link active d-flex align-items-center mb-3 px-5 w-100" data-bs-toggle="pill"
                             data-bs-target="#v-pills-maxime" type="button" role="tab" aria-controls="v-pills-maxime"
                             aria-selected="true">
                             <img width="50" height="50" src="/assets/images/profil.svg" alt="">
                             <p class="mb-0 ms-3 fw-bold">Maxime</p>
                         </button>
-                        <button class="nav-link d-flex align-items-center mb-3 px-5" id="v-pills-lisa-tab" data-bs-toggle="pill"
+                        <button class="nav-link d-flex align-items-center mb-3 px-5 w-100" data-bs-toggle="pill"
                             data-bs-target="#v-pills-lisa" type="button" role="tab" aria-controls="v-pills-lisa"
                             aria-selected="false">
                             <img width="50" height="50" src="/assets/images/profil.svg" alt="">
                             <p class="mb-0 ms-3 fw-bold">Lisa</p>
                         </button>
                     </div>
+
                 </div>
             </div>
             <div class="col-xl-9">
                 <div class="users_messages bg-white py-4 px-5 h-100">
-                    
+
                     <div class="tab-content h-100" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active h-100 position-relative" id="v-pills-maxime" role="tabpanel" aria-labelledby="v-pills-maxime-tab">
+                        <div class="tab-pane fade show active h-100 position-relative" id="v-pills-maxime"
+                            role="tabpanel" aria-labelledby="v-pills-maxime-tab">
                             <h2 class="fw-bold mb-4">Maxime</h2>
                             <div class="tchat-window">
                                 <div class="d-flex align-items-end mb-4">
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
-                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Bacon ipsum dolor amet tenderloin kevin pork belly filet mignon. Shank
+                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Bacon ipsum dolor amet tenderloin
+                                        kevin pork belly filet mignon. Shank
                                         burgdoggen cupim cow beef jerky boudin. Jerky
-                                        landjaeger drumstick andouille, bresaola brisket ham. Brisket t-bone leberkas kevin pork. Porchetta shankle
+                                        landjaeger drumstick andouille, bresaola brisket ham. Brisket t-bone leberkas
+                                        kevin pork. Porchetta shankle
                                         picanha
                                         short ribs ?</p>
                                 </div>
                                 <div class="d-flex align-items-end justify-content-end mb-4">
-                                    <p class="message-receiver me-4 py-2 px-3 mb-0">Porchetta ball tip chicken hamburger leberkas andouille, ham hock
+                                    <p class="message-receiver me-4 py-2 px-3 mb-0">Porchetta ball tip chicken hamburger
+                                        leberkas andouille, ham hock
                                         pig ham salami meatloaf. Turducken venison frankfurter
                                         ham, tongue landjaeger andouille 😉</p>
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
@@ -52,27 +83,32 @@
                                 <textarea class="w-100 bg-transparent px-3 py-1"></textarea>
                             </div>
                         </div>
-                        <div class="tab-pane fade h-100 position-relative" id="v-pills-lisa" role="tabpanel" aria-labelledby="v-pills-lisa-tab">
+                        <div class="tab-pane fade h-100 position-relative" id="v-pills-lisa" role="tabpanel"
+                            aria-labelledby="v-pills-lisa-tab">
                             <h2 class="fw-bold mb-4">Lisa</h2>
                             <div class="tchat-window">
                                 <div class="d-flex align-items-end mb-4">
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
-                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Pancetta ground pastrami short ribs chislic !!! 👁️👄👁️</p>
+                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Pancetta ground pastrami short ribs
+                                        chislic !!! 👁️👄👁️</p>
                                 </div>
                                 <div class="d-flex align-items-end justify-content-end mb-4">
-                                    <p class="message-receiver me-4 py-2 px-3 mb-0">Capicola tri-tip jerky short loin bresaola turducken tail tongue
+                                    <p class="message-receiver me-4 py-2 px-3 mb-0">Capicola tri-tip jerky short loin
+                                        bresaola turducken tail tongue
                                         flank. Flank spare ribs
                                         ground round ribeye 😏</p>
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
                                 </div>
                                 <div class="d-flex align-items-end mb-4">
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
-                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Alcatra shoulder buffalo chicken, kevin burgdoggen meatloaf boudin
+                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Alcatra shoulder buffalo chicken,
+                                        kevin burgdoggen meatloaf boudin
                                         pork cow brisket</p>
                                 </div>
                                 <div class="d-flex align-items-end mb-4">
                                     <img width="50" height="50" src="/assets/images/profil.svg" alt="">
-                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Filet mignon biltong turducken cupim meatball. Beef brisket salami
+                                    <p class="message-sender ms-4 py-2 px-3 mb-0">Filet mignon biltong turducken cupim
+                                        meatball. Beef brisket salami
                                         shoulder pig picanha 🤣</p>
                                 </div>
                                 <div class="d-flex align-items-end justify-content-end mb-4">
@@ -85,9 +121,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
-                    
                 </div>
             </div>
         </div>
