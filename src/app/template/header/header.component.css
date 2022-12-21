@@ -1,18 +1,24 @@
-.navbar>.container-fluid{
+ /* .navbar>.container-fluid{
   justify-content: flex-start;
   
-}
+} */
+
+
+
+/* .right{
+  padding-right: 2%;
+} */
+
+/* .button{
+  background: #176DE2;
+} */
 
 .space{
-  margin-left: 550px;
+  margin-left: 120px;
 }
 
 .right{
-  padding-right: 2%;
-}
-
-.button{
-  background: #176DE2;
+  padding-right: 20%;
 }
 
 
@@ -34,7 +40,9 @@
   font-size: 1rem;
   border-radius: 0.50rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+ 
+  
+} 
 
 .form-control {
   display: block;
@@ -52,7 +60,11 @@
   appearance: none;
   border-radius: 0.5rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  
+  
 }
+
+
 
 
 

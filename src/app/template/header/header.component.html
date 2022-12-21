@@ -1,43 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid ">
-    <a class="navbar-brand  " href="#"><img src="./assets/images/logo.svg" alt="" width="80" height="34"></a>
-    <i class="fa fa-user icon"></i>
-    <form class="d-flex space right">
-      <input class="form-control me-4 " type="search" placeholder="Event, user,..." aria-label="Search" >
-      <button class="btn  me-5 col-4" type="submit" routerLink="creationEvenement">Créer un event</button>
-      
-    </form>
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
 
-    <a class="me-4" routerLink="" ><img src="./assets/images/accueil.svg" alt="" width="30" height="24"></a>
-    <a class=" me-4" routerLink="messages"><img src="./assets/images/Composant 43 – 1.svg" alt="" width="30" height="24"></a>
-  
-      <div class="dropdown">
-      <a class=" me-4 dropdown " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/Cloche.svg" alt="" width="30" height="24"></a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+  <div class="container">
+    <a class="navbar-brand text-uppercase fw-bold" href="#">
+      <a><img src="./assets/images/logo.svg" alt="" width="80" height="20"></a>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <form class="d-flex space right">
+            <input class=" form-control me-4" type="search" placeholder="Event, user,..." aria-label="Search" >
+            <button class="btn  me-5 col-4 " type="submit" routerLink="creationEvenement">Créer un event</button>
+          </form>
+          
+        </li>
+        <li class="nav-item">
+          <a class="me-4" routerLink="" ><img src="./assets/images/accueil.svg" alt="" width="30" height="24"></a>
+        </li>
+        <li class="nav-item">
+          <a class=" me-4" routerLink="messages"><img src="./assets/images/Composant 43 – 1.svg" alt="" width="30" height="24"></a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class=" me-4 dropdown " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/Cloche.svg" alt="" width="30" height="24"></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class=" me-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/profil.svg" alt="" width="30" height="24"></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+             <li><a class="dropdown-item" routerLink="espaceUtilisateur">Profil</a></li>
+             <li><a class="dropdown-item" (click)="logout()" >Deconnexion</a></li>
+           </ul>
+           </div>
+           
+        </li>
       </ul>
     </div>
-
-   
-    
-   
-    
-    <div class="dropdown">
-     <a class=" me-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/profil.svg" alt="" width="30" height="24"></a>
-     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" routerLink="espaceUtilisateur">Profil</a></li>
-      <li><a class="dropdown-item" (click)="logout()" >Deconnexion</a></li>
-    </ul>
-    </div>
-    
-    
-      
-     
-     
-   
-    
   </div>
-
 </nav>
 
