@@ -1,0 +1,301 @@
+/*
+----------------------------------
+[Sommaire]
+1. Global
+2. Texte
+3. Formulaire
+4. Couleurs
+5. Boutons
+6. Formes
+7. Scroll Bar
+8. Hover Effet
+9. Responsive
+----------------------------------
+*/
+
+/*
+----------------------------------
+1. Global
+----------------------------------
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+
+:root {
+  --main-color: #176DE2;
+  --main-dark: #15202b;
+  --main-white: #fff;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+}
+
+section {
+  display: flex;
+  align-items: center;
+}
+
+/*
+----------------------------------
+2. Texte
+----------------------------------
+*/
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+  font-weight: bold;
+}
+
+h2::after {
+  background-color: var(--main-color);
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  bottom: -50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 80px;
+  border-radius: 10px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.f-size20 {
+  font-size: 20px;
+}
+
+.f-size14 {
+  font-size: 14px;
+}
+
+/*
+----------------------------------
+3. Formulaire
+----------------------------------
+*/
+
+label {
+  color: var(--main-color);
+  padding-left: 10px;
+}
+
+input,
+textarea {
+  border-radius: 20px !important;
+  background-color: var(--main-dark) !important;
+  border-color: var(--main-color) !important;
+  color: var(--main-color) !important;
+  margin-bottom: 20px !important;
+}
+
+.form-select {
+  border-radius: 50rem;
+  color: var(--main-color);
+  background-color: var(--main-dark);
+  border-color: var(--main-color);
+}
+
+file-upload {
+  margin-top: 10px;
+  background: transparent !important;
+  border-radius: 100px;
+  min-height: 60px !important;
+  outline: none !important;
+  border: 1px dashed var(--main-color);
+  padding: 10px !important;
+}
+
+/*
+----------------------------------
+4. Couleurs
+----------------------------------
+*/
+
+.color-main {
+  color: var(--main-color);
+}
+
+.bg-dark-mode {
+  background-color: var(--main-dark) !important;
+}
+
+.bg-main {
+  background-color: var(--main-color);
+}
+
+.bg-red {
+  background-color: #c95a5a;
+}
+
+.border-main-color {
+  border: 1px solid var(--main-color);
+}
+
+/*
+----------------------------------
+5. Boutons
+----------------------------------
+*/
+
+.btn-main {
+  background-color: var(--main-color);
+  color: var(--main-white);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-main:hover {
+  background-color: var(--main-dark);
+  color: var(--main-color);
+  border-color: var(--main-color);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-reverse {
+  background-color: var(--main-dark);
+  color: var(--main-color);
+  border-color: var(--main-color);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-reverse:hover {
+  background-color: var(--main-color);
+  color: var(--main-white);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-custom {
+  background: none;
+  border: none;
+}
+
+.link {
+  color: var(--main-color);
+  text-decoration: underline !important;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-radius-style {
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--main-white);
+}
+
+.btn-radius-style:hover {
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*
+----------------------------------
+6. Formes
+----------------------------------
+*/
+
+.square-16 {
+  width: 16px;
+  height: 16px;
+}
+
+.square-30 {
+  height: 30px;
+  width: 30px;
+}
+
+.square-35 {
+  height: 35px;
+  width: 35px;
+}
+
+.square-100 {
+  height: 100px;
+  width: 100px;
+}
+
+/*
+----------------------------------
+7. Scroll Bar
+----------------------------------
+*/
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-dark);
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+/*
+----------------------------------
+8. Hover Effet
+----------------------------------
+*/
+
+.hover-zoom,
+.hover-card {
+  transition: 0.3s;
+}
+
+.hover-card:hover {
+  transform: scale(1.04);
+}
+
+.hover-zoom:hover {
+  transform: scale(1.2);
+}
+
+/*
+----------------------------------
+9. Responsive
+----------------------------------
+*/
+
+@media only screen and (min-width: 1200px) {
+  .viewport-height {
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
