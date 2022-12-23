@@ -3,32 +3,11 @@
     <div class="row mt-5">
       <div class="col-md-3">
         <div class="filters bg-white px-5 py-4 p-md-4 me-md-5 mb-4 mb-md-0">
-          <div class="d-flex justify-content-between d-md-block filter-mobile">
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <img src="./assets/images/party.svg" height="50" alt="...">
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value="" id="flexCheckIndeterminate">
+          <div class="d-flex justify-content-between d-md-block filter-category">
+            <div *ngFor="let category of arrayCategories" class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
+              <label class="ps-0" for="{{category.name}}"><img src="./assets/images/party.svg" height="50" alt="..."></label>
+              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value="{{category._id}}" id="{{category.name}}">
             </div>
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <img src="./assets/images/cinema.svg" height="50" alt="...">
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value=""
-                id="flexCheckIndeterminate">
-            </div>
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <img src="./assets/images/game.svg" height="50" alt="...">
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value=""
-                id="flexCheckIndeterminate">
-            </div>
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <img src="./assets/images/party.svg" height="50" alt="...">
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value=""
-                id="flexCheckIndeterminate">
-            </div>
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <img src="./assets/images/cinema.svg" height="50" alt="...">
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value=""
-                id="flexCheckIndeterminate">
-            </div>
-
           </div>
           
           <div class="d-flex d-md-block mx-2 mx-md-0">
@@ -36,56 +15,32 @@
             <p class="mb-0">Heure</p>
           </div>
 
+          <div class="text-center mt-3">
+            <button class="btn btn-main">Filtrer</button>
+          </div>
+
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="event bg-white p-5 d-flex align-items-start mb-4">
+        <div class="event bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">
           <img class="img-fluid img-event" src="./assets/images/concert1.jfif" alt="...">
           <div class="ps-5">
-            <h2 class="fw-bold mb-2 text-start">Soirée au Loft</h2>
+            <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue. Enim, consectetur in
             dui …</p>
             <div class="d-flex justify-content-between mt-5">
               <div class="text-center">
                 <img class="img-fluid img-event" src="./assets/images/party.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">Soirée</small>
+                <small class="fw-bold color-main d-block">{{ event.categoryComplet.name }}</small>
               </div>
               <div class="text-center">
                 <img class="img-fluid img-event" src="./assets/images/date.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">08/11/2022</small>
+                <small class="fw-bold color-main d-block">{{ event.date_time | date: 'dd/MM/yyyy'}}</small>
               </div>
               <div class="text-center">
                 <img class="img-fluid img-event" src="./assets/images/people.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">Soirée</small>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center color-main mt-5">
-              <button class="btn btn-main">Rejoindre</button>
-              <p class="mb-0">Gratuit</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="event bg-white p-5 d-flex align-items-start mb-4">
-          <img class="img-fluid img-event" src="./assets/images/concert1.jfif" alt="...">
-          <div class="ps-5">
-            <h2 class="fw-bold mb-2 text-start">Soirée au Loft</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue. Enim,
-              consectetur in
-              dui …</p>
-            <div class="d-flex justify-content-between mt-5">
-              <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/party.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">Soirée</small>
-              </div>
-              <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/date.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">08/11/2022</small>
-              </div>
-              <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/people.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">Soirée</small>
+                <small class="fw-bold color-main d-block">{{ event.nbUserActual}}/{{ event.user_max}}</small>
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-center color-main mt-5">
