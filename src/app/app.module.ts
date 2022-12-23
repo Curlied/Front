@@ -15,7 +15,6 @@ import { DetailsEvenementComponent } from './evenement/details-evenement/details
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
-import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
@@ -37,7 +36,6 @@ import { MessagesComponent } from './espace-utilisateur/messages/messages.compon
     CreationEvenementComponent,
     ConfirmationComponent,
     ErrorComponent,
-    EspaceUtilisateurComponent,
     AdminComponent,
     ProfilComponent,
     MessagesComponent
