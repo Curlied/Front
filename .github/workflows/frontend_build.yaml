@@ -1,0 +1,25 @@
+name: Send webhook
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Discord notification build start
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "> 💬 Starting CI workflow for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See progress at https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}."
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Discord notification sonarcloud end
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "> Sonarcloud analysis finished for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See results at https://sonarcloud.io/summary/new_code?id=curlied-front&branch=${{ github.ref_name }}."
