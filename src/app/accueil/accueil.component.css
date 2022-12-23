@@ -1,100 +1,50 @@
-
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  /* min-width: 0; */
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 2rem;
-  margin-top: 70px;
-  
+.form-check-input:checked {
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
 }
 
-.card-text {
-  margin-left: 30px;
-}
 
-.card-title {
-  margin-left: 30px;
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: 1rem 1rem;
-}
 .gradient {
   background-image: linear-gradient(#78BCF7, #2828C9); 
 }
 
-.space{
-  padding: 10px;
-}
-
-.positionIcone {
- 
-    width : 80px;
-    height : 80px;
-    padding: 2px;
-    padding-bottom: 2%;
-    margin-top: 50px;
-    margin-left: 18px;
-    
-    
-
-}
 
 .CheckBox {
+  width : 30px;
+  height : 30px;
+  background-color: white !important;
+}
  
-  width : 40px;
-  height : 40px;
-  padding: 2px;
-  padding-bottom: 2%;
-  margin-top: 70px;
-  margin-left: 5px;
-  border: 1px solid #78BCF7;
-  
-  
-
-}
-.spaceBetweenIcone{
-  margin-left: 30px;
+.event, .filters {
+  border-radius: 40px;
 }
 
-.positionInfos{
-  margin-left: 20px;
-    padding: 3px;
-    color: #176DE2;
-    padding-bottom: 50%;
-
-}
-
-.spaceBetweenInfos{
-  margin-left: 1px;
-}
-
-.img{
-  width : 200px;
-  height : 480px;
+.img-event {
   border-radius: 25px;
-  margin-left: 2px;
-  padding: 10px;
 }
 
-
-
-.border{
-  border-radius: 10px;
+h2::after {
+  content: none;
 }
 
-.text{
-  margin-left: 30px;
-  margin-top: 20px;
-  color: #176DE2;
+h2 {
+  text-transform: initial;
 }
 
+.container {
+  max-width: 1000px;
+}
 
- 
+.filter-mobile {
+  max-width: 100%;
+  overflow: overlay;
+}
+
+@media (min-width: 768px) {
+  .filters {
+    position: fixed;
+  }
+  .event {
+    margin-bottom: 10rem !important;
+  }
+}
