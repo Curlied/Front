@@ -5,16 +5,15 @@
 }
 
 .event__form{
-  row-gap: 2rem;
+  row-gap: 1.5rem;
 }
 
 .event__card{
   background-color: var(--main-white);
-  padding: 6rem 5rem 5rem 5rem;
+  padding: 4rem;
   max-width: 53rem;
   border-radius: 9rem;
-  margin-top: 13rem;
-  margin-bottom: 6rem;
+  margin-top: 12rem;
 }
 
 .event__title{
@@ -40,7 +39,7 @@
 .form-textarea{
   resize: vertical;
   padding: 2rem;
-  min-height: 20rem;
+  min-height: 10rem;
 }
 
 .form-control:focus{

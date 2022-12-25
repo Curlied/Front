@@ -5,13 +5,13 @@
     </div>
   </div>
   <ng-template #eventBlock>
-    <div class="container details__container d-flex justify-content-space-between">
-        <main class="details__card">
-          <div class="details__header">
+    <div class="container details__container d-flex justify-content-between">
+        <main class="details__card d-flex flex-column">
+          <div class="details__header d-flex">
             <div class="details__img">
               <img class="img-fluid" src="{{ event.url_image[0] || event.category.url_image }}">
             </div>
-            <div class="details__info">
+            <div class="details__info d-flex flex-column">
               <h1 class="details__title">
                 {{ event.name }}
               </h1>
@@ -20,65 +20,90 @@
               </p>
             </div>
           </div>
-          <div class="details__body">
-              <div class="detail__category">
+          <div class="details__body d-flex justify-content-between">
+              <div class="detail__category d-flex flex-column align-items-center">
                 <img src="{{ event.category.url_icon }}" height="20">
-                <p class="event__label">{{ event.category.name }} €</p>
+                <p class="details__label">{{ event.category.name }} €</p>
               </div>
-              <div class="detail__date">
+              <div class="detail__date d-flex flex-column align-items-center">
                 <app-svg icon="calendar" class="details__icon"></app-svg>
-                <p class="event__label">
+                <p class="details__label">
                   {{ event.date_time | date: 'dd/MM/yyyy HH:mm' }}
                 </p>
               </div>
-              <div class="detail__price">
-                <app-svg icon="member" class="details__icon"></app-svg>
-                <p class="event__label">
+              <div class="detail__price d-flex flex-column align-items-center">
+                <app-svg icon="devise" class="details__icon"></app-svg>
+                <p class="details__label">
                   {{ event.price }} €
                 </p>
               </div>
+              <div class="detail__location d-flex flex-column align-items-center">
+                <app-svg icon="pin" class="details__icon"></app-svg>
+                <p class="details__label">
+                  {{ event.place }}
+                </p>
+              </div>
           </div>
-          <div class="details__footer">
-            <div class="d-none d-xl-block" *ngIf="!event.CurrentUserIsAdmin">
-              <ng-template [ngIf]="event.CurrentUserHasParticipant == true" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-radius-style btn-danger w-100 mt-5"
-                  (click)="cancelParticipate(event._id)">Annuler votre participation</button>
-                <div class="text-danger text-center mt-2 d-none d-xl-block">
-                  <small>En annulant la participation à l'événement, vous céderez votre place à un autre
-                    curlietos</small>
-                </div>
+          <div class="details__footer d-flex justify-content-center">
+            <ng-template [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
+              <button class="btn btn-main">
+                Modifier
+              </button>
+            </ng-template>
+            <ng-template #Participate>
+              <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
+                <button class="btn btn-radius-style btn-danger" (click)="cancelParticipate(event._id)">
+                  Annuler
+                </button>
               </ng-template>
               <ng-template #RequestParticipe>
-                <button class="btn btn-main w-100 mt-5" *ngIf="canParticipate"
-                  (click)="requestParticipate(event._id)">Rejoindre l'évenement</button>
-                <div class="color-main text-center mt-2 d-none d-xl-block">
-                  <small>En demandant à rejoindre un événement, vous acceptez que votre numéro de téléphone
-                    soit divilgué à l'hôte</small>
-                </div>
-              </ng-template>
-            </div>
-            <div class="col-12 d-block d-xl-none" *ngIf="!event.CurrentUserIsAdmin">
-              <ng-template [ngIf]="event.CurrentUserHasParticipant == true" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-radius-style btn-danger w-100 mt-5"
-                  (click)="cancelParticipate(event._id)">Annuler votre participation</button>
-                <div class="text-danger text-center mt-2 d-none d-xl-block">
-                  <small>En annulant la participation à l'événement, vous céderez votre place à un autre
-                    curlietos</small>
-                </div>
-              </ng-template>
-              <ng-template #RequestParticipe>
-                <button class="btn btn-main w-100 mt-5" *ngIf="canParticipate"
-                  (click)="requestParticipate(event._id)">Rejoindre l'évenement</button>
-                <div class="color-main text-center mt-2 d-none d-xl-block">
-                  <small>En demandant à rejoindre un événement, vous acceptez que votre numéro de téléphone
-                    soit divilgué à l'hôte</small>
-                </div>
-              </ng-template>
-            </div>       
+                <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
+                  Rejoindre
+                </button>
+              </ng-template> 
+              <div class="details__contact">
+                <a class="btn btn-main">
+                  Contacter
+                </a>
+              </div> 
+            </ng-template> 
           </div>
         </main>
-        <aside class="member">
-
+        <aside class="member d-flex flex-column">
+          <h2 class="member__title">Participants</h2>
+          <div class="member__container d-flex flex-column">
+            <div class="member__item member__item--creator d-flex justify-content-between">
+              <div class="member__img">
+                <app-svg icon="profil" class="member__icons"></app-svg>
+              </div>
+              <p class="member__username">{{ event.creator.username || "Aucun" }}  </p>
+            </div>
+            <div class="member__item d-flex justify-content-between" *ngFor="let participant of event.users_valide">
+              <div class="member__img">
+                <app-svg icon="profil" class="member__icons"></app-svg>
+              </div>
+              <p class="member__username">{{ participant.username || "Aucun" }}  </p>
+              <!-- <button class="btn btn-main">Ajouter</button> -->
+            </div>
+            <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
+              <hr class="waitingRoom__separator" />
+              <h2 class="member__title">En attente</h2>
+              <div class="member__container d-flex flex-column">
+                <div class="member__item d-flex justify-content-between" *ngFor="let participant of event.users_waiting">
+                  <div class="member__img">
+                    <app-svg icon="profil" class="member__icons"></app-svg>
+                  </div>
+                  <p class="member__username">{{ participant.username || "Aucun" }}  </p>
+                  <button class="btn btn-main">Accepter</button>
+                </div>
+              </div>
+            </div>
+            <div class="member__footer">
+              <p class="member__count">
+                {{event.users_valide.length}} / {{event.user_max}}
+              </p>
+            </div>
+          </div>
         </aside>
     </div>
   </ng-template>

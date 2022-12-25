@@ -46,52 +46,6 @@ section {
   display: flex;
   align-items: center;
 }
-
-/*
-----------------------------------
-2. Texte
-----------------------------------
-*/
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 28px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 80px;
-  font-weight: bold;
-}
-
-h2::after {
-  background-color: var(--main-color);
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  bottom: -50%;
-  position: absolute;
-  transform: translate(-50%, 0);
-  width: 80px;
-  border-radius: 10px;
-}
-
-h3 {
-  font-size: 18px;
-}
-
-.f-size20 {
-  font-size: 20px;
-}
-
-.f-size14 {
-  font-size: 14px;
-}
-
-
 /*
 ----------------------------------
 4. Couleurs
