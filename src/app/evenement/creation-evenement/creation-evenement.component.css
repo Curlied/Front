@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: var(--main-bg);
   align-items: flex-start;
+  padding: 0 2rem;
 }
 
 .event__form{
@@ -10,16 +11,16 @@
 
 .event__card{
   background-color: var(--main-white);
-  padding: 4rem;
+  padding: 2rem;
   max-width: 53rem;
-  border-radius: 9rem;
+  border-radius: 4rem;
   margin-top: 12rem;
 }
 
 .event__title{
   margin-bottom: 3.5rem;
   color: var(--main-dark);
-  font-size: 3.2rem;
+  font-size: 2.5rem;
   font-family: var(--font-family-primary);
   text-align: center;
 }
@@ -86,3 +87,13 @@ app-footer {
   display: none !important;
 }
 
+@media (min-width: 768px) {
+  .event__card{
+    padding: 4rem;
+    border-radius: 9rem;
+  }
+
+  .event__title{
+    font-size: 3.2rem;
+  }
+}

@@ -114,7 +114,9 @@ export class CreationEvenementComponent implements OnInit {
     try {
       const place = this.convertAdressDepartementAndPostalToPlace();
       this.eventForm.controls['place'].setValue(place);
-
+      
+      console.log(this.eventForm)
+      
       if (!this.eventForm.valid) {
         const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Les informations sur l'évènement ne sont pas tous renseignés ou sont incorrects" }, status: 304 })
         this.responseService.ErrorF(error);
@@ -125,6 +127,8 @@ export class CreationEvenementComponent implements OnInit {
       const departement = this.getDepartmentNameByCode();
       const code = this.eventForm.get('code')?.value;
       const adress = this.eventForm.get('adress')?.value;
+
+      console.log(date_time)
 
       let formData = new FormData();
       formData.append('name', this.eventForm.get('name')?.value);
@@ -168,8 +172,7 @@ export class CreationEvenementComponent implements OnInit {
     const bDate = date ? new Date(date) : new Date('0000');
     const bHour = hour ? hour : '00:00';
 
-    let formatDate = bDate.toLocaleString().split(',')[0];
-    return `${formatDate} ${bHour}`;
+    return new Date(`${bDate} ${bHour}`).toISOString();
   }
 
   convertAdressDepartementAndPostalToPlace() {

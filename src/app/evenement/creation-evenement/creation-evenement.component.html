@@ -54,11 +54,11 @@
 				<label for="time" class="form-label">Durée (en heure)*</label>
 				<input type="number" min="1" max="9999" formControlName="time" class="form-control " required>
 			</div>
-			<div class="col-4 d-flex align-items-center">
+			<div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
 				<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
 				</file-upload>
 			</div>
-			<div class="col-8">
+			<div class="col-12 col-md-8">
 				<label for="description">Description*</label>
 				<textarea rows="5" formControlName="description" minlength="50" maxlength="500" placeholder="50 caractères min et 500 max" class="form-control form-textarea" required >
 				</textarea>
