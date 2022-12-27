@@ -114,10 +114,9 @@ export class CreationEvenementComponent implements OnInit {
     try {
       const place = this.convertAdressDepartementAndPostalToPlace();
       this.eventForm.controls['place'].setValue(place);
-      
-      console.log(this.eventForm)
-      
+
       if (!this.eventForm.valid) {
+        console.log("pipi")
         const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Les informations sur l'évènement ne sont pas tous renseignés ou sont incorrects" }, status: 304 })
         this.responseService.ErrorF(error);
         return;
@@ -129,6 +128,7 @@ export class CreationEvenementComponent implements OnInit {
       const adress = this.eventForm.get('adress')?.value;
 
       console.log(date_time)
+
 
       let formData = new FormData();
       formData.append('name', this.eventForm.get('name')?.value);
@@ -148,31 +148,33 @@ export class CreationEvenementComponent implements OnInit {
         formData.append('url_image' + i, Images[i], Images[i].name);
       }
 
+      console.log("data "+formData)
+
       this.httpService.postAddEvent(formData).subscribe({
         next: (res: any) => {
           this.responseService.SuccessF(res);
           this.router.navigateByUrl('/evenements');
         },
         error: (err: any) => {
+          console.log(err)
           this.responseService.ErrorF(err);
         }
       })
     }
-    catch {
+    catch (e) {
       this.ngOnInit();
     }
   }
 
   convertDateAndTimeToDateTime() {
-
     let date = this.eventForm.get("date")?.value;
     let hour = this.eventForm.get("hour")?.value;
 
+    const dateTime = new Date(`${date} ${hour}`).toLocaleString(
+      [], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}
+    )
 
-    const bDate = date ? new Date(date) : new Date('0000');
-    const bHour = hour ? hour : '00:00';
-
-    return new Date(`${bDate} ${bHour}`).toISOString();
+    return dateTime
   }
 
   convertAdressDepartementAndPostalToPlace() {
