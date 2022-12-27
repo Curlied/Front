@@ -1,5 +1,8 @@
 name: Send webhook
-on: [push]
+on:
+  push:
+    branches:
+      - develop
 jobs:
   build:
     runs-on: ubuntu-latest
