@@ -137,24 +137,26 @@
     column-gap: 8rem;
   }
 
-  .details__body{
-    column-gap: 3rem;
-  }
-  .details__header{
-    flex-direction: row;
-  }
-
-  .details__body>* {
-    flex: 1;
-  }
-
-  .détails__card {
+  .details__card {
     padding: 4rem;
     border-radius: 9rem;
   }
 
-  .details__header {
+  .details__header{
+    flex-direction: row;
     gap: 3rem;
+  }
+
+  .details__body{
+    column-gap: 3rem;
+    max-width: 50rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .details__body>* {
+    flex: 1;
+    row-gap: 1rem;
   }
 
   .details__img {
@@ -175,16 +177,6 @@
   .details__description {
     font-size: 2rem;
     max-width: 35rem;
-  }
-
-  .details__body {
-    max-width: 50rem;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .details__body>* {
-    row-gap: 1rem;
   }
 
   .details__participate {
