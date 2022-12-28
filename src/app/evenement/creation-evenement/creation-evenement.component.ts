@@ -192,9 +192,13 @@ export class CreationEvenementComponent implements OnInit {
   }
 
   compareDepartment(a:any,b:any){
-    return (a.codesPostaux[0] > b.codesPostaux[0]) ? 1 
-    : ((b.codesPostaux[0] > a.codesPostaux[0]) ? -1 
-    : 0)
+    if(a.codesPostaux[0] > b.codesPostaux[0]) {
+      return 1
+    } else if (b.codesPostaux[0] > a.codesPostaux[0]) {
+      return -1
+    }
+    
+    return 0
   }
 
   getDepartmentNameByCode() {
