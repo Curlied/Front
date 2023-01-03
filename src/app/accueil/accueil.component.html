@@ -2,28 +2,60 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-3">
+        <form (ngSubmit)="submitSearch()" [formGroup]="searchFormGroup">
         <div class="filters bg-white px-5 py-4 p-md-4 me-md-5 mb-4 mb-md-0">
           <div class="d-flex justify-content-between d-md-block filter-category">
+            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
+              <label class="ps-0" for="tous">Tous les évènements</label>
+              
+              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="tous" id="tous">
+              
+           
+            </div>
             <div *ngFor="let category of arrayCategories" class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
               <label class="ps-0" for="{{category.name}}"><img src="./assets/images/party.svg" height="50" alt="..."></label>
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="checkbox" value="{{category._id}}" id="{{category.name}}">
+              
+              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="{{category._id}}" id="{{category.name}}">
+              
+           
             </div>
           </div>
           
+          
           <div class="d-flex d-md-block mx-2 mx-md-0">
-            <p class="me-5 mb-0">Date</p>
-            <p class="mb-0">Heure</p>
+            <select class="form-select" (change)="changeDepartment()" aria-label="numdepartment" formControlName="numdepartment" *ngIf="arrayDepartement">
+              <option value="tous" selected>Tous les départements</option>
+              <option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">{{departement.nom}}
+              </option>
+            </select>
+           
+
+            <label for="departements">Commune</label>
+              <select *ngIf="!arrayCommune" class="form-select" aria-label="code" formControlName="code">
+              </select>
+              <select *ngIf="arrayCommune" class="form-select" aria-label="code" formControlName="code">
+                <option *ngFor="let commune of arrayCommune; let i = index;" 
+                  value="{{commune.codesPostaux[0]}}-{{commune.nom}}">{{commune.codesPostaux[0]}}-{{commune.nom}}
+                </option>
+              </select>
+
+              <div class="col-sm-4 form-group">
+                <label for="date">Date prévue</label>
+                <input type="date" class="form-control mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}"  id="date" name="date" formControlName="date">
+              </div>
           </div>
+
 
           <div class="text-center mt-3">
-            <button class="btn btn-main">Filtrer</button>
+            <button class="btn btn-main"  type="submit">Filtrer</button>
           </div>
-
+   
         </div>
+      </form>
       </div>
-
+ 
       <div class="col-md-9">
-        <div class="event bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">
+        <div class="event bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
           <img class="img-fluid img-event" src="./assets/images/concert1.jfif" alt="...">
           <div class="ps-5">
             <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
@@ -44,7 +76,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-center color-main mt-5">
-              <button class="btn btn-main">Rejoindre</button>
+              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir plus</button>
               <p class="mb-0">Gratuit</p>
             </div>
           </div>
