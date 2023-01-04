@@ -6,64 +6,35 @@
         <div class="filters bg-white px-5 py-4 p-md-4 me-md-5 mb-4 mb-md-0">
           <div class="d-flex justify-content-between d-md-block filter-category">
             <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <label class="ps-0" for="tous">Tous les évènements</label>
-              
+              <label class="ps-0 d-flex align-items-center justify-content-center" for="tous"><img src="./assets/images/categories/all.svg" height="50" alt="..."></label>
               <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="tous" id="tous">
-              
-           
             </div>
             <div *ngFor="let category of arrayCategories" class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <label class="ps-0" for="{{category.name}}"><img src="./assets/images/party.svg" height="50" alt="..."></label>
-              
+              <label class="ps-0" for="{{category.name}}"><img src="./assets/images/{{category.url_icon}}" height="50" alt="..."></label>
               <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="{{category._id}}" id="{{category.name}}">
-              
-           
             </div>
           </div>
-          
-          
-          <div class="d-flex d-md-block mx-2 mx-md-0">
-            <select class="form-select" (change)="changeDepartment()" aria-label="numdepartment" formControlName="numdepartment" *ngIf="arrayDepartement">
-              <option value="tous" selected>Tous les départements</option>
-              <option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">{{departement.nom}}
-              </option>
-            </select>
-           
-
-            <label for="departements">Commune</label>
-              <select *ngIf="!arrayCommune" class="form-select" aria-label="code" formControlName="code">
-              </select>
-              <select *ngIf="arrayCommune" class="form-select" aria-label="code" formControlName="code">
-                <option *ngFor="let commune of arrayCommune; let i = index;" 
-                  value="{{commune.codesPostaux[0]}}-{{commune.nom}}">{{commune.codesPostaux[0]}}-{{commune.nom}}
-                </option>
-              </select>
-
-              <div class="col-sm-4 form-group">
-                <label for="date">Date prévue</label>
-                <input type="date" class="form-control mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}"  id="date" name="date" formControlName="date">
-              </div>
+          <div class="form-group mt-3 mt-md-0">
+            <label for="date">Date</label>
+            <input type="date" class="form-control mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}"  id="date" name="date" formControlName="date">
           </div>
-
-
           <div class="text-center mt-3">
-            <button class="btn btn-main"  type="submit">Filtrer</button>
+            <button class="btn btn-main" type="submit">Filtrer</button>
           </div>
-   
         </div>
       </form>
       </div>
  
       <div class="col-md-9">
         <div class="event bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
-          <img class="img-fluid img-event" src="./assets/images/concert1.jfif" alt="...">
-          <div class="ps-5">
+          <img class="img-fluid img-event d-none d-sm-block" src="./assets/images/concert1.jfif" alt="...">
+          <div class="ps-sm-5">
             <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue. Enim, consectetur in
             dui …</p>
             <div class="d-flex justify-content-between mt-5">
               <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/party.svg" width="40" alt="...">
+                <img class="img-fluid img-event" src="./assets/images/{{ event.categoryComplet.url_icon }}" width="40" alt="...">
                 <small class="fw-bold color-main d-block">{{ event.categoryComplet.name }}</small>
               </div>
               <div class="text-center">
