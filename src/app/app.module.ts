@@ -19,7 +19,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
-import { InputComponent } from './components/input/input.component';
 import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { SvgComponent } from './components/svg/svg.component';
     ErrorComponent,
     EspaceUtilisateurComponent,
     AdminComponent,
-    InputComponent,
     SvgComponent
   ],
   imports: [
