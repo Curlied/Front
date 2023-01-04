@@ -39,7 +39,6 @@ export class DetailsEvenementComponent implements OnInit {
     this.httpService.getDetailsEventById(event_id).subscribe({
       next: (res: any) => {
         this.event = res.body;
-        console.log(res.body)
         this.canParticipate = this.event.users.length + 1 < this.event.user_max;
       },
       error: (err) => {

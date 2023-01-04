@@ -115,7 +115,6 @@ export class CreationEvenementComponent implements OnInit {
       this.eventForm.controls['place'].setValue(place);
 
       if (!this.eventForm.valid) {
-        console.log("pipi")
         const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Les informations sur l'évènement ne sont pas tous renseignés ou sont incorrects" }, status: 304 })
         this.responseService.ErrorF(error);
         return;
@@ -141,15 +140,12 @@ export class CreationEvenementComponent implements OnInit {
         formData.append('url_image' + i, Images[i], Images[i].name);
       }
 
-      console.log("data "+formData)
-
       this.httpService.postAddEvent(formData).subscribe({
         next: (res: any) => {
           this.responseService.SuccessF(res);
           this.router.navigateByUrl('/');
         },
         error: (err: any) => {
-          console.log(err)
           this.responseService.ErrorF(err);
         }
       })
