@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="107" height="107" viewBox="0 0 107 107">
+  <g id="Ellipse_18" data-name="Ellipse 18" fill="#176de2" stroke="#176de2" stroke-width="1">
+    <circle cx="53.5" cy="53.5" r="53.5" stroke="none" />
+    <circle cx="53.5" cy="53.5" r="53" fill="none" />
+  </g>
+  <g id="boat-sailboat-svgrepo-com" transform="translate(-42.916 -24.123)">
+    <path id="Tracé_38" data-name="Tracé 38"
+      d="M123.114,49.787c-2.177-2.513-28.056,46.267-24.752,46.3s22.992.471,24.752,0S125.29,52.3,123.114,49.787Z"
+      transform="translate(-28.89 -8.151)" fill="#fff" />
+    <path id="Tracé_39" data-name="Tracé 39"
+      d="M260.262,92.656c1.7-.939,23.005,34.95,20.173,36.019s-18.22.453-20.173,0S258.563,93.6,260.262,92.656Z"
+      transform="translate(-160.667 -40.518)" fill="#fff" />
+    <path id="Tracé_40" data-name="Tracé 40"
+      d="M98.214,92.946h-3.6s-31.453-1.238-32.167,0,8.542,18.073,10.4,18.675,47.139,0,47.139,0l10.4-18.675Z"
+      transform="translate(0)" fill="#fff" />
+    <path id="Tracé_41" data-name="Tracé 41"
+      d="M289.966,92.946c-1.088-.933-32.167,0-32.167,0L256,111.621s21.587,1.09,23.57,0S291.054,93.879,289.966,92.946Z"
+      transform="translate(-159.584)" fill="#fff" />
+    <path id="Tracé_42" data-name="Tracé 42" d="M92.071,377.893l5.2,9.338h47.139l5.2-9.338Z"
+      transform="translate(-24.422 -275.609)" fill="#fff" />
+    <path id="Tracé_43" data-name="Tracé 43" d="M284.768,377.893H256v9.338h23.57Z"
+      transform="translate(-159.584 -275.609)" fill="#fff" />
+  </g>
+</svg>
