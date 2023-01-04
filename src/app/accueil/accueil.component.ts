@@ -18,15 +18,11 @@ export class AccueilComponent implements OnInit {
   arrayEvent!: any[];
   arrayDepartement!: any[];
   arrayCommune!: any[];
-
   dateMin!: any;
- canParticipate! : boolean;
- event: any;
- event_id :any;
+  
   searchFormGroup = new FormGroup({
     category: new FormControl("tous", [Validators.required]),
     date: new FormControl(undefined),
-    code: new FormControl(undefined),
     department: new FormControl(''),
     numdepartment: new FormControl('tous', [Validators.required]),
   });
@@ -76,55 +72,13 @@ export class AccueilComponent implements OnInit {
   });
 }
 
-changeDepartment() {
-  const codeDepartment = this.searchFormGroup.get('numdepartment')?.value;
-
-  if (codeDepartment == 'tous'){
-    this.searchFormGroup.controls["code"].setValue(undefined);
-    return;
-  }
-    
-  // get all departement
-  this.httpService.getCommuneByDepartmentCode(codeDepartment).subscribe({
-    next: (res: any) => {
-
-      const communesArray: any[] = res;
-      this.arrayCommune = communesArray.sort((a, b) => (a.codesPostaux[0] > b.codesPostaux[0]) ? 1 : ((b.codesPostaux[0] > a.codesPostaux[0]) ? -1 : 0));
-      
-      // this.arrayCommune.forEach(x => {
-      //   const nomDepartment = this.arrayDepartement.find(x => x.code == codeDepartment).nom;
-      //   this.searchFormGroup.controls['department'].setValue(nomDepartment);
-      // });
-      const codePostauxFirst = this.arrayCommune[0].codesPostaux[0];
-      const nomCommuneFirst = this.arrayCommune[0].nom;
-      this.searchFormGroup.controls['code'].setValue(`${codePostauxFirst}-${nomCommuneFirst}`);
-    },
-    error: (err): any => {
-      this.responseService.ErrorF(err);
-    }
-  });
-}
-
-
 submitSearch() {
   if (!this.searchFormGroup.valid) {
-    const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Les informations minimum sur la recherche ne sont pas renseignés" }, status: 304 })
+    const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Les informations minimum sur la recherche ne sont pas renseignées" }, status: 304 })
     this.responseService.ErrorF(error);
     return;
   }
-  let codeDepartment: any = this.searchFormGroup.get('numdepartment')?.value;
-  // set the value for department to get the name
-  if (codeDepartment != 'tous') {
-    try {
-      const nomDepartment = this.arrayDepartement.find(x => x.code == codeDepartment).nom;
-      this.searchFormGroup.controls['department'].setValue(nomDepartment);
-    } catch (error) {
-      this.ngOnInit();
-    }
-  }
-  else{
-    this.searchFormGroup.controls['department'].setValue('tous');
-  }
+  this.searchFormGroup.controls['department'].setValue('tous');
   // fix problem for date imput clear as string empty
   if (this.searchFormGroup.get('date')?.value == "") {
     this.searchFormGroup.controls['date']?.setValue(undefined);
@@ -139,34 +93,5 @@ submitSearch() {
     }
   })
 }
-
-  
-
-  getDetailsEvent = (event_id: any) => {
-    this.httpService.getDetailsEventById(event_id).subscribe({
-      next: (res: any) => {
-        this.event = res.body;
-        this.canParticipate = this.event.users.length + 1 < this.event.user_max;
-      },
-      error: (err) => {
-        this.responseService.ErrorF(err);
-      }
-    });
-  }
-
-  requestParticipate= (event_id :string)=>{
-    this.httpService.putSubmitParticipation(event_id).subscribe({
-      next: (res: any) => {
-        this.responseService.SuccessF(res);
-        this.ngOnInit();
-      },
-      error: (err) => {
-        this.responseService.ErrorF(err);
-      }
-    });
-  }
-
-
-
 
 }
