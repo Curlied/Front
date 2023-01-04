@@ -146,7 +146,7 @@ export class CreationEvenementComponent implements OnInit {
       this.httpService.postAddEvent(formData).subscribe({
         next: (res: any) => {
           this.responseService.SuccessF(res);
-          this.router.navigateByUrl('/evenements');
+          this.router.navigateByUrl('/');
         },
         error: (err: any) => {
           console.log(err)
