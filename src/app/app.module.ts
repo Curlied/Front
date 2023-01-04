@@ -10,7 +10,6 @@ import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { HeaderComponent } from './template/header/header.component';
 import { FooterComponent } from './template/footer/footer.component';
-import { ListeEvenementsComponent } from './evenement/liste-evenements/liste-evenements.component';
 import { DetailsEvenementComponent } from './evenement/details-evenement/details-evenement.component';
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
@@ -32,7 +31,6 @@ import { SvgComponent } from './components/svg/svg.component';
     InscriptionComponent,
     HeaderComponent,
     FooterComponent,
-    ListeEvenementsComponent,
     DetailsEvenementComponent,
     CreationEvenementComponent,
     ConfirmationComponent,
