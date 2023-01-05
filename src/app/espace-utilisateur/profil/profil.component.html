@@ -1,0 +1,309 @@
+<section class="profil">
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="row user_info align-items-start bg-white p-5" *ngIf="profilData">
+                <div class="col-3 col-lg-2">
+                    <img width="80" height="80" src="/assets/images/profil.svg" alt="">
+                </div>
+                <div class="col-9 col-lg-7">
+                    <h2 class="fw-bold mb-4">{{ profilData.username }}</h2>
+                    <p><span>{{ profilData.age }} ans</span><span class="ps-4">B1 - Informatique</span></p>
+                    <p>{{ profilData.description }}</p>
+                </div>
+                <div class="col-lg-3 text-end mt-4 mt-lg-0">
+                    <button type="button" class="btn btn-main px-3 py-1" data-bs-toggle="modal" data-bs-target="#editModal">Modifier</button>
+                    <button type="button" class="border-0 bg-transparent ms-3 pe-0" data-bs-toggle="modal" data-bs-target="#settingsModal"><img width="30" src="/assets/images/parametres.svg" class="img-fluid"></button>
+                    <button type="button" class="border-0 bg-transparent ms-3 pe-0 d-xl-none" data-bs-toggle="modal"data-bs-target="#friendListModal"><img width="30" src="/assets/images/add-friend.svg" class="img-fluid"></button>
+                </div>
+            </div>
+            <div class="user_events mt-5">
+                <h2 class="text-white fw-bold mb-4">Mes événements</h2>
+                <div class="events row" *ngIf="allEventsData">
+                    <div  *ngFor="let eventCreate of allEventsData.eventsCreate" class="col-5 col-md-3 mb-5">
+                        <div class="event bg-white" routerLink="/detailsEvenement" [queryParams]="{event: eventCreate._id}">
+                            <div class="d-flex justify-content-between px-4 pt-3">
+                                <h3 class="fw-bold mb-0">{{ eventCreate.name }}</h3>
+                                <img class="img-fluid" width="20" src="/assets/images/couronne.svg">
+                            </div>
+                            <p class="px-4 text-uppercase">{{ eventCreate.categoryInfo.name }}</p>
+                            <img class="img-fluid" [src]="eventCreate.url_image[0]">
+                        </div> 
+                    </div>
+                    <div *ngFor="let eventParticipate of allEventsData.eventsParticipate" class="col-5 col-md-3 mb-5">
+                        <div class="event bg-white" routerLink="/detailsEvenement" [queryParams]="{event: eventParticipate._id}">
+                            <div class="px-4 pt-3">
+                                <h3 class="fw-bold mb-0">{{eventParticipate.name }}</h3>
+                                <p class="text-uppercase">{{ eventParticipate.categoryInfo.name }}</p>
+                            </div>
+                            <img class="img-fluid" *ngIf="!eventParticipate.url_image.length" [src]="eventParticipate.categoryInfo.url_image">
+                            <img class="img-fluid" *ngIf="eventParticipate.url_image.length" [src]="eventParticipate.url_image[0]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 ps-xl-5 mt-5 mt-xl-0 d-none d-xl-block">
+            <div class="user_friends bg-white p-5 h-100">
+                <h2 class="fw-bold text-center mb-4">Amis</h2>
+                <div class="text-center position-relative">
+                    <label class="position-absolute ps-1"><img width="20" height="20" src="/assets/images/loupe.svg"></label>
+                    <input class="search_friend w-100 ps-4" type="search">
+                </div>
+                <div class="friends">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Marie</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Pierre</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 px-4 py-2">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="editModalLabel">Paramètres</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="row modal-body">
+                <div class="col-xl-3">
+                    <div class="nav flex-column nav-pills border-end pb-4 pb-xl-0 px-2 pe-xl-4" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical">
+                        <button class="nav-link active ps-xl-0" id="v-pills-informations-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-informations" type="button" role="tab"
+                            aria-controls="v-pills-informations" aria-selected="true"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/edit.svg" alt=""> <span
+                                class="d-none d-xl-block">Informations</span></button>
+                        <button class="nav-link ps-xl-0" id="v-pills-password-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-password" type="button" role="tab"
+                            aria-controls="v-pills-password" aria-selected="false"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/password.svg" alt=""> <span
+                                class="d-none d-xl-block">Mot de passe</span></button>
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-informations" role="tabpanel"
+                            aria-labelledby="v-pills-informations-tab">
+                            <h4 class="mb-3">Informations Personnelles</h4>
+                            <form [formGroup]="editInfoForm">
+                                <div class="row form-group mb-4">
+                                    <div class="d-flex mb-4">
+                                        <img class="me-3" src="/assets/images/profil.svg" height="60">               
+                                        <file-upload [control]="fileUploadControl" class="heigthly-form m-0 text-center" [multiple]="multiple"[animation]="animation">
+                                            <ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+                                                <span *ngIf="arrayFile?.length==0">Dépose une image ici</span>
+                                            </ng-template>
+                                        </file-upload>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="pseudo">Nom d'utilisateur</label>
+                                        <input type="text" formControlName="username" readonly name="pseudo" id="pseudo"
+                                            class="form-control text-capitalize" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="birth_date">Date de naissance</label>
+                                        <input type="date" formControlName="birth_date" readonly name="birth_date" id="birth_date"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="ynov_level">Niveau Ynov</label>
+                                        <select class="form-select mb-4" id="ynov_level" aria-label="Ynov Level Select">
+                                            <option value="B1" selected>B1</option>
+                                            <option value="B2">B2</option>
+                                            <option value="B3">B3</option>
+                                            <option value="M1">M1</option>
+                                            <option value="M2">M2</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label for="ynov_course">Formation Ynov</label>
+                                        <select class="form-select mb-4" id="ynov_course" aria-label="Ynov Course Select">
+                                            <option value="informatique" selected>Informatique</option>
+                                            <option value="creation_digital_design">Création & Digital Design</option>
+                                            <option value="marketing_communication">Marketing Communication</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email">Adresse email</label>
+                                        <input type="email" formControlName="email" readonly name="email" id="email" autocomplete="new-email"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telephone">Téléphone</label>
+                                        <input type="tel" formControlName="telephone" readonly name="telephone" id="telephone" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="about_me">A propos de moi</label>
+                                        <textarea class="form-control rounded-pill" readonly formControlName="aboutMe" name="about_me" id="about_me"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <button class="btn btn-main" type="submit">Modifier informations</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-password" role="tabpanel"
+                            aria-labelledby="v-pills-password-tab">
+                            <h4 class="mb-3">Mot de passe</h4>
+                            <form [formGroup]="editPasswordForm">
+                                <div class="row form-group mb-4">
+                                    <div class="col-12">
+                                        <label for="old_password">Ancien mot de passe</label>
+                                        <input type="password" formControlName="old_password" name="old_password"
+                                            id="old_password" class="form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="new_password">Nouveau mot de passe</label>
+                                        <input type="password" formControlName="new_password" name="new_password"
+                                            id="new_password" class="form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="confirm_new_password">Nouveau mot de passe</label>
+                                        <input type="password" formControlName="confirm_new_password" name="confirm_new_password"
+                                            id="confirm_new_password" class="form-control" required>
+                                    </div>
+                                </div>
+                                <button class="btn btn-main" type="submit">Modifier mot de passe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 px-4 py-2">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="settingsModalLabel">Paramètres</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="row modal-body align-items-start">
+                    <div class="col-12 col-xl-3 nav flex-column nav-pills border-end pb-4 pb-xl-0 px-2 pe-xl-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications"
+                            type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="true"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/notification.svg" alt=""> <span class="d-none d-xl-block">Notifications</span></button>
+                        <button class="nav-link " id="v-pills-display-tab" data-bs-toggle="pill" data-bs-target="#v-pills-display"
+                            type="button" role="tab" aria-controls="v-pills-display" aria-selected="false"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/eye.svg" alt=""> <span class="d-none d-xl-block">Affichage</span></button>
+                        <button class="nav-link" id="v-pills-security-tab" data-bs-toggle="pill" data-bs-target="#v-pills-security"
+                            type="button" role="tab" aria-controls="v-pills-security" aria-selected="false"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/security.svg" alt=""> <span class="d-none d-xl-block">Confidentialité & Sécurité</span></button>
+                        <button class="nav-link" id="v-pills-report-tab" data-bs-toggle="pill" data-bs-target="#v-pills-report"
+                            type="button" role="tab" aria-controls="v-pills-report" aria-selected="false"><img class="me-xl-2 color-icon" width="18" height="18" src="/assets/images/question.svg" alt=""> <span class="d-none d-xl-block">Signaler un problème</span></button>
+                    </div>
+                    <div class="col-12 col-xl-9 tab-content ps-xl-4" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="notificationsSwitch" checked>
+                                <label class="form-check-label" for="notificationsSwitch">Activer notifications</label>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-display" role="tabpanel" aria-labelledby="v-pills-display-tab">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="largeTextSwitch">
+                                <label class="form-check-label" for="largeTextSwitch">Agrandir le texte</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+                                <label class="form-check-label" for="darkModeSwitch">Mode sombre</label>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-security" role="tabpanel" aria-labelledby="v-pills-security-tab">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="privateAccountSwitch">
+                                <label class="form-check-label" for="privateAccountSwitch">Compte privé</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="cookiesSwitch">
+                                <label class="form-check-label" for="cookiesSwitch">Gérer les cookies</label>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-report" role="tabpanel" aria-labelledby="v-pills-report-tab">
+                            <textarea class="form-control" formControlName="report" name="report" id="report" rows="4" placeholder="Expliquez-nous votre problème"></textarea>
+                            <button class="btn btn-main" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Friend List Modal -->
+
+<div class="modal fade" id="friendListModal" tabindex="-1" aria-labelledby="friendListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 px-4 py-2">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="friendListModalLabel">Amis</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="friends">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Marie</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img width="50" height="50" src="/assets/images/profil.svg" alt="">
+                            <p class="mb-0 ms-3 fw-bold">Pierre</p>
+                        </div>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+

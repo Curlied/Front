@@ -25,27 +25,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #176DE2;
+  --main-color: #176de2;
   --main-dark: #15202b;
   --main-white: #fff;
-  --main-bg:transparent linear-gradient(180deg, #8BDAFB 0%, #4835FF 100%) 0% 0% no-repeat padding-box;
+  --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
+    no-repeat padding-box;
   --font-family-primary: "Co Headline";
 }
 
-html{
+/* html {
   font-size: 62.5%;
-}
+} */
 
 body {
   font-family: "Dosis", sans-serif;
-  color: var(--main-white) !important;
-  background-color: var(--main-dark) !important;
+  background: linear-gradient(#78bcf7, #2828c9) no-repeat;
 }
 
 section {
   display: flex;
   align-items: center;
 }
+
+/*
+----------------------------------
+2. Texte
+----------------------------------
+*/
+
+/*
+----------------------------------
+3. Formulaire
+----------------------------------
+*/
+
 /*
 ----------------------------------
 4. Couleurs
@@ -82,16 +95,13 @@ section {
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 20px;
-  padding: 1rem 3rem;
-  font-family: var(--font-family-primary);
-  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .btn-main:hover {
   background-color: var(--main-dark);
   color: var(--main-white);
   border-color: var(--main-dark);
-  padding: 1rem 3rem;
 }
 
 .btn-reverse {
@@ -160,27 +170,6 @@ section {
 .square-100 {
   height: 100px;
   width: 100px;
-}
-
-/*
-----------------------------------
-7. Scroll Bar
-----------------------------------
-*/
-
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--main-dark);
-  border: 1px solid var(--main-color);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--main-color);
-  border-color: var(--main-color);
 }
 
 /*

@@ -14,11 +14,12 @@ import { DetailsEvenementComponent } from './evenement/details-evenement/details
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
-import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
+import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
+import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
@@ -34,9 +35,10 @@ import { SvgComponent } from './components/svg/svg.component';
     CreationEvenementComponent,
     ConfirmationComponent,
     ErrorComponent,
-    EspaceUtilisateurComponent,
+    ProfilComponent,
+    MessagesComponent,
     AdminComponent,
-    SvgComponent
+    SvgComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,9 @@ import { SvgComponent } from './components/svg/svg.component';
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

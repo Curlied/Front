@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ResponseService } from '../response.service';
-import { HttpService } from '../http.service';
+import { ResponseService } from '../../response.service';
+import { HttpService } from '../../http.service';
 import { formatDate } from '@angular/common';
+import { AnyARecord } from 'dns';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
-  selector: 'app-espace-utilisateur',
-  templateUrl: './espace-utilisateur.component.html',
-  styleUrls: ['./espace-utilisateur.component.css']
+  selector: 'app-profil',
+  templateUrl: './profil.component.html',
+  styleUrls: ['./profil.component.css']
 })
-export class EspaceUtilisateurComponent implements OnInit {
+export class ProfilComponent implements OnInit {
 
   public animation: boolean = false;
   public multiple: boolean = true;
@@ -22,45 +24,49 @@ export class EspaceUtilisateurComponent implements OnInit {
   profilData: any;
   personalInfoData: any;
   allEventsData: any;
+  personalDescriptionData: string | undefined;
 
-  sectionSelect!: string;
-
-//#region VARIABLE FOR MODAL
+  //#region VARIABLE FOR MODAL
   dataModalCancelMyEvent : any;
   dataModalCancelParticipationEvent : any;
   arrayUserValidateParticipateSpaceUser: any;
   arrayUserPendingParticipateSpaceUser: any;
   arrayUserRefuseParticipateSpaceUser: any;
-//#endregion
+  //#endregion
 
   //https://pivan.github.io/file-upload/
   public fileUploadControl = new FileUploadControl({ listVisible: true, accept: ['image/*'], discardInvalid: true, }, [FileUploadValidators.filesLimit(3), FileUploadValidators.accept(["image/*"]), FileUploadValidators.fileSize(3000000)]);
-  eventForm = new FormGroup({
+  editInfoForm = new FormGroup({
+    url_image: new FormControl(),
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     birth_date: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.minLength(3)]),
     telephone: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    aboutMe: new FormControl('', [Validators.required])
+  });
+
+  editPasswordForm = new FormGroup({
     old_password: new FormControl('', [Validators.required]),
     new_password: new FormControl('', [Validators.required]),
-    aboutMe: new FormControl('', [Validators.required]),
-    url_image: new FormControl()
+    confirm_new_password: new FormControl('', [Validators.required]),
   });
 
 
-  constructor(private responseService: ResponseService, private httpService: HttpService) {
+  constructor(private responseService: ResponseService, private httpService: HttpService, private router: Router) {
     this.myProfil();
+    this.personnalInformations();
+    this.myEvents();
   }
+
 
   ngOnInit(): void {
     this.setup();
   }
 
+
   /** Fetch username, age, and all event resume created 
    * */ 
   myProfil() {
-    if (this.sectionSelect == this.myProfil.name)
-      return;
-    this.sectionSelect = this.myProfil.name;
     this.clearData();
 
     this.httpService.getMyProfilUsersForSpace().subscribe({
@@ -73,37 +79,44 @@ export class EspaceUtilisateurComponent implements OnInit {
     });
   }
 
+
   /** Fetch information by account user
-   * @returns 
-   */
+   **/
   personnalInformations() {
-    if (this.sectionSelect == this.personnalInformations.name)
-      return;
-    this.sectionSelect = this.personnalInformations.name;
     this.clearData();
 
     this.httpService.getPersonalInformationsForUsersSpace().subscribe({
       next: (res: any) => {
         this.personalInfoData = res.body;
-        this.eventForm.controls['username'].setValue(this.personalInfoData.username);
-        this.eventForm.controls['email'].setValue(this.personalInfoData.email);
-        this.eventForm.controls['birth_date'].setValue(formatDate(this.personalInfoData.birthdate,'yyyy-MM-dd','en'));
-        this.eventForm.controls['telephone'].setValue(this.personalInfoData.telephone);
-        this.eventForm.controls['aboutMe'].setValue(this.personalInfoData.description);
+
+        this.editInfoForm.controls['username'].setValue(this.personalInfoData.username);
+        this.editInfoForm.controls['email'].setValue(this.personalInfoData.email);
+        this.editInfoForm.controls['birth_date'].setValue(formatDate(this.personalInfoData.birthdate,'yyyy-MM-dd','en'));
+        this.editInfoForm.controls['telephone'].setValue(this.personalInfoData.telephone);
+        this.editInfoForm.controls['aboutMe'].setValue('yo');
       },
       error: (err: any) => {
         this.responseService.ErrorF(err);
       }
     });
+
+    this.httpService.getMyProfilUsersForSpace().subscribe({
+      next: (res: any) => {
+        this.personalDescriptionData = res.body.description;
+        this.editInfoForm.controls['aboutMe'].setValue(this.personalDescriptionData);
+      },
+      error: (err: any) => {
+        this.responseService.ErrorF(err);
+      }
+    });
+
   }
+
 
   /** Fetch and give power to manage event create and participate
    * @returns 
    */
   myEvents() {
-    if (this.sectionSelect == this.myEvents.name)
-      return;
-    this.sectionSelect = this.myEvents.name;
     this.clearData();
 
     this.httpService.getAllEventsForUsersSpace().subscribe({
@@ -115,6 +128,7 @@ export class EspaceUtilisateurComponent implements OnInit {
       }
     });
   }
+
 
   /** manage the input file picture on section personnal information 
    * 
@@ -130,6 +144,7 @@ export class EspaceUtilisateurComponent implements OnInit {
       this.responseService.ErrorF(error);
     });
   }
+
 
   /** Allow to manage file input
    * 
@@ -150,18 +165,18 @@ export class EspaceUtilisateurComponent implements OnInit {
         }
       }
     }
-  };
+  }
 
 
   modalCancelMyEvent(event :any){
     this.dataModalCancelMyEvent = event;
   }
 
+
   cancelMyEvent = (event_id: string) => {
     this.httpService.cancelMyEvent(event_id).subscribe({
       next: (res: any) => {
         this.responseService.SuccessF(res);
-        this.sectionSelect = '';
         this.myEvents();
       },
       error: (err: any) => {
@@ -175,6 +190,7 @@ export class EspaceUtilisateurComponent implements OnInit {
     this.dataModalCancelParticipationEvent = event;
   }
 
+
   /**
    * Allow to current user to cancel participation of event
    * @param event_id 
@@ -183,7 +199,6 @@ export class EspaceUtilisateurComponent implements OnInit {
     this.httpService.cancelEventParticipation(event_id).subscribe({
       next: (res: any) => {
         this.responseService.SuccessF(res);
-        this.sectionSelect = '';
         this.myEvents();
       },
       error: (err: any) => {
@@ -191,7 +206,6 @@ export class EspaceUtilisateurComponent implements OnInit {
       }
     });
   }
-
 
 
   /** Allow to complete modal value with user on my event create
@@ -213,6 +227,7 @@ export class EspaceUtilisateurComponent implements OnInit {
     this.arrayUserValidateParticipateSpaceUser = undefined;
     this.arrayUserPendingParticipateSpaceUser = undefined;
     this.arrayUserRefuseParticipateSpaceUser = undefined;
+    this.personalDescriptionData = undefined;
   }
 
 }
