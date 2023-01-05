@@ -2,6 +2,7 @@ name: Send webhook
 on:
   push:
     branches:
+      - main
       - develop
 jobs:
   build:
