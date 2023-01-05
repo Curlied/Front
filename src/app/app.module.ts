@@ -10,16 +10,17 @@ import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { HeaderComponent } from './template/header/header.component';
 import { FooterComponent } from './template/footer/footer.component';
-import { ListeEvenementsComponent } from './evenement/liste-evenements/liste-evenements.component';
 import { DetailsEvenementComponent } from './evenement/details-evenement/details-evenement.component';
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
-import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
+import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
+import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
+import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,14 @@ import { AdminComponent } from './admin/admin.component';
     InscriptionComponent,
     HeaderComponent,
     FooterComponent,
-    ListeEvenementsComponent,
     DetailsEvenementComponent,
     CreationEvenementComponent,
     ConfirmationComponent,
     ErrorComponent,
-    EspaceUtilisateurComponent,
-    AdminComponent
+    ProfilComponent,
+    MessagesComponent,
+    AdminComponent,
+    SvgComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,9 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

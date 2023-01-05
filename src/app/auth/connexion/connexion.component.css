@@ -1,19 +1,84 @@
-.bg-img {
-	background: linear-gradient(rgba(21,32,43,0.6), rgba(21,32,43,0.6)), url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement1.jpg");
-	height: 100vh;
-	background-attachment: fixed !important;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+.main {
+    display: flex;
+    height: 100vh;
+	background-color: white;
 }
 
-.logo {
-    width: 150px;
-    height: auto;
+.first {
+    flex: 1;
+    background: linear-gradient(#78BCF7, #2828C9);
+    display: grid;
+    grid-template-columns: 116fr 350fr 60fr 330fr 50fr;
+    grid-template-rows: 90fr minmax(auto,85fr) 160fr 160fr 180fr minmax(auto,115fr) 160fr;
 }
-/* FORCE LE FORM A BIEN CE METTRE EN PLACE 
-	PAS LE CAS EN CAS DE REDIRECTION
-*/
-form{
-	display: block !important; 
+
+.tel1 {
+    grid-column: 4/5;
+    grid-row: 2/5;
+    height: 100%;
+}
+
+.tel2 {
+    grid-column: 2/3;
+    grid-row: 4/7;
+    height: 100%;
+}
+
+
+/*********************************partie 2*********************************/
+
+.second {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+.form-container {
+	width: 450px;
+}
+
+.welcome {
+    display: flex;
+	justify-content: center;
+    color: black;
+}
+
+label {
+  color: var(--main-color);
+}
+
+input, select, textarea {
+  border-color: var(--main-color) !important;
+  color: var(--main-color) !important;
+  margin-bottom: 20px !important;
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  border: 1px solid #707070 !important;
+}
+
+.button {
+    display: flex;
+	  align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .first {
+	display: none;
+  }
+  .second {
+	background: linear-gradient(#78BCF7, #2828C9);
+  }
+  .form-container {
+	background-color: white;
+	padding: 2rem 3rem;
+	border-radius: 30px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .form-container {
+	width: 95%;
+  }
 }
