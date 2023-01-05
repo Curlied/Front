@@ -25,14 +25,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #176DE2;
+  --main-color: #176de2;
   --main-dark: #15202b;
   --main-white: #fff;
+  --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
+    no-repeat padding-box;
+  --font-family-primary: "Co Headline";
 }
+
+/* html {
+  font-size: 62.5%;
+} */
 
 body {
   font-family: "Dosis", sans-serif;
-  background: linear-gradient(#78BCF7, #2828C9) no-repeat;
+  background: linear-gradient(#78bcf7, #2828c9) no-repeat;
 }
 
 section {
@@ -46,80 +53,11 @@ section {
 ----------------------------------
 */
 
-/*h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 28px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 80px;
-  font-weight: bold;
-}
-
-h2::after {
-  background-color: var(--main-color);
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  bottom: -50%;
-  position: absolute;
-  transform: translate(-50%, 0);
-  width: 80px;
-  border-radius: 10px;
-}
-
-h3 {
-  font-size: 18px;
-}
-
-.f-size20 {
-  font-size: 20px;
-}
-
-.f-size14 {
-  font-size: 14px;
-}*/
-
 /*
 ----------------------------------
 3. Formulaire
 ----------------------------------
 */
-
-label {
-  color: var(--main-color);
-  padding-left: 10px;
-}
-
-input,
-textarea {
-  border-radius: 20px !important;
-  background-color: var(--main-dark) !important;
-  border-color: var(--main-color) !important;
-  color: var(--main-color) !important;
-  margin-bottom: 20px !important;
-}
-
-.form-select {
-  border-radius: 50rem;
-  color: var(--main-color);
-  background-color: var(--main-dark);
-  border-color: var(--main-color);
-}
-
-file-upload {
-  margin-top: 10px;
-  background: transparent !important;
-  border-radius: 100px;
-  min-height: 60px !important;
-  outline: none !important;
-  border: 1px dashed var(--main-color);
-  padding: 10px !important;
-}
 
 /*
 ----------------------------------
@@ -157,17 +95,13 @@ file-upload {
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0.5rem 1rem;
 }
 
 .btn-main:hover {
   background-color: var(--main-dark);
-  color: var(--main-color);
-  border-color: var(--main-color);
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  color: var(--main-white);
+  border-color: var(--main-dark);
 }
 
 .btn-reverse {
