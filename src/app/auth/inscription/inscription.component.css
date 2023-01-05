@@ -56,6 +56,9 @@
 }
 
 input, select, textarea {
+  border-color: var(--main-color) !important;
+  color: var(--main-color) !important;
+  margin-bottom: 20px !important;
   background-color: transparent !important;
   border-radius: 10px !important;
   border: 1px solid #707070 !important;
