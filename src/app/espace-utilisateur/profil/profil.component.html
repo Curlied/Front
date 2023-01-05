@@ -22,7 +22,7 @@
                 <h2 class="text-white fw-bold mb-4">Mes événements</h2>
                 <div class="events row" *ngIf="allEventsData">
                     <div  *ngFor="let eventCreate of allEventsData.eventsCreate" class="col-5 col-md-3 mb-5">
-                        <div class="event bg-white" routerLink="/detailsEvenement" [queryParams]="{event: eventCreate._id}">
+                        <div class="event-card bg-white" routerLink="/detailsEvenement" [queryParams]="{event: eventCreate._id}">
                             <div class="d-flex justify-content-between px-4 pt-3">
                                 <h3 class="fw-bold mb-0">{{ eventCreate.name }}</h3>
                                 <img class="img-fluid" width="20" src="/assets/images/couronne.svg">

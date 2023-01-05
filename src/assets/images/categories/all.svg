@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="107" height="107" viewBox="0 0 107 107">
+    <g id="Ellipse_19" data-name="Ellipse 19" fill="#176de2" stroke="#176de2" stroke-width="1">
+        <circle cx="53.5" cy="53.5" r="53.5" stroke="none" />
+        <circle cx="53.5" cy="53.5" r="53" fill="none" />
+    </g>
+    <g id="infinite-svgrepo-com" transform="translate(-11.609 -120.69)">
+        <path id="Tracé_44" data-name="Tracé 44"
+            d="M65.109,174.19S58.014,160,46.485,160a14.193,14.193,0,1,0,0,28.379,17.555,17.555,0,0,0,11.529-4.73"
+            fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"
+            stroke-width="10" />
+        <path id="Tracé_45" data-name="Tracé 45"
+            d="M256,174.19s7.095,14.19,18.624,14.19a14.193,14.193,0,1,0,0-28.379,18.122,18.122,0,0,0-11.529,4.73"
+            transform="translate(-190.891)" fill="none" stroke="#fff" stroke-linecap="round"
+            stroke-miterlimit="10" stroke-width="10" />
+    </g>
+</svg>

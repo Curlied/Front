@@ -1,8 +1,6 @@
 /*
 ----------------------------------
-
 [Sommaire]
-
 1. Global
 2. Texte
 3. Formulaire
@@ -12,7 +10,6 @@
 7. Scroll Bar
 8. Hover Effet
 9. Responsive
-
 ----------------------------------
 */
 
@@ -25,7 +22,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #176de2;
+  --main-color: #176DE2;
   --main-dark: #15202b;
   --main-white: #fff;
   --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
@@ -39,7 +36,6 @@
 
 body {
   font-family: "Dosis", sans-serif;
-  background: linear-gradient(#78bcf7, #2828c9) no-repeat;
 }
 
 section {

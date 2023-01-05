@@ -1,6 +1,7 @@
 .messages {
   padding: 100px 0;
   min-height: 90vh;
+  background: var(--main-bg);
 }
 
 .users_list,
