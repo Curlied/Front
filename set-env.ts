@@ -11,6 +11,7 @@ export  const  environment  =  {
   appVersion:  '${process.env['APPVERSION']}',
   nomEnvironnement:  '${process.env['NOMENVIRONNEMENT']}',
   timeToken:  ${process.env['TIMETOKEN']},
+  AdresseIcon: ${process.env['ADRESSE_ICON']},
 };
 `;
 writeFile(targetPath, envConfigFile, function (err: any) {
