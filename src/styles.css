@@ -22,7 +22,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
-  --main-color: #176DE2;
+  --main-color: #176de2;
   --main-dark: #15202b;
   --main-white: #fff;
   --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
@@ -30,9 +30,9 @@
   --font-family-primary: "Co Headline";
 }
 
-/* html {
+html {
   font-size: 62.5%;
-} */
+}
 
 body {
   font-family: "Dosis", sans-serif;
@@ -48,12 +48,54 @@ section {
 2. Texte
 ----------------------------------
 */
+.heading--secondary {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.heading--tertiary {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.paragraph {
+  font-size: 2rem;
+}
+
+.icon__label {
+  font-size: 1.4rem;
+  display: block;
+  font-weight: bold;
+  color: var(--main-color);
+}
 
 /*
 ----------------------------------
-3. Formulaire
+3. Input
 ----------------------------------
 */
+.input {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+}
+.input__label {
+  color: var(--main-color);
+  font-size: 1.4rem;
+}
+
+/*
+----------------------------------
+3. Icon
+----------------------------------
+*/
+.icon {
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  margin: 0 auto;
+}
 
 /*
 ----------------------------------
@@ -88,10 +130,13 @@ section {
 */
 
 .btn-main {
+  font-size: 1.5rem;
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 20px;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  line-height: normal;
 }
 
 .btn-main:hover {
@@ -104,17 +149,17 @@ section {
   background-color: var(--main-dark);
   color: var(--main-color);
   border-color: var(--main-color);
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .btn-reverse:hover {
   background-color: var(--main-color);
   color: var(--main-white);
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .btn-custom {
@@ -125,21 +170,18 @@ section {
 .link {
   color: var(--main-color);
   text-decoration: underline !important;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 0 0.5rem;
 }
 
 .btn-radius-style {
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 2rem;
+  padding: 0 2rem;
   color: var(--main-white);
 }
 
 .btn-radius-style:hover {
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 2rem;
+  padding: 0 2rem;
 }
 
 /*
@@ -149,23 +191,23 @@ section {
 */
 
 .square-16 {
-  width: 16px;
-  height: 16px;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .square-30 {
-  height: 30px;
-  width: 30px;
+  height: 3rem;
+  width: 3rem;
 }
 
 .square-35 {
-  height: 35px;
-  width: 35px;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 
 .square-100 {
-  height: 100px;
-  width: 100px;
+  height: 10rem;
+  width: 10rem;
 }
 
 /*
@@ -201,14 +243,12 @@ section {
 
 @media only screen and (max-width: 992px) {
   section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 8rem 0;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 8rem 0;
   }
 }

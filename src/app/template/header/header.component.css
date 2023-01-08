@@ -11,21 +11,21 @@ input {
 }
 
 .icon-container {
-  width: 1.75rem;
+  width: 2.8rem;
 }
 
 .notification-indicator {
-  padding: 0.35rem;
+  padding: 0.6rem;
   top: 3px;
 }
 
 .dropdown-notifications {
-  width: 320px;
+  width: 32rem;
   border: none;
   margin-top: 2rem;
-  max-height: 400px;
+  max-height: 40rem;
   overflow-y: overlay;
-  box-shadow: 0px 0px 10px #00000040;
+  box-shadow: 0px 0px 10rem #00000040;
 }
 
 .event-nav {
@@ -34,6 +34,7 @@ input {
 }
 
 .search-icon {
-  left: 1.5rem;
-  filter: invert(53%) sepia(0%) saturate(0%) hue-rotate(59deg) brightness(95%) contrast(94%);
+  left: 2.5rem;
+  filter: invert(53%) sepia(0%) saturate(0%) hue-rotate(59deg) brightness(95%)
+    contrast(94%);
 }
