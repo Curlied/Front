@@ -29,7 +29,7 @@
                   value="{{category._id}}" id="{{category.name}}">
               </div>
             </div>
-            <div class="filters__actions multi-collapse collapse">
+            <div class="d-md-flex flex-column filters__actions multi-collapse collapse">
               <label for="date" class="input__label">Date</label>
               <input type="date" class="input mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
                 formControlName="date">
@@ -37,7 +37,6 @@
                 <button class="btn btn-main" type="submit">Filtrer</button>
               </div>
             </div>
-
           </div>
         </form>
       </div>
