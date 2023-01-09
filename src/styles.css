@@ -38,11 +38,10 @@ body {
   font-family: "Dosis", sans-serif;
 }
 
-section {
-  display: flex;
-  align-items: center;
+.app--container {
+  padding-top: 6rem;
+  background: var(--main-bg);
 }
-
 /*
 ----------------------------------
 2. Texte
