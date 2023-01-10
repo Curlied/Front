@@ -15,8 +15,50 @@
 
 .navbar__content {
   justify-content: flex-end;
-  gap: 3rem;
   flex-grow: 0;
+  gap: 3rem;
+}
+
+.navbar-nav {
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.nav-item {
+  padding: 1.5rem 0;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.nav-item {
+  border-top: 1px solid var(--main-dark);
+}
+
+.nav__profile {
+  gap: 2rem;
+  text-decoration: none;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  text-decoration: none;
+}
+
+.nav__label {
+  color: var(--main-dark);
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.nav__btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar .container {
+  gap: 3rem;
 }
 
 .search {
@@ -26,8 +68,7 @@
   border: 1px solid var(--main-dark);
   gap: 2rem;
   margin-right: 3rem;
-  max-width: 35rem;
-  width: 100%;
+  flex: 1;
   border-radius: 2rem;
 }
 
@@ -51,6 +92,10 @@
   top: 3px;
 }
 
+.indicator__container {
+  position: relative;
+}
+
 .dropdown-notifications {
   width: 32rem;
   border: none;
@@ -63,4 +108,10 @@
 .event-nav {
   text-decoration: none;
   color: black;
+}
+
+@media (min-width: 992px) {
+  .search {
+    max-width: 35rem;
+  }
 }

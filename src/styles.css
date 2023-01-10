@@ -39,9 +39,10 @@ body {
 }
 
 .app--container {
-  padding-top: 6rem;
+  padding-top: 10rem;
   background: var(--main-bg);
 }
+
 /*
 ----------------------------------
 2. Texte
