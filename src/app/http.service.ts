@@ -1,33 +1,29 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class HttpService {
-
   private adresse = environment.AdresseAPI;
-  private AdresseAuthentification = this.adresse + "api/auth/";
-  private AdresseEvent = this.adresse + "api/events/";
-  private AdresseEventFilter = this.adresse + "api/events?filter=";
-  private AdresseDetailsEvent = this.adresse + "api/events/detailsevent/";
-  private AdresseCategories = this.adresse + "api/categories/";
-  private AdresseUsers = this.adresse + "api/users/";
-  private AdressEventFiltered = this.adresse + "api/events/filtered?filter=";
+  private AdresseAuthentification = this.adresse + 'api/auth/';
+  private AdresseEvent = this.adresse + 'api/events/';
+  private AdresseEventFilter = this.adresse + 'api/events?filter=';
+  private AdresseCategories = this.adresse + 'api/categories/';
+  private AdresseUsers = this.adresse + 'api/users/';
+  private AdressEventFiltered = this.adresse + 'api/events/filtered?filter=';
   private http: HttpClient;
   private urlInfos = this.adresse;
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
     }),
-    withCredentials: true
+    withCredentials: true,
   };
   httpOptionsFormData = {
-    withCredentials: true
+    withCredentials: true,
   };
 
   constructor(http: HttpClient) {
@@ -39,10 +35,10 @@ export class HttpService {
   }
 
   //#region AUTH
-  private urlRegister = this.AdresseAuthentification + "register";
-  private urlConfirmation = this.AdresseAuthentification + "confirm";
-  private urlLogin = this.AdresseAuthentification + "login";
-  private urldisconnect = this.AdresseAuthentification + "disconnect";
+  private urlRegister = this.AdresseAuthentification + 'register';
+  private urlConfirmation = this.AdresseAuthentification + 'confirm';
+  private urlLogin = this.AdresseAuthentification + 'login';
+  private urldisconnect = this.AdresseAuthentification + 'disconnect';
 
   postRegister(data: any) {
     return this.http.post(this.urlRegister, data);
@@ -53,7 +49,7 @@ export class HttpService {
   }
 
   postLogin(data: any) {
-    return this.http.post(this.urlLogin, data,this.httpOptions);
+    return this.http.post(this.urlLogin, data, this.httpOptions);
   }
   postDisconnect() {
     return this.http.get(this.urldisconnect, this.httpOptions);
@@ -62,13 +58,12 @@ export class HttpService {
 
   //#region EVENT
 
-  private urlSubmitParticipation= this.AdresseEvent + 'submit-participation/';
-  private urlCancelParticipation= this.AdresseEvent + 'cancel-participation/';
-  private urlCancelMyEvent= this.AdresseEvent + 'cancel/';
-  private urlSearchEvent= this.AdresseEvent + 'search/';
+  private urlSubmitParticipation = this.AdresseEvent + 'join/';
+  private urlCancelParticipation = this.AdresseEvent + 'leave/';
+  private urlSearchEvent = this.AdresseEvent + 'search/';
 
   postAddEvent(data: any) {
-    return this.http.post(this.AdresseEvent, data,this.httpOptionsFormData);
+    return this.http.post(this.AdresseEvent, data, this.httpOptionsFormData);
   }
 
   getAllEvent() {
@@ -77,7 +72,7 @@ export class HttpService {
 
   getEventByParams(nameOfPropertyFilter: any, dataSearch: any) {
     let adressWithFilter = `${this.AdresseEventFilter}${nameOfPropertyFilter}=${dataSearch}`;
-    return this.http.get(adressWithFilter,this.httpOptions);
+    return this.http.get(adressWithFilter, this.httpOptions);
   }
 
   getEventFilteredByParams(nameOfPropertyFilter: any, dataSearch: any) {
@@ -87,28 +82,37 @@ export class HttpService {
   }
 
   getDetailsEventById(_id: string) {
-    return this.http.get(this.AdresseDetailsEvent + _id, this.httpOptions);
+    return this.http.get(this.AdresseEvent + _id, this.httpOptions);
   }
 
   putSubmitParticipation(_eventId: string) {
-    return this.http.put(this.urlSubmitParticipation , { event_id : _eventId} , this.httpOptions);
+    return this.http.put(
+      this.urlSubmitParticipation + _eventId,
+      this.httpOptions
+    );
   }
 
   cancelEventParticipation(_eventId: string) {
-    return this.http.put(this.urlCancelParticipation , { event_id : _eventId} , this.httpOptions);
+    return this.http.put(
+      this.urlCancelParticipation + _eventId,
+      this.httpOptions
+    );
   }
 
   cancelMyEvent(_eventId: string) {
-    return this.http.delete(this.urlCancelMyEvent + _eventId, this.httpOptions);
+    return this.http.delete(this.AdresseEvent + _eventId, this.httpOptions);
   }
 
-  postSearchEventAllEventPage(data :any){
+  postSearchEventAllEventPage(data: any) {
     return this.http.post(this.urlSearchEvent, data, this.httpOptions);
   }
 
-  validateEvent(_eventId: String){
+  validateEvent(_eventId: String) {
     console.log(`${this.AdresseEvent}${_eventId}/validate`);
-    return this.http.get(`${this.AdresseEvent}${_eventId}/validate`, this.httpOptions);
+    return this.http.get(
+      `${this.AdresseEvent}${_eventId}/validate`,
+      this.httpOptions
+    );
   }
   //#endregion
 
@@ -123,38 +127,35 @@ export class HttpService {
   //#endregion
 
   //#region USER
-  urlDetailUserInfo = this.AdresseUsers  + "detailuser";
-  urlUserSpace = this.AdresseUsers  + "space-user/";
-  urlRoles = this.AdresseUsers + "roles";
-
-  postUsersGetInfosFromSpaceUser() {
-    return this.http.get(this.urlDetailUserInfo,this.httpOptions);
-  }
+  urlRoles = this.AdresseUsers + 'roles';
 
   getMyProfilUsersForSpace() {
-    return this.http.get(this.urlUserSpace + "my-profil",this.httpOptions);
+    return this.http.get(this.AdresseUsers + 'profils', this.httpOptions);
   }
 
   getPersonalInformationsForUsersSpace() {
-    return this.http.get(this.urlUserSpace + "personal-infos",this.httpOptions);
+    return this.http.get(this.AdresseUsers + 'infos', this.httpOptions);
   }
 
   getAllEventsForUsersSpace() {
-    return this.http.get(this.urlUserSpace + "all-events",this.httpOptions);
+    return this.http.get(this.AdresseUsers + 'events', this.httpOptions);
   }
 
-  getRoles(){
+  getRoles() {
     return this.http.get(this.urlRoles, this.httpOptions);
   }
   //#endregion
 
-  //#region API GOUV 
-  private urlGetDepartementOnRegionRhone = 'https://geo.api.gouv.fr/regions/84/departements?fields=nom,code';
+  //#region API GOUV
+  private urlGetDepartementOnRegionRhone =
+    'https://geo.api.gouv.fr/regions/84/departements?fields=nom,code';
   getDepartementOnRegion() {
     return this.http.get(this.urlGetDepartementOnRegionRhone);
   }
-  getCommuneByDepartmentCode(id_commune :any) {
-    return this.http.get(`https://geo.api.gouv.fr/departements/${id_commune}/communes?fields=codesPostaux&format=json&geometry=centre`);
+  getCommuneByDepartmentCode(id_commune: any) {
+    return this.http.get(
+      `https://geo.api.gouv.fr/departements/${id_commune}/communes?fields=codesPostaux&format=json&geometry=centre`
+    );
   }
   //#endregion
 }
