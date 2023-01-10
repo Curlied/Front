@@ -1,56 +1,59 @@
 <div class="main">
-    <div class="first text-white">
-        <div class="text">
-            <p class="mb-0"><strong>Lorem ipsum Lorem ipsum dolor sit</strong></p>
+    <div class="hero">
+        <div class="paragraph hero__paragraphe hero__paragraphe--top">
+            <p><strong>Lorem ipsum Lorem ipsum dolor sit</strong></p>
             <p>amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi architecto alias</p>
         </div>
-        <img src="./assets/images/phone1.png" class="tel1">
-        <img src="./assets/images/phone2.png" class="tel2">
-        <p class="paragraph2">
+        <img src="./assets/images/phone1.png" class="phone--1">
+        <img src="./assets/images/phone2.png" class="phone--2">
+        <p class="paragraph hero__paragraphe hero__paragraphe--bottom">
             Lorem ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi
             architecto alias.
         </p>
     </div>
-    <div class="second">
-        <div class="form-container">
+    <div class="form">
+        <div class="form__container">
             <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5">
-                <h1 class="welcome">Bienvenue sur</h1>
-                <img src="./assets/images/logo.svg" class="ms-3">
+                <h1 class="heading--primary">Bienvenue sur</h1>
+                <img src="./assets/images/logo.svg" class="logo" alt="logo">
             </div>
             <form (ngSubmit)="register()" [formGroup]="profileForm">
                 <div class="form-group">
-                    <label for="user_name">Nom d'utilisateur</label>
-                    <input type="text" formControlName="username" id="Nom d'utilisateur" class="form-control" required>
+                    <label for="username" class="label">Nom d'utilisateur</label>
+                    <input type="text" formControlName="username" id="Nom d'utilisateur" class="input input--text"
+                        required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Adresse mail</label>
-                    <input type="text" formControlName="email" id="email" class="form-control" required>
+                    <label for="email" class="label">Adresse mail</label>
+                    <input type="text" formControlName="email" id="email" class="input input--email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" formControlName="password" id="password" class="form-control" required>
+                    <label for="password" class="label">Mot de passe</label>
+                    <input type="password" formControlName="password" id="password" class="input input--password"
+                        required>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_password">Confirmer le mot de passe</label>
-                    <input type="password" formControlName="confirm_password" id="confirm_password" class="form-control" required>
+                    <label for="confirm_password" class="label">Confirmer le mot de passe</label>
+                    <input type="password" formControlName="confirm_password" id="confirm_password"
+                        class="input input--password" required>
                 </div>
                 <div class="form-group">
-                    <label for="birthday">Date de naissance</label>
-                    <input type="date" formControlName="birth_date" max="{{currentDate | date:'yyyy-MM-dd'}}" id="birthday" class="form-control" required>
+                    <label for="birthday" class="label">Date de naissance</label>
+                    <input type="date" formControlName="birth_date" max="{{currentDate | date:'yyyy-MM-dd'}}"
+                        id="birthday" class="input input--date" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone_number">Numéro de téléphone</label>
-                    <input type="text" formControlName="telephone" id="phone_number" class="form-control" required>
+                    <label for="phone_number" class="label">Numéro de téléphone</label>
+                    <input type="text" formControlName="telephone" id="phone_number" class="input input--text" required>
                 </div>
                 <div class="form-group">
-                    <label for="profile_pic">Photo de profil</label>
-                    <input type="file" (change)="uploadFile($event)" id="profile_pic" class="form-control" required>
+                    <label for="profile_pic" class="label">Photo de profil</label>
+                    <input type="file" (change)="uploadFile($event)" id="profile_pic" class="input input--text"
+                        required>
                 </div>
-                <div class="button mt-5">
+                <div class="form__actions">
                     <button class="btn btn-main" type="submit">S'inscrire</button>
-                    <div class="px-4">
-                        <a class="text-decoration-none fw-bold color-main" routerLink="/connexion">Se connecter</a>
-                    </div>
+                    <a class="link" routerLink="/connexion">Se connecter</a>
                 </div>
             </form>
         </div>
