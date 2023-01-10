@@ -27,22 +27,22 @@
  
       <div class="col-md-9">
         <div class="event-card bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
-          <img class="img-fluid img-event d-none d-sm-block" src="./assets/images/concert1.jfif" alt="...">
+          <div class="img-event" style="background-image: url('/assets/images/events/{{ event.url_image }}')"></div>
           <div class="ps-sm-5">
             <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue. Enim, consectetur in
             dui …</p>
             <div class="d-flex justify-content-between mt-5">
               <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/{{ event.categoryComplet.url_icon }}" width="40" alt="...">
+                <img class="img-fluid img-radius" src="./assets/images/{{ event.categoryComplet.url_icon }}" width="40" alt="...">
                 <small class="fw-bold color-main d-block">{{ event.categoryComplet.name }}</small>
               </div>
               <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/date.svg" width="40" alt="...">
+                <img class="img-fluid img-radius" src="./assets/images/date.svg" width="40" alt="...">
                 <small class="fw-bold color-main d-block">{{ event.date_time | date: 'dd/MM/yyyy'}}</small>
               </div>
               <div class="text-center">
-                <img class="img-fluid img-event" src="./assets/images/people.svg" width="40" alt="...">
+                <img class="img-fluid img-radius" src="./assets/images/people.svg" width="40" alt="...">
                 <small class="fw-bold color-main d-block">{{ event.nbUserActual}}/{{ event.user_max}}</small>
               </div>
             </div>

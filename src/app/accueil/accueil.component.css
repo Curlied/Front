@@ -19,6 +19,15 @@
 
 .img-event {
   border-radius: 25px;
+  width: 100%;
+  height: 340px;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+}
+
+.img-radius {
+  border-radius: 25px;
 }
 
 h2::after {
