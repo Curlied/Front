@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastComponent } from './toasts/toast.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
@@ -20,6 +20,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
 import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './auth.interceptor';
+
+export function tokenGetter() {
+  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+}
 import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
@@ -47,8 +53,17 @@ import { SvgComponent } from './components/svg/svg.component';
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
   ],
-  providers: [CookieService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    CookieService,
+    JwtHelperService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
