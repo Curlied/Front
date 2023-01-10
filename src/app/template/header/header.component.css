@@ -20,7 +20,6 @@
 }
 
 .navbar-nav {
-  gap: 3rem;
   align-items: flex-start;
 }
 
@@ -30,7 +29,7 @@
   justify-content: flex-start;
 }
 
-.nav-item {
+.nav-item:not(:first-child) {
   border-top: 1px solid var(--main-dark);
 }
 
@@ -113,5 +112,19 @@
 @media (min-width: 992px) {
   .search {
     max-width: 35rem;
+  }
+
+  .navbar-nav {
+    align-items: center;
+    column-gap: 3rem;
+  }
+
+  .nav-item {
+    width: unset;
+    padding: 0;
+  }
+
+  .nav-item:not(:first-child) {
+    border-top: none;
   }
 }
