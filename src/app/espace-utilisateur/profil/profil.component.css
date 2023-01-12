@@ -26,9 +26,14 @@
     border: 1px solid #707070 !important;
 }
 
-.event-card img {
-    border-bottom-left-radius: 30px;
+.img-event {
+  border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+  width: 100%;
+  height: 190px;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
 }
 
 .event-card h3 {
@@ -82,6 +87,7 @@
 input, select, textarea {
   background-color: transparent !important;
   border-radius: 10px !important;
+  margin-bottom: 1rem;
 }
 
 label {
