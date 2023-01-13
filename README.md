@@ -15,3 +15,7 @@ pour récupéré les packages de l'application , puis faire
 ```ng serve```
 
 L'application sera accessible à l'adresse `http://localhost:4200/`
+
+
+```Adresse de la production```
+`https://curlied.fr`
