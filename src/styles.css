@@ -103,9 +103,6 @@ body {
   border: 1px solid var(--main-color);
   color: var(--main-color);
   width: 100%;
-  font-size: var(--font-size-md);
-}
-.input--small {
   font-size: var(--font-size-s);
 }
 
@@ -159,7 +156,7 @@ body {
 */
 
 .btn-main {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-s);
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 2rem;
