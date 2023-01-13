@@ -5,7 +5,7 @@
 
 .details__container {
   padding: 9rem 2rem;
-  row-gap: 3rem;
+  row-gap: var(--gap-xl);
   flex-direction: column;
 }
 
@@ -15,11 +15,11 @@
   border-radius: 3rem;
   color: black;
   box-shadow: 0px 0px 10px #00000040;
-  row-gap: 6rem;
+  row-gap: var(--gap-xxl);
 }
 
 .details__header {
-  row-gap: 3rem;
+  row-gap: var(--gap-xl);
   flex-direction: column;
   width: 100%;
 }
@@ -35,7 +35,7 @@
 }
 
 .details__info {
-  row-gap: 1.5rem;
+  row-gap: var(--gap-s);
 }
 
 .details__body {
@@ -69,20 +69,20 @@
 }
 
 .member__item {
-  gap: 1.6rem;
+  gap: var(--gap-s);
   align-items: center;
   flex-direction: column;
 }
 
 .member__title {
   color: var(--main-dark);
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
   margin-bottom: 2rem;
   text-align: center;
 }
 
 .member__username {
-  font-size: 2rem;
+  font-size: var(--font-size-md);
   color: var(--main-dark);
   margin: 0;
 }
@@ -109,7 +109,7 @@
 
 .member__count {
   color: var(--main-color);
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
   text-align: center;
 }
 
@@ -132,7 +132,7 @@
 
 @media (min-width: 992px) {
   .details__container {
-    column-gap: 8rem;
+    column-gap: var(--gap-xxl);
   }
 
   .details__card {
@@ -154,7 +154,7 @@
 
   .details__body > * {
     flex: 1;
-    row-gap: 1rem;
+    row-gap: var(--gap-xs);
   }
 
   .details__img {
@@ -169,16 +169,16 @@
   }
 
   .details__title {
-    font-size: 3.5rem;
+    font-size: var(--font-size-xl);
   }
 
   .details__description {
-    font-size: 2rem;
+    font-size: var(--font-size-md);
     max-width: 35rem;
   }
 
   .details__participate {
-    gap: 6rem;
+    gap: var(--gap-xxl);
   }
 
   .member {
@@ -188,6 +188,6 @@
 
 @media (min-width: 1200px) {
   .details__header {
-    gap: 8rem;
+    gap: var(--gap-xxl);
   }
 }

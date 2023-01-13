@@ -10,7 +10,7 @@
 .filters__category {
   max-width: 100%;
   overflow: overlay;
-  gap: 2.6rem;
+  gap: var(--gap-l);
   flex-direction: row;
   margin-top: 3rem;
 }
@@ -25,7 +25,7 @@
 }
 
 .filter {
-  column-gap: 2rem;
+  column-gap: var(--gap-md);
 }
 
 .gradient {
@@ -51,22 +51,29 @@
 }
 
 .event__container {
-  row-gap: 7rem;
+  row-gap: var(--gap-xxl);
   margin-top: 5rem;
+  align-items: flex-start;
 }
 
 .event__card {
-  column-gap: 6rem;
+  column-gap: var(--gap-xxl);
   background-color: var(--main-white);
   padding: 2rem;
+  max-width: none;
+}
+
+.event__info {
+  max-width: 30rem;
 }
 
 .event__icons {
   flex-direction: column;
+  margin-top: 8rem;
 }
 
 .event__price {
-  font-size: 2rem;
+  font-size: var(--font-size-md);
 }
 
 .event__description {
@@ -78,6 +85,7 @@
 
 .event__actions {
   flex-direction: column;
+  margin-top: 5rem;
 }
 
 @media (min-width: 576px) {

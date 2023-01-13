@@ -48,7 +48,7 @@
 .nav__label {
   color: var(--main-dark);
   text-decoration: none;
-  font-size: 2rem;
+  font-size: var(--font-size-md);
 }
 
 .nav__btn {

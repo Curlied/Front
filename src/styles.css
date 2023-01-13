@@ -28,6 +28,19 @@
   --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
     no-repeat padding-box;
   --font-family-primary: "Co Headline";
+
+  --font-size-s: 1.5rem;
+  --font-size-md: 2rem;
+  --font-size-l: 2.5rem;
+  --font-size-xl: 3rem;
+  --font-size-xxl: 3.5rem;
+
+  --gap-xs: 1rem;
+  --gap-s: 1.5rem;
+  --gap-md: 2rem;
+  --gap-l: 2.5rem;
+  --gap-xl: 3rem;
+  --gap-xxl: 6rem;
 }
 
 html {
@@ -55,25 +68,25 @@ body {
 ----------------------------------
 */
 .heading--primary {
-  font-size: 3.5rem;
+  font-size: var(--font-size-xxl);
 }
 
 .heading--secondary {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
 }
 
 .heading--tertiary {
   margin: 0;
-  font-size: 2rem;
+  font-size: var(--font-size-md);
 }
 
 .paragraph {
-  font-size: 2rem;
+  font-size: var(--font-size-md);
 }
 
 .icon__label {
-  font-size: 1.4rem;
+  font-size: var(--font-size-s);
   display: block;
   font-weight: bold;
   color: var(--main-color);
@@ -90,11 +103,15 @@ body {
   border: 1px solid var(--main-color);
   color: var(--main-color);
   width: 100%;
+  font-size: var(--font-size-md);
+}
+.input--small {
+  font-size: var(--font-size-s);
 }
 
 .label {
   color: var(--main-color);
-  font-size: 1.4rem;
+  font-size: var(--font-size-md);
 }
 
 /*
@@ -142,10 +159,10 @@ body {
 */
 
 .btn-main {
-  font-size: 1.5rem;
+  font-size: var(--font-size-md);
   background-color: var(--main-color);
   color: var(--main-white);
-  border-radius: 20px;
+  border-radius: 2rem;
   padding: 1rem 2rem;
   font-weight: bold;
   line-height: normal;
@@ -180,7 +197,7 @@ body {
 }
 
 .link {
-  font-size: 1.25rem;
+  font-size: var(--font-size-s);
   color: var(--main-color);
   text-decoration: underline;
 }

@@ -31,7 +31,7 @@
             </div>
             <div class="d-md-flex flex-column filters__actions multi-collapse collapse">
               <label for="date" class="input__label">Date</label>
-              <input type="date" class="input mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
+              <input type="date" class="input input--small" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
                 formControlName="date">
               <div class="text-center mt-3">
                 <button class="btn btn-main" type="submit">Filtrer</button>
@@ -51,7 +51,7 @@
               consectetur in
               dui
             </p>
-            <div class="d-flex justify-content-between mt-5 event__icons">
+            <div class="d-flex justify-content-between event__icons">
               <div class="d-flex justify-content-center flex-column text-center">
                 <app-svg icon="calendar" class="icon"></app-svg>
                 <small class="icon__label">{{ event.categoryComplet.name }}</small>
@@ -65,7 +65,7 @@
                 <small class="icon__label">{{ event.nbUserActual}}/{{ event.user_max}}</small>
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center color-main mt-5 event__actions">
+            <div class="d-flex justify-content-between align-items-center color-main event__actions">
               <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir
                 plus</button>
               <p class="event__price mb-0">Gratuit</p>
