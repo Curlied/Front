@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
-import { ViewEncapsulation } from '@angular/core';
 import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
 import { ResponseService } from 'src/app/response.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ObservableService } from 'src/app/observable.service';
 import { Router } from '@angular/router';
 
@@ -50,7 +49,7 @@ export class CreationEvenementComponent implements OnInit {
     private responseService: ResponseService) { }
 
   ngOnInit(): void {
-    if (this.observableService.userStatut.getValue() == false) {
+    if (!this.observableService.userStatut.getValue()) {
       const error: HttpErrorResponse = new HttpErrorResponse({ error: { message: "Veuillez vous connecter svp !" }, status: 401 })
       this.responseService.ErrorF(error);
     }
@@ -121,20 +120,17 @@ export class CreationEvenementComponent implements OnInit {
         return;
       }
 
-      const date_time = this.convertDateAndTimeToDateTime();
-      const departement = this.getDepartmentNameByCode();
-      const code = this.eventForm.get('code')?.value;
-      const adress = this.eventForm.get('adress')?.value;
+      const departement = this.getDepartmentNameByCode()
 
       let formData = new FormData();
       formData.append('name', this.eventForm.get('name')?.value);
       formData.append('description', this.eventForm.get('description')?.value);
       formData.append('category', this.eventForm.get('category')?.value);
-      formData.append('date_time', date_time);
+      formData.append('date_time', this.convertDateAndTimeToDateTime());
       formData.append('place', `${this.eventForm.get('adress')?.value} ${this.eventForm.get('code')?.value} ${departement}`);
       formData.append('time', this.eventForm.get('time')?.value);
-      formData.append('department', departement);
-      formData.append('code', code);
+      formData.append('department',departement );
+      formData.append('code', this.eventForm.get('code')?.value);
       formData.append('user_max', this.eventForm.get('user_max')?.value);
       formData.append('price', this.eventForm.get('price')?.value);
       let Images = this.eventForm.get('url_image')?.value;
@@ -147,29 +143,27 @@ export class CreationEvenementComponent implements OnInit {
       this.httpService.postAddEvent(formData).subscribe({
         next: (res: any) => {
           this.responseService.SuccessF(res);
-          this.router.navigateByUrl('/evenements');
+          this.router.navigateByUrl('/');
         },
         error: (err: any) => {
           this.responseService.ErrorF(err);
         }
       })
     }
-    catch {
+    catch (e) {
       this.ngOnInit();
     }
   }
 
   convertDateAndTimeToDateTime() {
-
     let date = this.eventForm.get("date")?.value;
     let hour = this.eventForm.get("hour")?.value;
 
+    const dateTime = new Date(`${date} ${hour}`).toLocaleString(
+      [], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}
+    )
 
-    const bDate = date ? new Date(date) : new Date('0000');
-    const bHour = hour ? hour : '00:00';
-
-    let formatDate = bDate.toLocaleString().split(',')[0];
-    return `${formatDate} ${bHour}`;
+    return dateTime
   }
 
   convertAdressDepartementAndPostalToPlace() {
@@ -182,9 +176,7 @@ export class CreationEvenementComponent implements OnInit {
     // get all departement
     this.httpService.getCommuneByDepartmentCode(codeDepartment).subscribe({
       next: (res: any) => {
-
-        const communesArray: any[] = res;
-        this.arrayCommune = communesArray.sort((a, b) => (a.codesPostaux[0] > b.codesPostaux[0]) ? 1 : ((b.codesPostaux[0] > a.codesPostaux[0]) ? -1 : 0));
+        this.arrayCommune = res.sort(this.compareDepartment);
         const codePostauxFirst = this.arrayCommune[0].codesPostaux[0];
         const nomCommuneFirst = this.arrayCommune[0].nom;
         this.eventForm.controls['code'].setValue(`${codePostauxFirst}-${nomCommuneFirst}`);
@@ -193,6 +185,16 @@ export class CreationEvenementComponent implements OnInit {
         this.responseService.ErrorF(err);
       }
     });
+  }
+
+  compareDepartment(a:any,b:any){
+    if(a.codesPostaux[0] > b.codesPostaux[0]) {
+      return 1
+    } else if (b.codesPostaux[0] > a.codesPostaux[0]) {
+      return -1
+    }
+    
+    return 0
   }
 
   getDepartmentNameByCode() {

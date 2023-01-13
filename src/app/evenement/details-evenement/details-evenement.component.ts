@@ -28,7 +28,7 @@ export class DetailsEvenementComponent implements OnInit {
     });
 
     if (!this.event_id) {
-      this.router.navigate(['./evenements']);
+      this.router.navigate(['./']);
     }
     else {
       this.getDetailsEvent(this.event_id);

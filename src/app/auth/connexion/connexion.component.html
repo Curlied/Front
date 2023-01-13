@@ -1,35 +1,33 @@
-
-<div class="d-flex align-items-center bg-img">
-  <div class="container-fluid">
-    <div class="row justify-content-center align-items-center m-auto">
-      <div class="col-12 col-md-10 col-lg-7 col-xl-5 bg-dark-mode rounded p-5">
-        <div class="d-flex justify-content-center align-items-center flex-wrap mb-5">
-          <h1 class="fw-bold">Bienvenue sur</h1>
-          <img class="logo" src="https://curlied.sfo3.digitaloceanspaces.com/curliedImages/logos/inline_white.png">
+<div class="main">
+  <div class="first">
+    <img src="./assets/images/phone1.png" class="tel1">
+    <img src="./assets/images/phone2.png" class="tel2">
+  </div>
+  <div class="second">
+    <div class="form-container">
+      <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5">
+        <h1 class="welcome mb-0">Bienvenue sur</h1>
+        <img src="./assets/images/logo.svg" class="ms-3">
+      </div>
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="prenom.nom@ynov.com"
+            required>
         </div>
-        <form (ngSubmit)="login()" [formGroup]="loginForm">
-          <div class="form-group">
-            <label for="email">Adresse email</label>
-            <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp"
-              required>
-          </div>
-          <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" formControlName="password" class="form-control" id="password" required>
-          </div>
-          <div class="row mt-5">
-            <div class="col-6">
-              <button class="btn btn-main w-100" type="submit">Connexion</button>
-            </div>
-            <div class="col-6">
-              <a class="btn btn-reverse w-100" routerLink="/inscription">Inscription</a>
-            </div>
-          </div>
-        </form>
-        <div class="d-flex justify-content-center mt-5">
-          <!-- <a class="link" routerLink="">Mot de passe oublié</a> -->
-          <a class="link" routerLink="">Continuer sans compte</a>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" formControlName="password" class="form-control" id="password" required>
         </div>
+        <div class="button mt-5">
+          <button class="btn btn-main" type="submit">Se connecter</button>
+          <div class="px-4">
+            <a class="text-decoration-none fw-bold color-main" routerLink="/inscription">S'inscrire</a>
+          </div>
+        </div>
+      </form>
+      <div class="mt-4 text-center">
+        <small class="color-main text-decoration-underline">Mot de passe oublié ?</small>
       </div>
     </div>
   </div>

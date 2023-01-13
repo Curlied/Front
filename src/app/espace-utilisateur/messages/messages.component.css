@@ -1,0 +1,47 @@
+.messages {
+  padding: 100px 0;
+  min-height: 90vh;
+  background: var(--main-bg);
+}
+
+.users_list,
+.users_messages {
+  border-radius: 60px;
+  box-shadow: 0px 0px 10px #00000040;
+  min-height: 70vh;
+}
+
+@media (max-width: 1200px) {
+  .users_list {
+    min-height: auto;
+  }
+}
+
+.message-sender {
+  background-color: #f3f3f3;
+  max-width: 400px;
+  border-radius: 1em;
+}
+
+.message-receiver {
+  background-color: var(--main-color);
+  color: white;
+  max-width: 400px;
+  border-radius: 1em;
+}
+
+.nav-link {
+  color: black;
+  border-radius: 0;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #f3f3f3;
+  color: black;
+}
+
+.tchat-window {
+  max-height: 70%;
+  overflow-y: auto;
+}

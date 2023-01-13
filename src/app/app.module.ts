@@ -3,23 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastComponent } from './toasts/toast.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { HeaderComponent } from './template/header/header.component';
 import { FooterComponent } from './template/footer/footer.component';
-import { ListeEvenementsComponent } from './evenement/liste-evenements/liste-evenements.component';
 import { DetailsEvenementComponent } from './evenement/details-evenement/details-evenement.component';
 import { CreationEvenementComponent } from './evenement/creation-evenement/creation-evenement.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
-import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin.component';
+import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
+import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './auth.interceptor';
+
+export function tokenGetter() {
+  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+}
+import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +37,14 @@ import { AdminComponent } from './admin/admin.component';
     InscriptionComponent,
     HeaderComponent,
     FooterComponent,
-    ListeEvenementsComponent,
     DetailsEvenementComponent,
     CreationEvenementComponent,
     ConfirmationComponent,
     ErrorComponent,
-    EspaceUtilisateurComponent,
-    AdminComponent
+    ProfilComponent,
+    MessagesComponent,
+    AdminComponent,
+    SvgComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +52,18 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
   ],
-  providers: [CookieService],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    CookieService,
+    JwtHelperService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
