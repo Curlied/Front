@@ -1,33 +1,79 @@
 .messages {
-  padding: 100px 0;
+  padding: var(--gap-xxl) 0;
   min-height: 90vh;
   background: var(--main-bg);
 }
 
-.users_list,
-.users_messages {
-  border-radius: 6rem;
-  box-shadow: 0px 0px 10px #00000040;
+.users__list {
+  border-radius: 3rem;
   min-height: 70vh;
+  overflow: hidden;
 }
 
-@media (max-width: 1200px) {
-  .users_list {
-    min-height: auto;
-  }
+.users__title {
+  padding: var(--gap-md);
 }
 
-.message-sender {
-  background-color: #f3f3f3;
+.users__tabs {
+  gap: var(--gap-md);
+  margin-top: var(--gap-l);
+  border-radius: 3rem;
+}
+
+.users__tab {
+  border: none;
+  background-color: var(--main-white);
+  padding: 0;
+  gap: var(--gap-md);
+  padding: var(--gap-md);
+}
+
+.users__tab.active {
+  background-color: var(--main-grey);
+}
+
+.users__name {
+  font-weight: bold;
+  margin: 0;
+  font-size: var(--font-size-md);
+}
+
+.users__messages {
+  border-radius: 3rem;
+  overflow: hidden;
+  background-color: var(--main-white);
+  padding: var(--gap-md);
+  height: 100%;
+}
+
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--gap-md);
+}
+
+.message__text {
+  margin: 0;
+  padding: var(--gap-md);
+  font-size: var(--font-size-xs);
+}
+
+.message--sender .message__text {
+  background-color: var(--main-white);
   max-width: 40rem;
   border-radius: 1rem;
 }
 
-.message-receiver {
+.message--receiver .message__text {
   background-color: var(--main-color);
-  color: white;
+  color: var(--main-white);
   max-width: 40rem;
   border-radius: 1rem;
+  margin-left: auto;
+}
+
+.message__input {
+  margin-top: auto;
 }
 
 .nav-link {
@@ -35,13 +81,25 @@
   border-radius: 0;
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  background-color: #f3f3f3;
-  color: black;
-}
-
-.tchat-window {
+.tchat {
   max-height: 70%;
   overflow-y: auto;
+  margin-top: var(--gap-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.tchat__input {
+  margin-top: auto;
+}
+
+.tab-content,
+.tab-pane {
+  height: 100%;
+}
+
+.tab-content > .active {
+  display: flex;
+  flex-direction: column;
 }

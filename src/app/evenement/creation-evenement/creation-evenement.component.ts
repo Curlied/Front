@@ -188,7 +188,7 @@ export class CreationEvenementComponent implements OnInit {
     let date = this.eventForm.get('date')?.value;
     let hour = this.eventForm.get('hour')?.value;
 
-    const dateTime = new Date(`${date} ${hour}`).toLocaleString([], {
+    const dateTime = new Date(`${date} ${hour}`).toLocaleString('fr-FR', {
       day: 'numeric',
       year: 'numeric',
       month: 'numeric',

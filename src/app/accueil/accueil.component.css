@@ -1,6 +1,6 @@
 .filters {
   background-color: var(--main-white);
-  padding: 4rem;
+  padding: var(--gap-xl);
 }
 .filters__mobile {
   display: flex;
@@ -12,11 +12,11 @@
   overflow: overlay;
   gap: var(--gap-l);
   flex-direction: row;
-  margin-top: 3rem;
+  margin-top: var(--gap-xl);
 }
 
 .filters__actions {
-  margin-top: 2rem;
+  margin-top: var(--gap-md);
 }
 
 .filters__actions.show {
@@ -52,14 +52,14 @@
 
 .event__container {
   row-gap: var(--gap-xxl);
-  margin-top: 5rem;
+  margin-top: var(--gap-xxl);
   align-items: flex-start;
 }
 
 .event__card {
   column-gap: var(--gap-xxl);
   background-color: var(--main-white);
-  padding: 2rem;
+  padding: var(--gap-md);
   max-width: none;
 }
 
@@ -69,7 +69,7 @@
 
 .event__icons {
   flex-direction: column;
-  margin-top: 8rem;
+  margin-top: var(--gap-xxl);
 }
 
 .event__price {
@@ -85,7 +85,7 @@
 
 .event__actions {
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: var(--gap-xxl);
 }
 
 @media (min-width: 576px) {
@@ -126,7 +126,7 @@
   }
 
   .event__card {
-    padding: 4rem;
+    padding: var(--gap-xl);
     border-radius: 5rem;
   }
 

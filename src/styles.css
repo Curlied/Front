@@ -20,6 +20,7 @@
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://use.typekit.net/nfk3xat.css");
 
 :root {
   --main-color: #176de2;
@@ -27,8 +28,12 @@
   --main-white: #fff;
   --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
     no-repeat padding-box;
-  --font-family-primary: "Co Headline";
+  --main-red: #c95a5a;
+  --main-grey: #efefef;
 
+  --font-family-primary: "co-text", "dosis", sans-serif;
+
+  --font-size-xs: 1rem;
   --font-size-s: 1.5rem;
   --font-size-md: 2rem;
   --font-size-l: 2.5rem;
@@ -41,6 +46,7 @@
   --gap-l: 2.5rem;
   --gap-xl: 3rem;
   --gap-xxl: 6rem;
+  --gap-huge: 10rem;
 }
 
 html {
@@ -48,7 +54,7 @@ html {
 }
 
 body {
-  font-family: "Dosis", sans-serif;
+  font-family: var(--font-family-primary);
 }
 
 * {
@@ -58,8 +64,12 @@ body {
 }
 
 .app--container {
-  padding-top: 10rem;
+  padding: var(--gap-huge) 0;
   background: var(--main-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*
@@ -98,7 +108,7 @@ body {
 ----------------------------------
 */
 .input {
-  padding: 1rem 2rem;
+  padding: var(--gap-xs) var(--gap-md);
   border-radius: 1rem;
   border: 1px solid var(--main-color);
   color: var(--main-color);
@@ -142,7 +152,7 @@ body {
 }
 
 .bg-red {
-  background-color: #c95a5a;
+  background-color: var(--main-red);
 }
 
 .border-main-color {
@@ -160,7 +170,7 @@ body {
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 2rem;
-  padding: 1rem 2rem;
+  padding: var(--gap-xs) var(--gap-md);
   font-weight: bold;
   line-height: normal;
 }
@@ -176,16 +186,14 @@ body {
   color: var(--main-color);
   border-color: var(--main-color);
   border-radius: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0 var(--gap-md);
 }
 
 .btn-reverse:hover {
   background-color: var(--main-color);
   color: var(--main-white);
   border-radius: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0 var(--gap-md);
 }
 
 .btn-custom {
@@ -205,13 +213,13 @@ body {
 
 .btn-radius-style {
   border-radius: 2rem;
-  padding: 0 2rem;
+  padding: 0 var(--gap-md);
   color: var(--main-white);
 }
 
 .btn-radius-style:hover {
   border-radius: 2rem;
-  padding: 0 2rem;
+  padding: 0 var(--gap-md);
 }
 
 /*
@@ -273,13 +281,13 @@ body {
 
 @media only screen and (max-width: 992px) {
   section {
-    padding: 8rem 0;
+    padding: var(--gap-xxl) 0;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   section {
-    padding: 8rem 0;
+    padding: var(--gap-xxl) 0;
   }
 }
 
@@ -288,7 +296,7 @@ body {
 }
 
 .form__actions {
-  margin-top: 3rem;
+  margin-top: var(--gap-xl);
   display: flex;
   justify-content: space-between;
 }
@@ -296,5 +304,5 @@ body {
 .form__footer {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
+  margin-top: var(--gap-xxl);
 }

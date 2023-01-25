@@ -49,7 +49,7 @@
 }
 
 .form-container {
-  width: 450px;
+  width: 45rem;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -61,8 +61,8 @@
   }
   .form__container {
     background-color: white;
-    padding: 2rem 3rem;
-    border-radius: 30px;
+    padding: var(--gap-md) var(--gap-xl);
+    border-radius: 3rem;
   }
 }
 

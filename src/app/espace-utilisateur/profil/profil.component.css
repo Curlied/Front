@@ -116,7 +116,7 @@ a {
 @media (max-width: 1200px) {
   .nav-pills {
     flex-direction: inherit !important;
-    margin-bottom: 2rem;
+    margin-bottom: var(--gap-md);
     border-right: none !important;
     border-bottom: 1px solid #dee2e6 !important;
   }
