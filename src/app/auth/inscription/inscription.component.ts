@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
 
@@ -13,14 +13,14 @@ export class InscriptionComponent implements OnInit {
   currentDate = new Date().toISOString().slice(0, 10);
 
   
-  profileForm = new FormGroup({
-    username: new FormControl('' ,[Validators.required, Validators.minLength(6)]),
-    email: new FormControl('' ,[Validators.required]),
-    password: new FormControl('' ,[Validators.required, Validators.minLength(3)]),
-    confirm_password: new FormControl('',[Validators.required, Validators.minLength(3)]),
-    birth_date: new FormControl('',[Validators.required]),
-    telephone: new FormControl('',[Validators.required]),
-    url_image:  new FormControl()
+  profileForm = new UntypedFormGroup({
+    username: new UntypedFormControl('' ,[Validators.required, Validators.minLength(6)]),
+    email: new UntypedFormControl('' ,[Validators.required]),
+    password: new UntypedFormControl('' ,[Validators.required, Validators.minLength(3)]),
+    confirm_password: new UntypedFormControl('',[Validators.required, Validators.minLength(3)]),
+    birth_date: new UntypedFormControl('',[Validators.required]),
+    telephone: new UntypedFormControl('',[Validators.required]),
+    url_image:  new UntypedFormControl()
   });
 
   constructor(private httpService : HttpService,private responseService : ResponseService) { }

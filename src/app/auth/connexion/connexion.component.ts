@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { ObservableService } from 'src/app/observable.service';
@@ -12,9 +12,9 @@ import { ToastObservableService } from 'src/app/toast.observable.service';
   styleUrls: ['./connexion.component.css'],
 })
 export class ConnexionComponent implements OnInit {
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
+  loginForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required]),
+    password: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),

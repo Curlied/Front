@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../http.service';
 import { ResponseService } from 'src/app/response.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 
@@ -20,11 +20,11 @@ export class AccueilComponent implements OnInit {
   arrayCommune!: any[];
   dateMin!: any;
   
-  searchFormGroup = new FormGroup({
-    category: new FormControl("tous", [Validators.required]),
-    date: new FormControl(undefined),
-    department: new FormControl(''),
-    numdepartment: new FormControl('tous', [Validators.required]),
+  searchFormGroup = new UntypedFormGroup({
+    category: new UntypedFormControl("tous", [Validators.required]),
+    date: new UntypedFormControl(undefined),
+    department: new UntypedFormControl(''),
+    numdepartment: new UntypedFormControl('tous', [Validators.required]),
   });
 
   constructor(private httpService: HttpService, private responseService: ResponseService) { }
