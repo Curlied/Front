@@ -40,9 +40,9 @@ export class AdminComponent implements OnInit {
     private responseService: ResponseService
   ) {
     this.observableService.userStatut.subscribe((isAdmin) => {
-      // if (!isAdmin) {
-      //   this.router.navigateByUrl('');
-      // }
+      if (!isAdmin) {
+        this.router.navigateByUrl('');
+      }
     });
   }
 
