@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseService } from '../../response.service';
 import { HttpService } from '../../http.service';
@@ -36,19 +36,19 @@ export class ProfilComponent implements OnInit {
 
   //https://pivan.github.io/file-upload/
   public fileUploadControl = new FileUploadControl({ listVisible: true, accept: ['image/*'], discardInvalid: true, }, [FileUploadValidators.filesLimit(3), FileUploadValidators.accept(["image/*"]), FileUploadValidators.fileSize(3000000)]);
-  editInfoForm = new FormGroup({
-    url_image: new FormControl(),
-    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    birth_date: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    telephone: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    aboutMe: new FormControl('', [Validators.required])
+  editInfoForm = new UntypedFormGroup({
+    url_image: new UntypedFormControl(),
+    username: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+    birth_date: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.minLength(3)]),
+    telephone: new UntypedFormControl('', [Validators.required, Validators.minLength(3)]),
+    aboutMe: new UntypedFormControl('', [Validators.required])
   });
 
-  editPasswordForm = new FormGroup({
-    old_password: new FormControl('', [Validators.required]),
-    new_password: new FormControl('', [Validators.required]),
-    confirm_new_password: new FormControl('', [Validators.required]),
+  editPasswordForm = new UntypedFormGroup({
+    old_password: new UntypedFormControl('', [Validators.required]),
+    new_password: new UntypedFormControl('', [Validators.required]),
+    confirm_new_password: new UntypedFormControl('', [Validators.required]),
   });
 
 

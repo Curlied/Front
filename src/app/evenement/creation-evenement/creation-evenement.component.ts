@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
 import {
   FileUploadControl,
@@ -37,24 +37,20 @@ export class CreationEvenementComponent implements OnInit {
 
   currentDate = new Date().toISOString().slice(0, 10);
 
-  eventForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    description: new FormControl('', [
-      Validators.required,
-      Validators.minLength(50),
-      Validators.maxLength(500),
-    ]),
-    category: new FormControl('', [Validators.required]),
-    date: new FormControl('', [Validators.required]),
-    hour: new FormControl('', [Validators.required]),
-    department: new FormControl('', [Validators.required]),
-    code: new FormControl('', [Validators.required]),
-    adress: new FormControl('', [Validators.required]),
-    place: new FormControl(''),
-    time: new FormControl('', [Validators.required]),
-    user_max: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
-    url_image: new FormControl(),
+  eventForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+    description: new UntypedFormControl('', [Validators.required, Validators.minLength(50), Validators.maxLength(500)]),
+    category: new UntypedFormControl('', [Validators.required]),
+    date: new UntypedFormControl('', [Validators.required]),
+    hour: new UntypedFormControl('', [Validators.required]),
+    department: new UntypedFormControl('', [Validators.required]),
+    code: new UntypedFormControl('', [Validators.required]),
+    adress: new UntypedFormControl('', [Validators.required]),
+    place: new UntypedFormControl(''),
+    time: new UntypedFormControl('', [Validators.required]),
+    user_max: new UntypedFormControl('', [Validators.required]),
+    price: new UntypedFormControl('', [Validators.required]),
+    url_image: new UntypedFormControl()
   });
 
   constructor(
