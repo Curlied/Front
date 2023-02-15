@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inscription',
@@ -11,7 +12,7 @@ import { ResponseService } from 'src/app/response.service';
 
 export class InscriptionComponent implements OnInit {
   currentDate = new Date().toISOString().slice(0, 10);
-
+  global_bucket_images=  environment.bucketImagesBasePath + environment.folderBucketGlobalPictures
   
   profileForm = new UntypedFormGroup({
     username: new UntypedFormControl('' ,[Validators.required, Validators.minLength(6)]),

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-details-evenement',
@@ -9,7 +10,7 @@ import { ResponseService } from 'src/app/response.service';
   styleUrls: ['./details-evenement.component.css']
 })
 export class DetailsEvenementComponent implements OnInit {
-
+  bucketEvent =  environment.bucketImagesBasePath + environment.folderBucketEventPictures
   event: any;
   constructor(private router: Router, private route: ActivatedRoute, 
     private httpService: HttpService, private responseService: ResponseService) { }

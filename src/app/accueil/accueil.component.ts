@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-
+  bucketEvent =  environment.bucketImagesBasePath + environment.folderBucketEventPictures
   arrayCategories!: any[];
   arrayEvent!: any[];
   arrayDepartement!: any[];
