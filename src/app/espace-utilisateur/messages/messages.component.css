@@ -72,10 +72,6 @@
   margin-left: auto;
 }
 
-.message__input {
-  margin-top: auto;
-}
-
 .nav-link {
   color: black;
   border-radius: 0;
@@ -92,6 +88,7 @@
 
 .tchat__input {
   margin-top: auto;
+  padding-top: var(--gap-md);
 }
 
 .tab-content,
