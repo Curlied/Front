@@ -120,6 +120,7 @@
     position: sticky;
     top: 11rem;
     height: 100vh;
+    max-width: 23rem;
   }
 
   .filters__category {
