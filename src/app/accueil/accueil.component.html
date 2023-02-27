@@ -1,7 +1,7 @@
 <section class="app--container">
   <div class="container">
     <div class="row">
-      <div class="col-lg-2 filters__container">
+      <div class="col-lg-3 filters__container">
         <form (ngSubmit)="submitSearch()" [formGroup]="searchFormGroup">
           <div class="filters d-flex flex-column">
             <div class="d-md-none filters__toggle filters__mobile">
@@ -41,7 +41,7 @@
         </form>
       </div>
 
-      <div class="col-lg-10 d-flex flex-column event__container">
+      <div class="col-lg-9 d-flex flex-column event__container">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
           <img class="img-fluid event__img d-none d-sm-block" src="./assets/images/concert1.jfif" alt="...">
           <div class="event__info">
