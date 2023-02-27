@@ -54,7 +54,6 @@ export class AccueilComponent implements OnInit {
     this.httpService.getAllEvent().subscribe({
       next: (res: any) => {
         this.arrayEvent = res.body;
-        console.log(res.body);
       },
       error: (err): any => {
         this.responseService.ErrorF(err);

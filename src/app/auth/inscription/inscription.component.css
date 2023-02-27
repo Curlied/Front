@@ -60,8 +60,8 @@
     background: linear-gradient(#78bcf7, #2828c9);
   }
   .form__container {
-    background-color: white;
-    padding: var(--gap-md) var(--gap-xl);
+    background-color: var(--main-white);
+    padding: var(--gap-xxl);
     border-radius: 3rem;
   }
 }

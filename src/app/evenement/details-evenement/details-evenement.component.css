@@ -130,7 +130,7 @@
   }
 
   .details__card {
-    padding: var(--gap-xl);
+    padding: var(--gap-xxl);
     border-radius: 5rem;
   }
 

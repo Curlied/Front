@@ -27,6 +27,7 @@ export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
 }
 import { SvgComponent } from './components/svg/svg.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SvgComponent } from './components/svg/svg.component';
     MessagesComponent,
     AdminComponent,
     SvgComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

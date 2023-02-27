@@ -84,7 +84,7 @@ app-footer {
 
 @media (min-width: 768px) {
   .event__card {
-    padding: var(--gap-xl);
+    padding: var(--gap-xxl);
     border-radius: 9rem;
   }
 

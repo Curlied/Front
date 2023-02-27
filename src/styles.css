@@ -34,11 +34,11 @@
   --font-family-primary: "co-text", "dosis", sans-serif;
 
   --font-size-xs: 1rem;
-  --font-size-s: 1.5rem;
-  --font-size-md: 2rem;
-  --font-size-l: 2.5rem;
-  --font-size-xl: 3rem;
-  --font-size-xxl: 3.5rem;
+  --font-size-s: clamp(1.2rem, 1.5vw, 1.5rem);
+  --font-size-md: clamp(1.25rem, 1.75vw, 2rem);
+  --font-size-l: clamp(1.5rem, 2vw, 2.5rem);
+  --font-size-xl: clamp(1.75rem, 2vw, 3rem);
+  --font-size-xxl: clamp(2rem, 2.5vw, 3.5rem);
 
   --gap-xs: 1rem;
   --gap-s: 1.5rem;
@@ -46,7 +46,12 @@
   --gap-l: 2.5rem;
   --gap-xl: 3rem;
   --gap-xxl: 6rem;
-  --gap-huge: 10rem;
+  --gap-huge: 12rem;
+}
+
+.row {
+  --bs-gutter-x: 4rem;
+  --bs-gutter-y: 0;
 }
 
 html {

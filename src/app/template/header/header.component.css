@@ -32,6 +32,9 @@
 .nav-item:not(:first-child) {
   border-top: 1px solid var(--main-dark);
 }
+.dropdown-item {
+  font-size: var(--font-size-s);
+}
 
 .nav__profile {
   gap: 2rem;
