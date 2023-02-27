@@ -110,15 +110,16 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .filters {
     overflow: hidden;
     height: 60rem;
   }
 
   .filters__container {
-    position: fixed;
-    max-width: 23rem;
+    position: sticky;
+    top: 11rem;
+    height: 100vh;
   }
 
   .filters__category {
