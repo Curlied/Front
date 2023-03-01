@@ -8,8 +8,13 @@
                     </div>
                     <div class="col-9 col-lg-7 user__info">
                         <h2 class="heading--secondary">{{ profilData.username }}</h2>
-                        <p><span>{{ profilData.age }} ans</span><span class="ps-4">B1 - Informatique</span></p>
-                        <p>{{ profilData.description }}</p>
+                        <p class="paragraph user__age">
+                            <span>{{ profilData.age }} ans</span>
+                            <span class="ps-4">
+                                B1 - Informatique
+                            </span>
+                        </p>
+                        <p class="paragraph user__desc">{{ profilData.description }}</p>
                     </div>
                     <div class="col-lg-3 user__actions">
                         <button type="button" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#editModal">

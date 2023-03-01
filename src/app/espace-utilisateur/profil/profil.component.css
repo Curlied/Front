@@ -45,6 +45,14 @@
   border-radius: 2rem;
 }
 
+.user__age {
+  margin-top: var(--gap-xs);
+}
+
+.user__desc {
+  margin-top: var(--gap-md);
+}
+
 .user__friends {
   background-color: var(--main-white);
   padding: var(--gap-md);
