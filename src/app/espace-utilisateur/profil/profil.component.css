@@ -50,7 +50,7 @@
 }
 
 .user__desc {
-  margin-top: var(--gap-md);
+  margin-top: var(--gap-l);
 }
 
 .user__friends {
