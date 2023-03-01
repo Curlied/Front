@@ -96,6 +96,7 @@ body {
 
 .paragraph {
   font-size: var(--font-size-md);
+  margin-bottom: 0;
 }
 
 .icon__label {

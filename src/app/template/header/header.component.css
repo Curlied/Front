@@ -72,6 +72,7 @@
   margin-right: 3rem;
   flex: 1;
   border-radius: 2rem;
+  display: none;
 }
 
 .search__input {
@@ -140,6 +141,12 @@
 .event-nav {
   text-decoration: none;
   color: black;
+}
+
+@media (min-width: 576px) {
+  .search {
+    display: flex;
+  }
 }
 
 @media (min-width: 992px) {

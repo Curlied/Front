@@ -7,6 +7,7 @@
   max-height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  margin-top: 0;
 }
 
 .event__info {
@@ -74,6 +75,15 @@
 
 .friend {
   margin-top: var(--gap-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.friend__info {
+  display: flex;
+  gap: var(--gap-md);
+  align-items: center;
 }
 
 .modal-content {
