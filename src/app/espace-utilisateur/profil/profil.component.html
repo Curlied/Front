@@ -15,11 +15,10 @@
                         <button type="button" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#editModal">
                             Modifier
                         </button>
-                        <button type="button" class="btn btn-main" data-bs-toggle="modal"
-                            data-bs-target="#settingsModal">
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#settingsModal">
                             <img width="30" src="/assets/images/parametres.svg" class="img-fluid">
                         </button>
-                        <button type="button" class="btn btn-main d-xl-none" data-bs-toggle="modal"
+                        <button type="button" class="btn d-xl-none" data-bs-toggle="modal"
                             data-bs-target="#friendListModal">
                             <img width="30" src="/assets/images/add-friend.svg" class="img-fluid">
                         </button>
@@ -27,7 +26,7 @@
                 </div>
                 <div class="user__events mt-5">
                     <h2 class="heading--secondary">Mes événements</h2>
-                    <div class="events row" *ngIf="allEventsData">
+                    <div class="events row gy-5" *ngIf="allEventsData">
                         <div *ngFor="let eventCreate of allEventsData.eventsCreate" class="col-md-6 col-lg-4">
                             <div class="event__card" routerLink="/detailsEvenement"
                                 [queryParams]="{event: eventCreate._id}">
@@ -35,7 +34,7 @@
                                     <h3 class="heading--tertiary">{{ eventCreate.name }}</h3>
                                     <img class="img-fluid" width="20" src="/assets/images/couronne.svg">
                                 </div>
-                                <p class="paragraph">{{ eventCreate.categoryInfo.name }}</p>
+                                <p class="paragraph event__categ">{{ eventCreate.categoryInfo.name }}</p>
                                 <img class="event__img" src="{{eventCreate.url_image[0]}}">
                             </div>
                         </div>
@@ -54,7 +53,7 @@
             </div>
             <div class="col-xl-4 d-none d-xl-block">
                 <div class="user__friends">
-                    <h2 class="heading--secondary">Amis</h2>
+                    <h2 class="heading--secondary text-center">Amis</h2>
                     <div class="friends__info">
                         <label class="position-absolute ps-1">
                             <img width="20" height="20" src="/assets/images/loupe.svg">

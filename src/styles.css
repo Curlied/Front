@@ -51,7 +51,6 @@
 
 .row {
   --bs-gutter-x: 4rem;
-  --bs-gutter-y: 0;
 }
 
 html {
@@ -74,7 +73,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 /*
