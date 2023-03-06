@@ -1,45 +1,48 @@
 <section class="app--container">
 	<div class="d-flex justify-content-center event">
 		<div class="event__card">
-			<h1 class="event__title">Crée ton événement !</h1>
-			<form (ngSubmit)="send()" [formGroup]="eventForm" class="event__form row">
+			<h1 class="heading--primary">Crée ton événement !</h1>
+			<form (ngSubmit)="send()" [formGroup]="eventForm" class="form event__form row">
 				<div class="col-12">
-					<label for="name" class="form-label">Nom de l'évenement*</label>
-					<input type="text" formControlName="name" class="form-control " required>
+					<label for="name" class="label">Nom de l'évenement*</label>
+					<input type="text" formControlName="name" class="input input--text" required>
 				</div>
-				<div class="col-md-6 form-group">
-					<label for="category" class="form-label">Catégories</label>
-					<select class="form-control" formControlName="category" aria-label="Default select example">
+				<div class="col-md-6">
+					<label for="category" class="label">Catégories</label>
+					<select class="select" formControlName="category" aria-label="Default select example">
 						<option *ngFor="let category of arrayCategories" [value]="category._id">
-							{{category.name}}</option>
+							{{category.name}}
+						</option>
 					</select>
 				</div>
 				<div class="col-md-3">
-					<label for="price" class="form-label">Prix*</label>
-					<input type="number" min="1" max="9999" formControlName="price" class="form-control " required>
+					<label for="price" class="label">Prix*</label>
+					<input type="number" min="1" max="9999" formControlName="price" class="input input--number"
+						required>
 				</div>
 				<div class="col-md-3">
-					<label for="user_max" class="form-label">Place*</label>
-					<select class="form-control" formControlName="user_max" aria-label="Default select example"
+					<label for="user__max" class="label">Place*</label>
+					<select class="select" formControlName="user__max" aria-label="Default select example"
 						placeholder="Vous inclus">
-						<option *ngFor="let item of [].constructor(49); let i = index" [value]="i +2">{{i+2}}
+						<option *ngFor="let item of [].constructor(49); let i = index" [value]="i +2">
+							{{i+2}}
 						</option>
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label for="department" class="form-label">Département*</label>
-					<select class="form-control" required (change)="changeDepartment()" aria-label="departements"
+					<label for="department" class="label">Département*</label>
+					<select class="select" required (change)="changeDepartment()" aria-label="departements"
 						formControlName="department" *ngIf="arrayDepartement">
 						<option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">
-							{{departement.nom}}</option>
+							{{departement.nom}}
+						</option>
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label for="code" class="form-label">Commune*</label>
-					<select *ngIf="!arrayCommune" class="form-control" required aria-label="code"
-						formControlName="code">
+					<label for="code" class="label">Commune*</label>
+					<select *ngIf="!arrayCommune" class="select" required aria-label="code" formControlName="code">
 					</select>
-					<select *ngIf="arrayCommune" class="form-control" required aria-label="code" formControlName="code">
+					<select *ngIf="arrayCommune" class="select" required aria-label="code" formControlName="code">
 						<option *ngFor="let commune of arrayCommune; let i = index;"
 							value="{{commune.codesPostaux[0]}}-{{commune.nom}}">
 							{{commune.codesPostaux[0]}}-{{commune.nom}}
@@ -47,31 +50,31 @@
 					</select>
 				</div>
 				<div class="col-12">
-					<label for="adress" class="form-label">Adresse*</label>
-					<input type="text" formControlName="adress" class="form-control " required>
+					<label for="adress" class="label">Adresse*</label>
+					<input type="text" formControlName="adress" class="input input--text" required>
 				</div>
 				<div class="col-md-4">
-					<label for="date" class="form-label">Date*</label>
+					<label for="date" class="label">Date*</label>
 					<input type="date" formControlName="date" min="{{currentDate | date:'yyyy-MM-dd'}}"
-						class="form-control" required>
+						class="input input--date" required>
 				</div>
 				<div class="col-md-4">
-					<label for="hour" class="form-label">Heure*</label>
-					<input type="time" formControlName="hour" class="form-control" required>
+					<label for="hour" class="label">Heure*</label>
+					<input type="time" formControlName="hour" class="input input--time" required>
 				</div>
 				<div class="col-md-4">
-					<label for="time" class="form-label">Durée (en heure)*</label>
-					<input type="number" min="1" max="9999" formControlName="time" class="form-control " required>
+					<label for="time" class="label">Durée (en heure)*</label>
+					<input type="number" min="1" max="9999" formControlName="time" class="input input--number" required>
 				</div>
 				<div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
 					<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
 					</file-upload>
 				</div>
 				<div class="col-12 col-md-8">
-					<label for="description">Description*</label>
+					<label for="description" class="label">Description*</label>
 					<textarea rows="5" formControlName="description" minlength="50" maxlength="500"
-						placeholder="50 caractères min et 500 max" class="form-control form-textarea" required>
-				</textarea>
+						placeholder="50 caractères min et 500 max" class="input input--textarea" required>
+					</textarea>
 				</div>
 				<div class="col-12 d-flex justify-content-center">
 					<button class="btn btn-main mt-3" type="submit">Créer</button>

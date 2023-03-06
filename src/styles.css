@@ -94,6 +94,10 @@ body {
   font-size: var(--font-size-md);
 }
 
+.heading--quaternary {
+  font-size: var(--font-size-x);
+}
+
 .paragraph {
   font-size: var(--font-size-md);
   margin-bottom: 0;
@@ -111,7 +115,8 @@ body {
 3. Input
 ----------------------------------
 */
-.input {
+.input,
+.select {
   padding: var(--gap-xs) var(--gap-md);
   border-radius: 1rem;
   border: 1px solid var(--main-color);
@@ -120,9 +125,53 @@ body {
   font-size: var(--font-size-s);
 }
 
+.input:focus {
+  outline: var(--main-color) solid 1px;
+}
+
 .label {
   color: var(--main-color);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-s);
+}
+
+.input--textarea {
+  resize: vertical;
+  padding: var(--gap-md);
+  min-height: 10rem;
+}
+
+.file {
+  display: flex !important;
+  row-gap: var(--gap-xs);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  padding: 0 !important;
+  outline: none !important;
+}
+
+.file .upload-input {
+  position: unset !important;
+  transform: none !important;
+}
+
+.file .icon {
+  display: none;
+}
+
+.file::before {
+  content: "";
+  background-image: url("./assets/images/photo.svg");
+  background-size: cover;
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  margin: auto;
+}
+
+.file .upload-text {
+  padding-left: 0 !important;
 }
 
 /*
@@ -180,9 +229,9 @@ body {
 }
 
 .btn-main:hover {
-  background-color: var(--main-dark);
-  color: var(--main-white);
-  border-color: var(--main-dark);
+  background-color: transparent;
+  color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .btn-reverse {
@@ -309,4 +358,8 @@ body {
   display: flex;
   justify-content: center;
   margin-top: var(--gap-xxl);
+}
+
+.modal-content {
+  padding: var(--gap-xl);
 }
