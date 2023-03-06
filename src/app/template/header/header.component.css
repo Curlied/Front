@@ -1,3 +1,8 @@
+.logo__img {
+  display: block;
+  height: 1.6rem;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -59,6 +64,12 @@
   justify-content: center;
 }
 
+.nav__icon {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+}
+
 .navbar .container {
   gap: 3rem;
 }
@@ -84,6 +95,8 @@
   left: 2.5rem;
   filter: invert(53%) sepia(0%) saturate(0%) hue-rotate(59deg) brightness(95%)
     contrast(94%);
+  width: 2rem;
+  height: 2rem;
 }
 
 .icon-container {
@@ -124,6 +137,7 @@
   align-items: center;
 }
 .notifications__info {
+  flex: 1;
   display: flex;
   gap: var(--gap-s);
   align-items: center;
