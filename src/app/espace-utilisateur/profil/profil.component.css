@@ -119,9 +119,16 @@
 
 .modal__menu {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--gap-md);
 }
+
 .modal__link {
   font-size: var(--font-size-md);
+}
+
+@media (min-width: 1200px) {
+  .modal__menu {
+    flex-direction: column;
+  }
 }

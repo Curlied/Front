@@ -33,14 +33,6 @@
   background-image: linear-gradient(#78bcf7, #2828c9);
 }
 
-.input--checkbox {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  display: block;
-  accent-color: var(--main-color);
-}
-
 .event__card,
 .filters {
   border-radius: 3rem;

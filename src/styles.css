@@ -140,6 +140,14 @@ body {
   min-height: 10rem;
 }
 
+.input--checkbox {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: block;
+  accent-color: var(--main-color);
+}
+
 .file {
   display: flex !important;
   row-gap: var(--gap-xs);
@@ -172,6 +180,12 @@ body {
 
 .file .upload-text {
   padding-left: 0 !important;
+}
+
+.form-check {
+  display: flex;
+  gap: var(--gap-md);
+  align-items: center;
 }
 
 /*
