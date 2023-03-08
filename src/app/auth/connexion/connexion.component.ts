@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { ObservableService } from 'src/app/observable.service';
 import { ResponseService } from 'src/app/response.service';
-import { ToastObservableService } from 'src/app/toast.observable.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-connexion',
@@ -12,6 +12,7 @@ import { ToastObservableService } from 'src/app/toast.observable.service';
   styleUrls: ['./connexion.component.css'],
 })
 export class ConnexionComponent implements OnInit {
+  global_bucket_images=  environment.bucketImagesBasePath + environment.folderBucketGlobalPictures
   loginForm = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required]),
     password: new UntypedFormControl('', [
