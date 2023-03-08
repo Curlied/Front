@@ -99,6 +99,13 @@ export class HttpService {
     );
   }
 
+  acceptUserEvent(_eventId: string, _userId: string) {
+    return this.http.put(
+      this.AdresseEvent + _eventId + '/users/' + _userId + '/confirm',
+      this.httpOptions
+    );
+  }
+
   cancelMyEvent(_eventId: string) {
     return this.http.delete(this.AdresseEvent + _eventId, this.httpOptions);
   }
