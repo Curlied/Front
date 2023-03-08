@@ -51,15 +51,15 @@
               Enim,consectetur in dui
             </p>
             <div class="d-flex justify-content-between event__icons">
-              <div class="d-flex justify-content-center flex-column text-center">
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
                 <app-svg icon="{{event.categoryComplet.url_icon}}" class="icon"></app-svg>
                 <small class="icon__label">{{ event.categoryComplet.name }}</small>
               </div>
-              <div class="d-flex justify-content-center flex-column text-center">
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
                 <app-svg icon="calendar" class="icon"></app-svg>
                 <small class="icon__label">{{ event.date_time | date: 'dd/MM/yyyy'}}</small>
               </div>
-              <div class="d-flex justify-content-center flex-column text-center">
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
                 <app-svg icon="member" class="icon"></app-svg>
                 <small class="icon__label">{{ event.nbUserActual}}/{{ event.user_max}}</small>
               </div>
