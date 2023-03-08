@@ -4,6 +4,7 @@ export const environment = {
   appVersion: require('../../package.json').version,
   nomEnvironnement: 'local',
   timeToken: 0.00347222,
+  AdresseIcon: './assets/images/icons.svg#',
   bucketImagesBasePath: '',
   folderBucketEventPictures: '',
   folderBucketGlobalPictures: '',
