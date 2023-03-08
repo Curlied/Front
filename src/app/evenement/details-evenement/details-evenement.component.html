@@ -94,7 +94,7 @@
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
                   <p class="member__username">{{ participant.username || "Aucun" }}  </p>
-                  <button class="btn btn-main">Accepter</button>
+                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button> 
                 </div>
               </div>
             </div>

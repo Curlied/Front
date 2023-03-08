@@ -7,31 +7,35 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-details-evenement',
   templateUrl: './details-evenement.component.html',
-  styleUrls: ['./details-evenement.component.css']
+  styleUrls: ['./details-evenement.component.css'],
 })
 export class DetailsEvenementComponent implements OnInit {
-  bucketEvent =  environment.bucketImagesBasePath + environment.folderBucketEventPictures
+  bucketEvent =
+    environment.bucketImagesBasePath + environment.folderBucketEventPictures;
   event: any;
-  constructor(private router: Router, private route: ActivatedRoute, 
-    private httpService: HttpService, private responseService: ResponseService) { }
-  
-  canParticipate! : boolean;
-  event_id :any;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private httpService: HttpService,
+    private responseService: ResponseService
+  ) {}
+
+  canParticipate!: boolean;
+  event_id: any;
+  user_id: any;
   ngOnInit() {
     this.getParamsOrRedirect();
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 
-  getParamsOrRedirect()
-  {
-    this.route.queryParams.subscribe(params => {
+  getParamsOrRedirect() {
+    this.route.queryParams.subscribe((params) => {
       this.event_id = params['event'];
     });
 
     if (!this.event_id) {
       this.router.navigate(['./']);
-    }
-    else {
+    } else {
       this.getDetailsEvent(this.event_id);
     }
   }
@@ -44,11 +48,11 @@ export class DetailsEvenementComponent implements OnInit {
       },
       error: (err) => {
         this.responseService.ErrorF(err);
-      }
+      },
     });
-  }
+  };
 
-  requestParticipate= (event_id :string)=>{
+  requestParticipate = (event_id: string) => {
     this.httpService.putSubmitParticipation(event_id).subscribe({
       next: (res: any) => {
         this.responseService.SuccessF(res);
@@ -56,19 +60,31 @@ export class DetailsEvenementComponent implements OnInit {
       },
       error: (err) => {
         this.responseService.ErrorF(err);
-      }
+      },
     });
-  }
+  };
 
-  cancelParticipate= (event_id :string)=>{
+  cancelParticipate = (event_id: string) => {
     this.httpService.cancelEventParticipation(event_id).subscribe({
       next: (res: any) => {
         this.responseService.SuccessF(res);
         this.ngOnInit();
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.responseService.ErrorF(err);
-      }
+      },
     });
-  }
+  };
+
+  acceptParticipate = (event_id: string, user_id: string) => {
+    this.httpService.acceptUserEvent(event_id, user_id).subscribe({
+      next: (res: any) => {
+        this.responseService.SuccessF(res);
+        this.ngOnInit();
+      },
+      error: (err: any) => {
+        this.responseService.ErrorF(err);
+      },
+    });
+  };
 }
