@@ -34,17 +34,17 @@ export class AccueilComponent implements OnInit {
   //ajout des tags
   addTags(){
     this.metaService.addTags([ 
-      {name:'title', content:'page accueil'} ,
-      { name: 'description', content: 'Bienvenue sur Curlied qui permet de pouvoir créer ou rejoindre des évènements sur différents types d’activités sur Lyon'}, 
-      { name: 'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'},
+      {name:'title', content:'Curlied - Rejoins ou organise des événements '} ,
+      { name:'description', content: 'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt'}, 
+      { name:'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'},
       
   ]);
   }
 //permet d'afficher le rendu html des tags
   getTag(){
-    this.metaService.addTag({ name: 'description', content: 'Bienvenue sur Curlied qui permet de pouvoir créer ou rejoindre des évènements sur différents types d’activités sur Lyon'}), 
-    this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'}),
-    this.metaService.addTag({name:'title', content:'page accueil'} )
+    this.metaService.addTag({ name:'description', content: ''}), 
+    this.metaService.addTag({ name:'keywords', content: ''}),
+    this.metaService.addTag({name:'title', content:''} )
   }
  
   ngOnInit(): void {
