@@ -1,0 +1,25 @@
+::ng-deep .modal-content{
+  border: none !important;
+  animation: none !important;
+}
+
+::ng-deep .modal.fade .modal-dialog {
+  transition: none;
+  transform: none;
+}
+
+.modal-pwa{
+  position: fixed;
+  bottom: 5px;
+  background: aliceblue;
+  min-width: 50vw;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .modal-pwa{
+    width: 90vw;
+  }
+}

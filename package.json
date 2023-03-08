@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.1",
+    "@angular/cdk": "^15.2.1",
     "@angular/common": "^15.2.1",
     "@angular/compiler": "^15.2.1",
     "@angular/core": "^15.2.1",
@@ -22,6 +23,7 @@
     "@angular/service-worker": "^15.2.1",
     "@auth0/angular-jwt": "^5.1.2",
     "@iplab/ngx-file-upload": "^15.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "dotenv": "^16.0.3",
     "ngx-cookie-service": "^15.0.0",
     "rxjs": "~7.4.0",

@@ -1,0 +1,28 @@
+<ng-template #content let-modal>
+  <div class="modal-pwa">
+    <div class="modal-header modal-dialog-centered">
+      <small class="modal-title">Informations</small>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <!-- Android -->
+      <div class="text-center" *ngIf="modalPwaPlatform === 'ANDROID'" (click)="addToHomeScreen()">
+        <b>Cliquez sur cette barre pour installer l'application sur votre téléphone android</b>
+      </div>
+      <!-- iOS with Safari -->
+      <div class="text-center" *ngIf="modalPwaPlatform === 'IOS'">
+        <b>Pour installer cette application sur votre périphérique IOS , cliquez sur le bouton
+          <img
+            src="https://res.cloudinary.com/rodrigokamada/image/upload/v1641089482/Blog/angular-pwa/safari_action_button_38x50.png"
+            class="ios-menu m-0" />
+          et ajoutez sur l'écran d'accueil</b>
+        <i class="bi bi-plus-square"></i>
+      </div>
+
+      <div class="text-center" *ngIf="modalPwaPlatform === 'BROWSER'" (click)="addToHomeScreen()" >
+        <b>CLIQUEZ ICI POUR INSTALLER L'APPLICATION</b>
+      </div>
+    </div>
+  </div>
+</ng-template>
