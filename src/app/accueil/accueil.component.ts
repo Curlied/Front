@@ -4,6 +4,7 @@ import { HttpService } from '../http.service';
 import { ResponseService } from 'src/app/response.service';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Meta } from '@angular/platform-browser';
 
 
 
@@ -27,11 +28,31 @@ export class AccueilComponent implements OnInit {
     numdepartment: new UntypedFormControl('tous', [Validators.required]),
   });
 
-  constructor(private httpService: HttpService, private responseService: ResponseService) { }
+  constructor(private httpService: HttpService, private responseService: ResponseService, private metaService:Meta) { 
+    this.addTags();
+  }
+  //ajout des tags
+  addTags(){
+    this.metaService.addTags([ 
+      {name:'title', content:'page accueil'} ,
+      { name: 'description', content: 'Bienvenue sur Curlied qui permet de pouvoir créer ou rejoindre des évènements sur différents types d’activités sur Lyon'}, 
+      { name: 'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'},
+      
+  ]);
+  }
+//permet d'afficher le rendu html des tags
+  getTag(){
+    this.metaService.addTag({ name: 'description', content: 'Bienvenue sur Curlied qui permet de pouvoir créer ou rejoindre des évènements sur différents types d’activités sur Lyon'}), 
+    this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'}),
+    this.metaService.addTag({name:'title', content:'page accueil'} )
+  }
  
   ngOnInit(): void {
     this.setup();
     window.scroll(0,0);
+    
+  
+   
   }
 
   /**Fetch categories, events, and department 

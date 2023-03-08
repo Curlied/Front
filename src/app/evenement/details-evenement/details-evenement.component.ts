@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details-evenement',
@@ -11,15 +12,34 @@ import { ResponseService } from 'src/app/response.service';
 export class DetailsEvenementComponent implements OnInit {
 
   event: any;
-  constructor(private router: Router, private route: ActivatedRoute, 
-    private httpService: HttpService, private responseService: ResponseService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private metaService:Meta,
+    private httpService: HttpService, private responseService: ResponseService) { 
+      this.addTags();
+    }
+
+    addTags(){
+      this.metaService.addTags([ 
+        {name:'title', content:'page details évènement'},
+        { name: 'description', content: 'Page détails evenements'}, 
+        { name: 'keywords', content: 'evenement lyon, ynov, solitude,details,detail,evenements,evenement, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'} 
+    ]);
+    }
+
+    getTag(){
+      this.metaService.addTag({name:'title', content:'page details évènement'})
+      this.metaService.addTag({ name: 'description', content: 'Page détails evenements'})
+      this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude,details,detail,evenements,evenement, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'})
+    }
   
   canParticipate! : boolean;
   event_id :any;
   ngOnInit() {
     this.getParamsOrRedirect();
     window.scroll(0,0);
+   
   }
+
+  
 
   getParamsOrRedirect()
   {

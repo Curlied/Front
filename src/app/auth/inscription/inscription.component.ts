@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-inscription',
@@ -23,9 +24,29 @@ export class InscriptionComponent implements OnInit {
     url_image:  new UntypedFormControl()
   });
 
-  constructor(private httpService : HttpService,private responseService : ResponseService) { }
+  constructor(private httpService : HttpService,private responseService : ResponseService, private metaService:Meta) { 
+    this.addTags();
+  }
+
+  //ajout des tags
+  addTags(){
+    this.metaService.addTags([ 
+      {name:'title', content:'page inscription'},
+      { name: 'description', content: 'Page d/inscription'}, 
+      { name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'} 
+  ]);
+  }
+
+  //permet d'afficher le rendu html des tags
+  getTag(){
+    this.metaService.addTag({name:'title', content:'page inscription'})
+    this.metaService.addTag( { name: 'description', content: 'Page d/inscription'})
+    this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'})
+  }
+
 
   ngOnInit(): void {
+    
   }
 
   register(){
