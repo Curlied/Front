@@ -8,7 +8,7 @@
               <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse"
                 data-bs-target=".multi-collapse" aria-controls="filters__wrapper" aria-expanded="false"
                 aria-label="Toggle filters">
-                <img src="/assets/images/hamburger-menu.svg" width="50" class="img-fluid">
+                <app-svg icon="hamburger" class="icon"></app-svg>
               </button>
               <h3 class="heading--tertiary">Filters</h3>
             </div>
@@ -42,7 +42,8 @@
       </div>
       <div class="col-lg-9 d-flex flex-column event__container">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
-          <img class="img-fluid event__img d-none d-sm-block" src="./assets/images/concert1.jfif" alt="...">
+          <img class="img-fluid event__img d-none d-sm-block" src="{{ bucketEvent + event.url_image[0]}}"
+            alt="{{ event.name }}">
           <div class="event__info">
             <h2 class="heading--secondary">{{ event.name }}</h2>
             <p class="paragraph event__description">

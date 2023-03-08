@@ -33,7 +33,7 @@
 
   --font-family-primary: "co-text", "dosis", sans-serif;
 
-  --font-size-xs: 1rem;
+  --font-size-xs: 0.75rem;
   --font-size-s: clamp(1.2rem, 1.5vw, 1.5rem);
   --font-size-md: clamp(1.25rem, 1.75vw, 2rem);
   --font-size-l: clamp(1.5rem, 2vw, 2.5rem);
@@ -358,13 +358,15 @@ body {
 }
 
 .form__container {
-  width: 45rem;
+  max-width: 45rem;
 }
 
 .form__actions {
   margin-top: var(--gap-xl);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .form__footer {
@@ -375,4 +377,10 @@ body {
 
 .modal-content {
   padding: var(--gap-xl);
+}
+
+@media (min-width: 576px) {
+  .form__actions {
+    flex-direction: row;
+  }
 }

@@ -35,9 +35,6 @@
   align-items: center;
 }
 
-.form__container {
-  width: 45rem;
-}
 
 .button {
   display: flex;
@@ -54,7 +51,7 @@
   }
   .form__container {
     background-color: var(--main-white);
-    padding: var(--gap-xxl);
+    padding: var(--gap-xl);
     border-radius: 3rem;
   }
 }

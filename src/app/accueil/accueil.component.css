@@ -63,6 +63,8 @@
   border-radius: 1rem;
   width: 40%;
   object-fit: cover;
+  max-height: 50rem;
+  height: 100%;
 }
 
 .event__info {
