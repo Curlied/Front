@@ -1,14 +1,4 @@
-::ng-deep .modal-content{
-  border: none !important;
-  animation: none !important;
-}
-
-::ng-deep .modal.fade .modal-dialog {
-  transition: none;
-  transform: none;
-}
-
-.modal-pwa{
+.alert-pwa{
   position: fixed;
   bottom: 5px;
   background: aliceblue;
@@ -16,10 +6,11 @@
   margin: 0 auto;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 999;
 }
 
 @media (max-width: 768px) {
-  .modal-pwa{
+  .alert-pwa{
     width: 90vw;
   }
 }

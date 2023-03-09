@@ -28,8 +28,8 @@ export function tokenGetter() {
 }
 import { SvgComponent } from './components/svg/svg.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ModalPwaComponent } from './modal-pwa/modal-pwa.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MessagesComponent,
     AdminComponent,
     SvgComponent,
-    ModalPwaComponent,
+    AlertPwaComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
-    NgbModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

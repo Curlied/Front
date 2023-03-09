@@ -1,5 +1,5 @@
 <app-header *ngIf="showTemplate"></app-header>
-<app-modal-pwa></app-modal-pwa>
+<app-alert-pwa (show)="showAlert($event)" *ngIf="alertInstallPwaShow"></app-alert-pwa>
 <router-outlet></router-outlet>
 <app-toast></app-toast>
 <app-footer *ngIf="showTemplate"></app-footer>
