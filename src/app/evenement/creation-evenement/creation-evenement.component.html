@@ -7,7 +7,7 @@
 					<label for="name" class="label">Nom de l'évenement*</label>
 					<input type="text" formControlName="name" class="input input--text" required>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<label for="category" class="label">Catégories</label>
 					<select class="select" formControlName="category" aria-label="Default select example">
 						<option *ngFor="let category of arrayCategories" [value]="category._id">
@@ -15,12 +15,12 @@
 						</option>
 					</select>
 				</div>
-				<div class="col-md-3">
+				<div class="col-sm-6 col-md-3">
 					<label for="price" class="label">Prix*</label>
 					<input type="number" min="1" max="9999" formControlName="price" class="input input--number"
 						required>
 				</div>
-				<div class="col-md-3">
+				<div class="col-sm-6 col-md-3">
 					<label for="user__max" class="label">Place*</label>
 					<select class="select" formControlName="user__max" aria-label="Default select example"
 						placeholder="Vous inclus">
@@ -29,7 +29,7 @@
 						</option>
 					</select>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6 col-md-6">
 					<label for="department" class="label">Département*</label>
 					<select class="select" required (change)="changeDepartment()" aria-label="departements"
 						formControlName="department" *ngIf="arrayDepartement">
@@ -38,7 +38,7 @@
 						</option>
 					</select>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6 col-md-6">
 					<label for="code" class="label">Commune*</label>
 					<select *ngIf="!arrayCommune" class="select" required aria-label="code" formControlName="code">
 					</select>
@@ -49,16 +49,16 @@
 						</option>
 					</select>
 				</div>
-				<div class="col-12">
+				<div class="col-12 col-sm-6 col-md-12">
 					<label for="adress" class="label">Adresse*</label>
 					<input type="text" formControlName="adress" class="input input--text" required>
 				</div>
-				<div class="col-md-4">
+				<div class="col-sm-6 col-md-4">
 					<label for="date" class="label">Date*</label>
 					<input type="date" formControlName="date" min="{{currentDate | date:'yyyy-MM-dd'}}"
 						class="input input--date" required>
 				</div>
-				<div class="col-md-4">
+				<div class="col-sm-6 col-md-4">
 					<label for="hour" class="label">Heure*</label>
 					<input type="time" formControlName="hour" class="input input--time" required>
 				</div>
@@ -66,11 +66,11 @@
 					<label for="time" class="label">Durée (en heure)*</label>
 					<input type="number" min="1" max="9999" formControlName="time" class="input input--number" required>
 				</div>
-				<div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+				<div class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-center">
 					<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
 					</file-upload>
 				</div>
-				<div class="col-12 col-md-8">
+				<div class="col-12 col-sm-6 col-md-8">
 					<label for="description" class="label">Description*</label>
 					<textarea rows="5" formControlName="description" minlength="50" maxlength="500"
 						placeholder="50 caractères min et 500 max" class="input input--textarea" required>

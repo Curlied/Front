@@ -28,10 +28,18 @@ app-footer {
 @media (min-width: 768px) {
   .event__card {
     padding: var(--gap-xxl);
-    border-radius: 9rem;
+    border-radius: 5rem;
   }
 
   .event__title {
     font-size: var(--font-size-xl);
+  }
+}
+
+
+
+@media (min-width: 992px) {
+  .event__card {
+    border-radius: 9rem;
   }
 }

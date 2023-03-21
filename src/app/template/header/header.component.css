@@ -2,6 +2,14 @@
   display: block;
   height: 2.3rem;
   width: 13rem;
+  fill: var(--main-color);
+}
+
+.burger__icon {
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  stroke: var(--main-dark);
 }
 
 .nav-item {
@@ -11,7 +19,7 @@
 }
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 999;

@@ -45,12 +45,7 @@
   --gap-md: 2rem;
   --gap-l: 2.5rem;
   --gap-xl: 3rem;
-  --gap-xxl: 6rem;
-  --gap-huge: 12rem;
-}
-
-.row {
-  --bs-gutter-x: 4rem;
+  --gap-xxl: 4.5rem;
 }
 
 html {
@@ -68,7 +63,8 @@ body {
 }
 
 .app--container {
-  padding: var(--gap-huge) 0;
+  padding-top: var(--gap-l);
+  padding-bottom: var(--gap-xl);
   background: var(--main-bg);
   min-height: 100vh;
   display: flex;
@@ -231,14 +227,18 @@ body {
 ----------------------------------
 */
 
-.btn-main {
+.btn {
   font-size: var(--font-size-s);
-  background-color: var(--main-color);
-  color: var(--main-white);
   border-radius: 2rem;
   padding: var(--gap-xs) var(--gap-md);
   font-weight: bold;
   line-height: normal;
+  border: 1px solid transparent;
+}
+
+.btn-main {
+  background-color: var(--main-color);
+  color: var(--main-white);
 }
 
 .btn-main:hover {
@@ -247,24 +247,39 @@ body {
   border-color: var(--main-color);
 }
 
-.btn-reverse {
-  background-color: var(--main-dark);
+.btn-secondary {
+  background-color: var(--main-white);
   color: var(--main-color);
-  border-color: var(--main-color);
-  border-radius: 2rem;
-  padding: 0 var(--gap-md);
 }
 
-.btn-reverse:hover {
-  background-color: var(--main-color);
+.btn-secondary:hover {
+  background-color: transparent;
   color: var(--main-white);
-  border-radius: 2rem;
-  padding: 0 var(--gap-md);
+  border-color: var(--main-white);
 }
 
-.btn-custom {
-  background: none;
-  border: none;
+.btn-tertiary {
+  background-color: var(--main-white);
+  color: var(--main-color);
+}
+
+.btn-tertiary:hover {
+  background-color: transparent;
+  color: var(--main-white);
+  border-color: var(--main-white);
+}
+
+@media (min-width: 992px) {
+  .btn-tertiary {
+    background-color: var(--main-color);
+    color: var(--main-white);
+  }
+
+  .btn-tertiary:hover {
+    background-color: transparent;
+    color: var(--main-color);
+    border-color: var(--main-color);
+  }
 }
 
 .link {
@@ -342,18 +357,6 @@ body {
 @media only screen and (min-width: 1200px) {
   .viewport-height {
     height: 100vh;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  section {
-    padding: var(--gap-xxl) 0;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  section {
-    padding: var(--gap-xxl) 0;
   }
 }
 

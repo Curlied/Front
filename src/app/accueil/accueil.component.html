@@ -4,37 +4,35 @@
       <div class="col-lg-3 filters__container">
         <form (ngSubmit)="submitSearch()" [formGroup]="searchFormGroup">
           <div class="filters d-flex flex-column">
-            <div class="d-md-none filters__toggle filters__mobile">
+            <div class="d-lg-none filters__toggle filters__mobile">
               <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse"
                 data-bs-target=".multi-collapse" aria-controls="filters__wrapper" aria-expanded="false"
                 aria-label="Toggle filters">
-                <app-svg icon="hamburger" class="icon"></app-svg>
+                <app-svg icon="filtres" class="filter__icon"></app-svg>
               </button>
-              <h3 class="heading--tertiary">Filters</h3>
             </div>
-
-            <div class="d-md-flex filters__category collapse multi-collapse" id="filters__wrapper">
+            <div class="d-lg-flex filters__category collapse multi-collapse" id="filters__wrapper">
               <div class="filter d-flex align-items-center">
                 <label class="d-flex align-items-center justify-content-center" for="tous">
-                  <app-svg icon="calendar" class="icon"></app-svg>
+                  <app-svg icon="calendar" class="filter__icon"></app-svg>
                 </label>
                 <input class="input--checkbox" type="radio" name="category" formControlName="category" value="tous"
                   id="tous">
               </div>
               <div *ngFor="let category of arrayCategories" class="filter d-flex align-items-center">
                 <label for="{{category.name}}">
-                  <app-svg icon="{{category.url_icon}}" class="icon"></app-svg>
+                  <app-svg icon="{{category.url_icon}}" class="filter__icon"></app-svg>
                 </label>
                 <input class="input--checkbox" type="radio" name="category" formControlName="category"
                   value="{{category._id}}" id="{{category.name}}">
               </div>
             </div>
-            <div class="d-md-flex flex-column filters__actions multi-collapse collapse">
+            <div class="d-lg-flex flex-column filters__actions multi-collapse collapse">
               <label for="date" class="label">Date</label>
               <input type="date" class="input" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
                 formControlName="date">
               <div class="text-center mt-3">
-                <button class="btn btn-main" type="submit">Filtrer</button>
+                <button class="btn btn-tertiary" type="submit">Filtrer</button>
               </div>
             </div>
           </div>
@@ -42,8 +40,7 @@
       </div>
       <div class="col-lg-9 d-flex flex-column event__container">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
-          <img class="img-fluid event__img d-none d-sm-block" src="{{ bucketEvent + event.url_image[0]}}"
-            alt="{{ event.name }}">
+          <img class="img-fluid event__img" src="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}">
           <div class="event__info">
             <h2 class="heading--secondary">{{ event.name }}</h2>
             <p class="paragraph event__description">
