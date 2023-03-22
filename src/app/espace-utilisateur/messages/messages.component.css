@@ -1,12 +1,9 @@
 .messages {
-  padding: var(--gap-xxl) 0;
-  min-height: 90vh;
-  background: var(--main-bg);
+  margin-top: 3rem;
 }
 
 .users__list {
   border-radius: 3rem;
-  min-height: 70vh;
   overflow: hidden;
 }
 
@@ -99,4 +96,33 @@
 .tab-content > .active {
   display: flex;
   flex-direction: column;
+}
+
+.burger__icon {
+  stroke: var(--main-dark);
+  min-width: 3rem;
+  min-height: 3rem;
+  width: 3rem;
+  height: 3rem;
+  display: block;
+}
+
+.message__icon {
+  min-width: 4rem;
+  min-height: 4rem;
+  width: 4rem;
+  height: 4rem;
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .messages {
+    margin-top: 0;
+  }
+  .users__tabs {
+    display: flex;
+  }
+  .users__list {
+    min-height: 70vh;
+  }
 }
