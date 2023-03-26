@@ -82,6 +82,20 @@
   padding-left: 0!important;
 }
 
+.custom__dropzone {
+  width: 100%;
+  border-radius: 2rem !important;
+  border: none !important;
+  height: 13rem !important;
+}
+
+.custom__preview {
+  width: 100%;
+}
+
+.custom__dropzone__label {
+  margin: 0;
+}
 
 app-footer {
   display: none !important;

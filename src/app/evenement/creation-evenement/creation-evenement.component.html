@@ -54,9 +54,32 @@
 				<label for="time" class="form-label">Durée (en heure)*</label>
 				<input type="number" min="1" max="9999" formControlName="time" class="form-control " required>
 			</div>
-			<div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+			<!---->
+			<!-- <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
 				<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
 				</file-upload>
+			</div>  -->
+			<!---->
+			<div class="col-12 col-md-4">
+				<p class="mb-0">Image</p>
+
+				<div class="d-flex align-items-center">
+					<ngx-dropzone (change)="onSelect($event)" [compress]="true" class="custom__dropzone">
+						<ngx-dropzone-label class="custom__dropzone__label">
+							<img class="mb-2" src="/assets/images/photo.svg">
+							<p class="mb-0"><b>Glisse et dépose</b> une image ou bien clique ici</p>
+						</ngx-dropzone-label>
+
+						<div *ngFor="let f of files" class="text-center">
+							<ngx-dropzone-image-preview class="custom__preview m-0" ngProjectAs="ngx-dropzone-preview" [removable]="true"
+								(removed)="onRemove(f)" [file]="f">
+
+							</ngx-dropzone-image-preview>
+							<ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+						</div>
+
+					</ngx-dropzone>
+				</div>
 			</div>
 			<div class="col-12 col-md-8">
 				<label for="description">Description*</label>
