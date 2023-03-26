@@ -22,6 +22,7 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
+import { NgxDropzoneModule } from 'ngx-dropzone-compressing';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -53,6 +54,7 @@ import { SvgComponent } from './components/svg/svg.component';
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    NgxDropzoneModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
