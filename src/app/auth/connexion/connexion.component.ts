@@ -33,16 +33,16 @@ export class ConnexionComponent implements OnInit {
   //ajout des tags
 addTags(){
   this.metaService.addTags([
-    {name:'title', content:'page connexion'},  
-    { name: 'description', content: 'Page de connexion'}, 
+    {name:'title', content:'Connexion - Trouvez des amis et partagez des expériences grâce à notre application de création d’événements '},  
+    { name: 'description', content: 'Connectez-vous à notre application de création d’événements pour trouver des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble.'}, 
     { name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'} 
 ]);
 }
 //permet d'afficher le rendu html des tags
 getTag(){
-  this.metaService.addTag({name:'title', content:'page connexion'})
-  this.metaService.addTag({ name: 'description', content: 'Page de connexion'})
-  this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'} )
+  this.metaService.addTag({name:'title', content:''})
+  this.metaService.addTag({name: 'description', content: ''})
+  this.metaService.addTag({name: 'keywords', content: ''} )
 }
   ngOnInit(): void {
     

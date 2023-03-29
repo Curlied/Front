@@ -31,17 +31,17 @@ export class InscriptionComponent implements OnInit {
   //ajout des tags
   addTags(){
     this.metaService.addTags([ 
-      {name:'title', content:'page inscription'},
-      { name: 'description', content: 'Page d/inscription'}, 
+      {name:'title', content:'Inscrivez-vous pour rencontrer de nouveaux amis et vous amuser avec notre application de création d’événements'},
+      { name: 'description', content: 'Inscrivez-vous à notre site de rencontre amical pour rencontrer des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble. Notre application de création d’événements vous permettra de vous amuser tout en élargissant votre cercle social.'}, 
       { name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'} 
   ]);
   }
 
   //permet d'afficher le rendu html des tags
   getTag(){
-    this.metaService.addTag({name:'title', content:'page inscription'})
-    this.metaService.addTag( { name: 'description', content: 'Page d/inscription'})
-    this.metaService.addTag({ name: 'keywords', content: 'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'})
+    this.metaService.addTag({name:'title', content:''})
+    this.metaService.addTag( { name: 'description', content: ''})
+    this.metaService.addTag({ name: 'keywords', content: ''})
   }
 
 
