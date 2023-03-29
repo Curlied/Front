@@ -25,7 +25,9 @@
       </form>
       </div>
  
-      <div class="col-md-9">
+      <div class="col-md-9" infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
         <div class="event-card bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
           <div class="img-event" style="background-image: url('{{bucketEvent}}{{ event.url_image }}')"></div>
           <div class="ps-sm-5">

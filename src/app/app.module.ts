@@ -22,6 +22,7 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -29,7 +30,6 @@ export function tokenGetter() {
 import { SvgComponent } from './components/svg/svg.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
-
 
 @NgModule({
   declarations: [
@@ -52,6 +52,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -66,7 +67,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerImmediately'
+      registrationStrategy: 'registerImmediately',
     }),
   ],
   providers: [
