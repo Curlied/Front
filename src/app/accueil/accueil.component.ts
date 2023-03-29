@@ -4,7 +4,7 @@ import { HttpService } from '../http.service';
 import { ResponseService } from 'src/app/response.service';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Meta } from '@angular/platform-browser';
+import { Meta,MetaDefinition } from '@angular/platform-browser';
 
 
 
@@ -29,32 +29,28 @@ export class AccueilComponent implements OnInit {
   });
 
   constructor(private httpService: HttpService, private responseService: ResponseService, private metaService:Meta) { 
-    this.addTags();
+    //this.addTags();
   }
-  //ajout des tags
-  addTags(){
-    this.metaService.addTags([ 
-      {name:'title', content:'Curlied - Rejoins ou organise des événements '} ,
-      { name:'description', content: 'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt'}, 
-      { name:'keywords', content: 'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'},
-      
-  ]);
-  }
-//permet d'afficher le rendu html des tags
-  getTag(){
-    this.metaService.addTag({ name:'description', content: ''}), 
-    this.metaService.addTag({ name:'keywords', content: ''}),
-    this.metaService.addTag({name:'title', content:''} )
-  }
+
  
+
+
   ngOnInit(): void {
     this.setup();
     window.scroll(0,0);
-    
-  
-   
+    const ogtitle: MetaDefinition =  { property: 'og:title', content: 'Curlied - Rejoins ou organise des événements'};
+    const ogkeywords: MetaDefinition = {property: 'og:keywords', content:'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
+    const ogdesc: MetaDefinition = { property: 'og:description', content: 'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt'};
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
   }
-
+  
+  ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+   }
   /**Fetch categories, events, and department 
    * 
   */

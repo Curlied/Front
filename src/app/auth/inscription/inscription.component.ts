@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
-import { Meta } from '@angular/platform-browser';
+import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -43,38 +43,28 @@ export class InscriptionComponent implements OnInit {
     private responseService: ResponseService,
     private metaService: Meta
   ) {
-    this.addTags();
+    
   }
 
-  //ajout des tags
-  addTags() {
-    this.metaService.addTags([
-      {
-        name: 'title',
-        content:
-          'Inscrivez-vous pour rencontrer de nouveaux amis et vous amuser avec notre application de création d’événements',
-      },
-      {
-        name: 'description',
-        content:
-          'Inscrivez-vous à notre site de rencontre amical pour rencontrer des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble. Notre application de création d’événements vous permettra de vous amuser tout en élargissant votre cercle social.',
-      },
-      {
-        name: 'keywords',
-        content:
-          'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly',
-      },
-    ]);
-  }
 
-  //permet d'afficher le rendu html des tags
-  getTag() {
-    this.metaService.addTag({ name: 'title', content: '' });
-    this.metaService.addTag({ name: 'description', content: '' });
-    this.metaService.addTag({ name: 'keywords', content: '' });
-  }
+  ngOnInit(): void {
+  const ogtitle: MetaDefinition =  { property: 'og:title', content: 'Inscrivez-vous pour rencontrer de nouveaux amis et vous amuser avec notre application de création d’événements'};
+  const ogkeywords: MetaDefinition = {property: 'og:keywords', content:'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
+  const ogdesc: MetaDefinition = { property: 'og:description', content: 'Inscrivez-vous à notre site de rencontre amical pour rencontrer des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble. Notre application de création d’événements vous permettra de vous amuser tout en élargissant votre cercle social.'};
+  this.metaService.addTag(ogtitle);
+  this.metaService.addTag(ogkeywords);
+  this.metaService.addTag(ogdesc);
+}
 
-  ngOnInit(): void {}
+ngOnDestroy() {
+  this.metaService.removeTag("property='og:title'");
+  this.metaService.removeTag("property='og:description'");
+  this.metaService.removeTag("property='og:keywords'");
+ }
+
+
+
+  
 
   register() {
     let formData = new FormData();
