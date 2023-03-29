@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,14 +7,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./svg.component.css'],
 })
 export class SvgComponent implements OnInit {
-  
-  icon! : string;
+  icon!: string;
 
-  @Input("icon") set setIcon(_icon:string){
-    this.icon = environment.AdresseIcon + _icon
-  };
-
-  ngOnInit(): void {
+  @Input('icon') set setIcon(_icon: string) {
+    this.icon = environment.AdresseIcon + _icon;
   }
 
+  ngOnInit(): void {}
 }
