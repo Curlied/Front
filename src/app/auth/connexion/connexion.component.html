@@ -1,13 +1,15 @@
 <div class="main">
   <div class="hero">
-    <img src="./assets/images/phone1.png" class="phone--1" alt="Telephone montrant un evenement tourné vers la gauche">
-    <img src="./assets/images/phone2.png" class="phone--2" alt="Telephone montrant un evenement tourné vers la droite">
+    <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
+      alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
+    <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
+      alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
   </div>
   <div class="form">
     <div class="form__container">
-      <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5">
+      <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5 align-items-center gap-3">
         <h1 class="heading--primary">Bienvenue sur</h1>
-        <img src="./assets/images/logo.svg" alt="logo">
+        <img ngSrc="./assets/images/logo.svg" alt="logo" height="30" width="100">
       </div>
       <form class="form__form" (ngSubmit)="login()" [formGroup]="loginForm">
         <div class="form__group">

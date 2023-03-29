@@ -10,7 +10,8 @@
         <main class="details__card d-flex flex-column">
           <div class="details__header d-flex">
             <div class="details__img">
-              <img class="img-fluid" src="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}" alt="Image d'illustration de l'évenement : {{event.name}}">
+              <img class="img-fluid" ngSrc="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}"
+                alt="Image d'illustration de l'évenement : {{event.name}}">
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -23,7 +24,7 @@
           </div>
           <div class="details__body d-flex justify-content-between">
             <div class="detail__category d-flex flex-column align-items-center">
-              <img src="{{ event.category.url_icon }}" height="20"
+              <img ngSrc="{{ event.category.url_icon }}" height="20"
                 alt="Image illustrant la catégorie {{event.category.name}}">
               <p class="details__label">{{ event.category.name }} €</p>
             </div>

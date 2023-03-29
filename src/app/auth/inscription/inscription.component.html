@@ -4,8 +4,10 @@
             <p><strong>Lorem ipsum Lorem ipsum dolor sit</strong></p>
             <p>amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi architecto alias</p>
         </div>
-        <img [src]="global_bucket_images + 'phone1.webp'" class="tel1">
-        <img [src]="global_bucket_images + 'phone2.webp'" class="tel2">
+        <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
+            alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
+        <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
+            alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
         <p class="paragraph hero__paragraphe hero__paragraphe--bottom">
             Lorem ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi
             architecto alias.
@@ -13,9 +15,9 @@
     </div>
     <div class="form">
         <div class="form__container">
-            <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5">
+            <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5 gap-3 align-items-center">
                 <h1 class="heading--primary">Bienvenue sur</h1>
-                <img src="./assets/images/logo.svg" class="logo" alt="logo">
+                <img ngSrc="./assets/images/logo.svg" class="logo" alt="logo" height="30" width="100">
             </div>
             <form (ngSubmit)="register()" [formGroup]="profileForm">
                 <div class="form-group">

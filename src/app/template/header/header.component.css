@@ -58,7 +58,7 @@
 .nav-item a {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 0.2rem;
   text-decoration: none;
 }
 
@@ -74,9 +74,10 @@
 }
 
 .nav__icon {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: block;
+  color: var(--main-dark);
 }
 
 .navbar .container {
@@ -84,28 +85,7 @@
 }
 
 .search {
-  justify-content: flex-end;
-  margin-left: auto;
-  padding: 1rem;
-  border: 1px solid var(--main-dark);
-  gap: 2rem;
-  margin-right: 3rem;
-  flex: 1;
-  border-radius: 2rem;
   display: none;
-}
-
-.search__input {
-  border: none;
-  flex: 1;
-}
-
-.search__icon {
-  left: 2.5rem;
-  filter: invert(53%) sepia(0%) saturate(0%) hue-rotate(59deg) brightness(95%)
-    contrast(94%);
-  width: 2rem;
-  height: 2rem;
 }
 
 .icon-container {
@@ -120,7 +100,9 @@
 .indicator__container {
   position: relative;
 }
-
+.dropdown-toggle::after {
+  content: none;
+}
 .dropdown__notifications {
   width: 32rem;
   border: none;

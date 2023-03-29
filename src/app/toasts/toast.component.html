@@ -6,15 +6,15 @@
 
 		<ng-container *ngIf="_toastInf">
 			<div class="left-{{_toastInf.type.color}}-line p-3">
-				<img src="/assets/images/toasts/{{_toastInf.type.image}}" height="30px" width="30px" />
+				<img ngSrc="/assets/images/toasts/{{_toastInf.type.image}}" height="30px" width="30px" />
 			</div>
 			<div>
 				<h3 class="f-bold mb-1">{{ _toastInf.type.text }}</h3>
 				<p class="mb-0">{{_toastInf.message}}</p>
 			</div>
 			<div>
-				<button type="button" class="btn-custom" data-bs-dismiss="toast" aria-label="Close"><img
-						src="/assets/images/toasts/close-{{_toastInf.type.color}}.svg" height="16"
+				<button type="button" class="btn-custom" data-bs-dismiss="toast" aria-label="Close">
+					<img ngSrc="/assets/images/toasts/close-{{_toastInf.type.color}}.svg" height="16"
 						width="16" /></button>
 			</div>
 		</ng-container>

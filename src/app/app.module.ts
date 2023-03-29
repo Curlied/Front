@@ -22,6 +22,7 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
+import { NgOptimizedImage } from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -55,6 +56,7 @@ import { ModalComponent } from './components/modal/modal.component';
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -18,12 +18,14 @@
   grid-column: 4/5;
   grid-row: 2/5;
   height: 100%;
+  width: 100%;
 }
 
 .phone--2 {
   grid-column: 2/3;
   grid-row: 4/7;
   height: 100%;
+  width: 100%;
 }
 
 /*********************************partie 2*********************************/
@@ -34,7 +36,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .button {
   display: flex;

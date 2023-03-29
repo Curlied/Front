@@ -3,7 +3,8 @@
 }
 
 .users__list {
-  border-radius: 3rem;
+  border-radius: 2rem;
+  padding: 1rem 3rem;
   overflow: hidden;
 }
 
@@ -36,11 +37,11 @@
 }
 
 .users__messages {
-  border-radius: 3rem;
+  height: calc(100vh - 20rem);
+  border-radius: 2rem;
   overflow: hidden;
   background-color: var(--main-white);
   padding: var(--gap-md);
-  height: 100%;
 }
 
 .message {
@@ -52,20 +53,20 @@
 .message__text {
   margin: 0;
   padding: var(--gap-md);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-md);
 }
 
 .message--sender .message__text {
-  background-color: var(--main-white);
+  background-color: var(--main-grey);
   max-width: 40rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 
 .message--receiver .message__text {
   background-color: var(--main-color);
   color: var(--main-white);
   max-width: 40rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   margin-left: auto;
 }
 
@@ -75,7 +76,7 @@
 }
 
 .tchat {
-  max-height: 70%;
+  height: 70%;
   overflow-y: auto;
   margin-top: var(--gap-xl);
   display: flex;
@@ -108,11 +109,10 @@
 }
 
 .message__icon {
-  min-width: 4rem;
-  min-height: 4rem;
   width: 4rem;
   height: 4rem;
   display: block;
+  fill: var(--main-color);
 }
 
 @media (min-width: 1200px) {
@@ -121,8 +121,5 @@
   }
   .users__tabs {
     display: flex;
-  }
-  .users__list {
-    min-height: 70vh;
   }
 }

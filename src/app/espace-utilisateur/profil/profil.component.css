@@ -28,6 +28,10 @@
   background-size: cover;
 }
 
+.event__title {
+  color: var(--main-white);
+}
+
 .event__card {
   display: flex;
   flex-direction: column;
@@ -61,6 +65,30 @@
 
 .user__actions {
   display: flex;
+  align-items: flex-start;
+  column-gap: 3rem;
+}
+
+.user__profil {
+  fill: var(--main-color);
+  display: block;
+  width: 10rem;
+  height: 10rem;
+}
+
+.crown {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+}
+
+.user__parameter {
+  fill: var(--main-dark);
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
 }
 
 .friends {
@@ -91,6 +119,29 @@
 .friend__info {
   display: flex;
   gap: var(--gap-md);
+  align-items: center;
+}
+
+.friend__profil,
+.notification__icon,
+.password__icon,
+.security__icon {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  fill: var(--main-dark);
+  color: var(--main-dark);
+}
+
+.edit_profil {
+  fill: var(--main-color);
+  width: 6rem;
+  height: 6rem;
+  display: block;
+}
+.tab-btn {
+  display: flex;
+  gap: 1rem;
   align-items: center;
 }
 
