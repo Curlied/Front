@@ -75,8 +75,8 @@ export class AdminComponent implements OnInit {
       },
       error: (err): any => {
         this.responseService.ErrorF(err);
-      }
-    })
+      },
+    });
   }
 
   validate = (id: string) => {
@@ -84,8 +84,8 @@ export class AdminComponent implements OnInit {
       next: (res: any) => {
         const element = document.getElementById(id);
         element?.remove();
-        if(element){ 
-          document.getElementById("eventValidate")?.appendChild(element);
+        if (element) {
+          document.getElementById('eventValidate')?.appendChild(element);
         }
       },
       error: (err): any => {

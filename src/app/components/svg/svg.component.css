@@ -1,4 +1,9 @@
-svg.icon{
-    width: 100%;
-    height: 100%;
+svg.icon {
+  width: 100%;
+  height: 100%;
+}
+
+svg.icon:focus,
+svg.icon:focus-visible {
+  outline: none;
 }
