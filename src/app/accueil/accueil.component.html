@@ -27,7 +27,7 @@
  
       <div class="col-md-9">
         <div class="event-card bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
-          <div class="img-event" style="background-image: url('/assets/images/events/{{ event.url_image }}')"></div>
+          <div class="img-event" style="background-image: url('{{bucketEvent}}{{ event.url_image }}')"></div>
           <div class="ps-sm-5">
             <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
             <p>{{ event.description }}</p>

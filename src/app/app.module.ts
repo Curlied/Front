@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,9 @@ export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
 }
 import { SvgComponent } from './components/svg/svg.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { SvgComponent } from './components/svg/svg.component';
     MessagesComponent,
     AdminComponent,
     SvgComponent,
+    AlertPwaComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,12 @@ import { SvgComponent } from './components/svg/svg.component';
       config: {
         tokenGetter: tokenGetter,
       },
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerImmediately'
     }),
   ],
   providers: [

@@ -5,4 +5,8 @@ export const environment = {
   nomEnvironnement: 'local',
   timeToken: 0.00347222,
   AdresseIcon: './assets/images/icons.svg#',
+  bucketImagesBasePath: '',
+  folderBucketEventPictures: '',
+  folderBucketGlobalPictures: '',
+  folderBucketUsersPictures: '',
 };

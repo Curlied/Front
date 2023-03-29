@@ -9,7 +9,7 @@
         <main class="details__card d-flex flex-column">
           <div class="details__header d-flex">
             <div class="details__img">
-              <img class="img-fluid" src="/assets/images/events/{{ event.url_image[0] || event.category.url_image }}" alt="Image d'illustration de l'évenement : {{event.name}}">
+              <img class="img-fluid" src="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}" alt="Image d'illustration de l'évenement : {{event.name}}">
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -94,7 +94,7 @@
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
                   <p class="member__username">{{ participant.username || "Aucun" }}  </p>
-                  <button class="btn btn-main">Accepter</button>
+                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button> 
                 </div>
               </div>
             </div>
