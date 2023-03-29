@@ -1,15 +1,17 @@
-<div class="details d-flex align-items-center justify-content-center">
-  <div *ngIf="!event || !event.category;else eventBlock">
-    <div class="spinner-grow text-light" role="status">
-      <span class="visually-hidden">Loading...</span>
+<section class="app--container">
+  <div class="details d-flex align-items-center justify-content-center">
+    <div *ngIf="!event || !event.category;else eventBlock">
+      <div class="spinner-grow text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
-  </div>
-  <ng-template #eventBlock>
-    <div class="container details__container d-flex justify-content-between">
+    <ng-template #eventBlock>
+      <div class="container details__container d-flex justify-content-between">
         <main class="details__card d-flex flex-column">
           <div class="details__header d-flex">
             <div class="details__img">
-              <img class="img-fluid" src="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}" alt="Image d'illustration de l'évenement : {{event.name}}">
+              <img class="img-fluid" ngSrc="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}"
+                alt="Image d'illustration de l'évenement : {{event.name}}">
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -21,28 +23,29 @@
             </div>
           </div>
           <div class="details__body d-flex justify-content-between">
-              <div class="detail__category d-flex flex-column align-items-center">
-                <img src="{{ event.category.url_icon }}" height="20" alt="Image illustrant la catégorie {{event.category.name}}">
-                <p class="details__label">{{ event.category.name }} €</p>
-              </div>
-              <div class="detail__date d-flex flex-column align-items-center">
-                <app-svg icon="calendar" class="details__icon"></app-svg>
-                <p class="details__label">
-                  {{ event.date_time | date: 'dd/MM/yyyy HH:mm' }}
-                </p>
-              </div>
-              <div class="detail__price d-flex flex-column align-items-center">
-                <app-svg icon="devise" class="details__icon"></app-svg>
-                <p class="details__label">
-                  {{ event.price }} €
-                </p>
-              </div>
-              <div class="detail__location d-flex flex-column align-items-center">
-                <app-svg icon="pin" class="details__icon"></app-svg>
-                <p class="details__label">
-                  {{ event.place }}
-                </p>
-              </div>
+            <div class="detail__category d-flex flex-column align-items-center">
+              <img ngSrc="{{ event.category.url_icon }}" height="20"
+                alt="Image illustrant la catégorie {{event.category.name}}">
+              <p class="details__label">{{ event.category.name }} €</p>
+            </div>
+            <div class="detail__date d-flex flex-column align-items-center">
+              <app-svg icon="calendar" class="details__icon"></app-svg>
+              <p class="details__label">
+                {{ event.date_time | date: 'dd/MM/yyyy HH:mm' }}
+              </p>
+            </div>
+            <div class="detail__price d-flex flex-column align-items-center">
+              <app-svg icon="devise" class="details__icon"></app-svg>
+              <p class="details__label">
+                {{ event.price }} €
+              </p>
+            </div>
+            <div class="detail__location d-flex flex-column align-items-center">
+              <app-svg icon="pin" class="details__icon"></app-svg>
+              <p class="details__label">
+                {{ event.place }}
+              </p>
+            </div>
           </div>
           <div class="details__footer d-flex justify-content-center">
             <ng-template [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
@@ -60,13 +63,13 @@
                 <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
                   Rejoindre
                 </button>
-              </ng-template> 
+              </ng-template>
               <div class="details__contact">
                 <a class="btn btn-main">
                   Contacter
                 </a>
-              </div> 
-            </ng-template> 
+              </div>
+            </ng-template>
           </div>
         </main>
         <aside class="member d-flex flex-column">
@@ -76,20 +79,21 @@
               <div class="member__img">
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
-              <p class="member__username">{{ event.creator.username || "Aucun" }}  </p>
+              <p class="member__username">{{ event.creator.username || "Aucun" }} </p>
             </div>
             <div class="member__item d-flex justify-content-between" *ngFor="let participant of event.users_valide">
               <div class="member__img">
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
-              <p class="member__username">{{ participant.username || "Aucun" }}  </p>
+              <p class="member__username">{{ participant.username || "Aucun" }} </p>
               <button class="btn btn-main">Ajouter</button>
             </div>
             <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
               <hr class="waitingRoom__separator" />
               <h2 class="member__title">En attente</h2>
               <div class="member__container d-flex flex-column">
-                <div class="member__item d-flex justify-content-between" *ngFor="let participant of event.users_waiting">
+                <div class="member__item d-flex justify-content-between"
+                  *ngFor="let participant of event.users_waiting">
                   <div class="member__img">
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
@@ -105,6 +109,7 @@
             </div>
           </div>
         </aside>
-    </div>
-  </ng-template>
-</div>
+      </div>
+    </ng-template>
+  </div>
+</section>

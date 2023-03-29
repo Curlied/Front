@@ -23,13 +23,15 @@ import { MessagesComponent } from './espace-utilisateur/messages/messages.compon
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
-export function tokenGetter() {
-  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
-}
+import { NgOptimizedImage } from '@angular/common';
 import { SvgComponent } from './components/svg/svg.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
+
+import { ModalComponent } from './components/modal/modal.component';
+export function tokenGetter() {
+  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
     AdminComponent,
     SvgComponent,
     AlertPwaComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-accueil',
@@ -37,14 +38,40 @@ export class AccueilComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-    private responseService: ResponseService
+    private responseService: ResponseService,
+    private metaService: Meta
   ) {}
 
   ngOnInit(): void {
     this.setup();
     window.scroll(0, 0);
+    const ogtitle: MetaDefinition = {
+      name: 'title',
+      property: 'og:title',
+      content: 'Curlied - Rejoins ou organise des événements',
+    };
+    const ogkeywords: MetaDefinition = {
+      name: 'keywords',
+      property: 'og:keywords',
+      content:
+        'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly',
+    };
+    const ogdesc: MetaDefinition = {
+      name: 'description',
+      property: 'og:description',
+      content:
+        'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt',
+    };
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
   }
 
+  ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+  }
   /**Fetch categories, events, and department
    *
    */
