@@ -10,7 +10,7 @@ export class SvgComponent implements OnInit {
   icon!: string;
 
   @Input('icon') set setIcon(_icon: string) {
-    this.icon = environment.AdresseIcon + _icon;
+    this.icon = environment.AdresseIcon + '#' + _icon;
   }
 
   ngOnInit(): void {}
