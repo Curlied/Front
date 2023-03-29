@@ -22,6 +22,7 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgOptimizedImage } from '@angular/common';
 import { SvgComponent } from './components/svg/svg.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -54,6 +55,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -69,7 +71,7 @@ export function tokenGetter() {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerImmediately'
+      registrationStrategy: 'registerImmediately',
     }),
   ],
   providers: [

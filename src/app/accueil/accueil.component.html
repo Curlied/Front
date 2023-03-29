@@ -38,7 +38,9 @@
           </div>
         </form>
       </div>
-      <div class="col-lg-9 d-flex flex-column event__container">
+      <div class="col-lg-9 d-flex flex-column event__container" infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
           <img class="img-fluid event__img" ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}"
             height="500" width="388">
