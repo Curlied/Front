@@ -29,7 +29,7 @@ export class AccueilComponent implements OnInit {
   });
 
   constructor(private httpService: HttpService, private responseService: ResponseService, private metaService:Meta) { 
-    //this.addTags();
+    
   }
 
  
@@ -38,9 +38,9 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): void {
     this.setup();
     window.scroll(0,0);
-    const ogtitle: MetaDefinition =  { property: 'og:title', content: 'Curlied - Rejoins ou organise des événements'};
-    const ogkeywords: MetaDefinition = {property: 'og:keywords', content:'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
-    const ogdesc: MetaDefinition = { property: 'og:description', content: 'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt'};
+    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Curlied - Rejoins ou organise des événements'};
+    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords', content:'evenement lyon, ynov, solitude, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
+    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt'};
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);
