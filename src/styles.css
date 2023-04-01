@@ -25,8 +25,7 @@
   --main-color: #176DE2;
   --main-dark: #15202b;
   --main-white: #fff;
-  --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0%
-    no-repeat padding-box;
+  --main-bg: transparent linear-gradient(180deg, #8bdafb 0%, #4835ff 100%) 0% 0% no-repeat padding-box;
   --font-family-primary: "Co Headline";
 }
 
@@ -55,6 +54,38 @@ section {
 ----------------------------------
 */
 
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+input:not([type='search']).ng-touched.ng-invalid {
+  border: 1px solid red;
+  animation: shake 0.5s;
+}
+
+textarea:not([type='search']).ng-touched.ng-invalid {
+  border: 1px solid red;
+  animation: shake 0.5s;
+}
+
+select:not([type='search']).ng-touched.ng-invalid {
+  border: 1px solid red;
+  animation: shake 0.5s;
+}
 /*
 ----------------------------------
 4. Couleurs
