@@ -22,14 +22,16 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
-
-export function tokenGetter() {
-  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
-}
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgOptimizedImage } from '@angular/common';
 import { SvgComponent } from './components/svg/svg.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
 
+import { ModalComponent } from './components/modal/modal.component';
+export function tokenGetter() {
+  return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+}
 
 @NgModule({
   declarations: [
@@ -49,14 +51,17 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
     AdminComponent,
     SvgComponent,
     AlertPwaComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -66,7 +71,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerImmediately'
+      registrationStrategy: 'registerImmediately',
     }),
   ],
   providers: [

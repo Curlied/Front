@@ -25,9 +25,9 @@
 h2 {
   position: relative;
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
   font-weight: bold;
-  font-size: 24px;
+  font-size: var(--font-size-l);
   text-align: left;
 }
 
@@ -36,12 +36,12 @@ h2::after {
   content: "";
   display: block;
   height: 2px;
-  left: 30px;
+  left: 3rem;
   bottom: -50%;
   position: absolute;
   transform: translate(-50%, 0);
-  width: 60px;
-  border-radius: 10px;
+  width: 6rem;
+  border-radius: 1rem;
 }
 
 .img-category {

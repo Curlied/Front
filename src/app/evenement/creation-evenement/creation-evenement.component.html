@@ -1,82 +1,98 @@
-<div class="d-flex justify-content-center event">
-	<div class="event__card">
-		<h1 class="event__title">Crée ton événement !</h1>
-		<form (ngSubmit)="send()" [formGroup]="eventForm" class="event__form row">
-			<div class="col-12">
-				<label for="name" class="form-label">Nom de l'évenement*</label>
-				<input type="text" formControlName="name" class="form-control " required placeholder="6 caractères minimum">
-				<small *ngIf="eventForm.get('name')?.invalid && eventForm.get('name')?.touched" class="text-danger">6 caractères obligatoires</small>
-			</div>
-			<div class="col-md-6 form-group">
-				<label for="category" class="form-label">Catégories</label>
-				<select class="form-control" formControlName="category" aria-label="Default select example">
-					<option *ngFor="let category of arrayCategories" [value]="category._id">
-						{{category.name}}</option>
-				</select>
-				<small *ngIf="eventForm.get('category')?.invalid && eventForm.get('category')?.touched" class="text-danger">veuillez sélectionner une catégorie</small>
-			</div>
-			<div class="col-md-3">
-				<label for="price" class="form-label" >Prix*</label>
-				<input type="number" min="1" max="9999" formControlName="price" class="form-control " required>
-				<small *ngIf="eventForm.get('price')?.invalid && eventForm.get('price')?.touched" class="text-danger">veuillez mettre un prix</small>
-			</div>
-			<div class="col-md-3">
-				<label for="user_max" class="form-label">Place*</label>
-				<select class="form-control" formControlName="user_max" aria-label="Default select example" placeholder="Vous inclus">
-					<option *ngFor="let item of [].constructor(49); let i = index" [value]="i +2">{{i+2}}
-					</option>
-				</select>
-				<small *ngIf="eventForm.get('user_max')?.invalid && eventForm.get('user_max')?.touched" class="text-danger">veuillez sélectionner un nombre de place</small>
-			</div>
-			<div class="col-md-6">
-				<label for="department" class="form-label">Département*</label>
-				<select class="form-control" required (change)="changeDepartment()" aria-label="departements" formControlName="department" *ngIf="arrayDepartement">
-					<option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">{{departement.nom}}</option>
-				</select>
-				<small *ngIf="eventForm.get('department')?.invalid && eventForm.get('department')?.touched"  class="text-danger">veuillez choisir un département</small>
-			</div>
-			<div class="col-md-6">
-				<label for="code" class="form-label">Commune*</label>
-				<select *ngIf="!arrayCommune" class="form-control" required aria-label="code" formControlName="code" >
-				</select>
-				<select *ngIf="arrayCommune"  class="form-control" required aria-label="code" formControlName="code" >
-						<option *ngFor="let commune of arrayCommune; let i = index;" value="{{commune.codesPostaux[0]}}-{{commune.nom}}">{{commune.codesPostaux[0]}}-{{commune.nom}}</option>
-				</select>
-				<small *ngIf="eventForm.get('code')?.invalid && eventForm.get('code')?.touched" class="text-danger">veuillez choisir une commune</small>
-			</div>
-			<div class="col-12">
-				<label for="adress" class="form-label">Adresse*</label>
-				<input type="text" formControlName="adress" class="form-control " required>
-				<small *ngIf="eventForm.get('adress')?.invalid && eventForm.get('adress')?.touched" class="text-danger">veuillez mettre une adresse</small>
-			</div>
-			<div class="col-md-4">
-				<label for="date" class="form-label">Date*</label>
-				<input type="date" formControlName="date" min="{{tomorrow | date:'yyyy-MM-dd'}}" class="form-control" required>
-				<small *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="text-danger">choisit une date à minimum demain</small>
-			</div>
-			<div class="col-md-4">
-				<label for="hour" class="form-label">Heure*</label>
-				<input type="time" formControlName="hour" class="form-control" required>
-				<small *ngIf="eventForm.get('hour')?.invalid && eventForm.get('hour')?.touched" class="text-danger">veuillez mettre une heure</small>
-			</div>
-			<div class="col-md-4">
-				<label for="time" class="form-label">Durée (en heure)*</label>
-				<input type="number" min="1" max="9999" formControlName="time" class="form-control " required>
-				<small *ngIf="eventForm.get('time')?.invalid && eventForm.get('time')?.touched"  class="text-danger">veuillez mettre une durée</small>
-			</div>
-			<div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
-				<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
-				</file-upload>
-			</div>
-			<div class="col-12 col-md-8">
-				<label for="description">Description* <small *ngIf="eventForm.get('description')?.value.length > 0">{{ eventForm.get('description')?.value.length }}/500 caractères max.</small></label>
-				<textarea rows="5" formControlName="description" maxlength="500" placeholder="500 caractères max" class="form-control form-textarea" required >
-				</textarea>
-				<small *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched"  class="text-danger">obligatoire avec caractères 500 max</small>
-			</div>
-			<div class="col-12 d-flex justify-content-center">
-				<button [disabled]="!eventForm.valid" class="btn btn-main mt-3" type="submit">Créer</button>
-			</div>
-		</form>
+<section class="app--container">
+	<div class="d-flex justify-content-center event">
+		<div class="event__card">
+			<h1 class="heading--primary">Crée ton événement !</h1>
+			<form (ngSubmit)="send()" [formGroup]="eventForm" class="form event__form row">
+				<div class="col-12">
+					<label for="name" class="label">Nom de l'évenement*</label>
+					<input type="text" formControlName="name" class="input input--text" required>
+					<small *ngIf="eventForm.get('name')?.invalid && eventForm.get('name')?.touched" class="text-danger">6
+						caractères min.</small>
+				</div>
+				<div class="col-sm-6">
+					<label for="category" class="label">Catégories</label>
+					<select class="select" formControlName="category" aria-label="Default select example">
+						<option *ngFor="let category of arrayCategories" [value]="category._id">
+							{{category.name}}
+						</option>
+					</select>
+					<small *ngIf="eventForm.get('category')?.invalid && eventForm.get('category')?.touched"
+						class="text-danger">veuillez sélectionner une catégorie</small>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<label for="price" class="label">Prix*</label>
+					<input type="number" min="1" max="9999" formControlName="price" class="input input--number" required>
+					<small *ngIf="eventForm.get('price')?.invalid && eventForm.get('price')?.touched" class="text-danger">veuillez
+						mettre un prix</small>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<label for="user__max" class="label">Place*</label>
+					<select class="select" formControlName="user_max" aria-label="Default select example"
+						placeholder="Vous inclus">
+						<option *ngFor="let item of [].constructor(49); let i = index" [value]="i +2">
+							{{i+2}}
+						</option>
+					</select>
+					<small *ngIf="eventForm.get('user_max')?.invalid && eventForm.get('user_max')?.touched" class="text-danger">sélectionner un nombre de place</small>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<label for="department" class="label">Département*</label>
+					<select class="select" required (change)="changeDepartment()" aria-label="departements"
+						formControlName="department" *ngIf="arrayDepartement">
+						<option *ngFor="let departement of arrayDepartement" value="{{departement.code}}">
+							{{departement.nom}}
+						</option>
+					</select>
+					<small *ngIf="eventForm.get('department')?.invalid && eventForm.get('department')?.touched"  class="text-danger">veuillez choisir un département</small>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<label for="code" class="label">Commune*</label>
+					<select *ngIf="!arrayCommune" class="select" required aria-label="code" formControlName="code">
+					</select>
+					<select *ngIf="arrayCommune" class="select" required aria-label="code" formControlName="code">
+						<option *ngFor="let commune of arrayCommune; let i = index;"
+							value="{{commune.codesPostaux[0]}}-{{commune.nom}}">
+							{{commune.codesPostaux[0]}}-{{commune.nom}}
+						</option>
+					</select>
+					<small *ngIf="eventForm.get('code')?.invalid && eventForm.get('code')?.touched" class="text-danger">veuillez choisir une commune</small>
+				</div>
+				<div class="col-12 col-sm-6 col-md-12">
+					<label for="adress" class="label">Adresse*</label>
+					<input type="text" formControlName="adress" class="input input--text" required>
+					<small *ngIf="eventForm.get('adress')?.invalid && eventForm.get('adress')?.touched" class="text-danger">veuillez mettre une adresse</small>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<label for="date" class="label">Date*</label>
+					<input type="date" formControlName="date" min="{{tomorrow | date:'yyyy-MM-dd'}}" class="input input--date"
+						required>
+						<small *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="text-danger">choisit une date à minimum demain</small>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<label for="hour" class="label">Heure*</label>
+					<input type="time" formControlName="hour" class="input input--time" required>
+					<small *ngIf="eventForm.get('hour')?.invalid && eventForm.get('hour')?.touched" class="text-danger">veuillez mettre une heure</small>
+				</div>
+				<div class="col-md-4">
+					<label for="time" class="label">Durée (en heure)*</label>
+					<input type="number" min="1" max="9999" formControlName="time" class="input input--number" required>
+					<small *ngIf="eventForm.get('time')?.invalid && eventForm.get('time')?.touched"  class="text-danger">veuillez mettre une durée</small>
+				</div>
+				<div class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-center">
+					<file-upload [control]="fileUploadControl" [multiple]="false" [animation]="true" class="file">
+					</file-upload>
+				</div>
+				<div class="col-12 col-sm-6 col-md-8">
+					<label for="description" class="label">Description* <small *ngIf="eventForm.get('description')?.value.length > 0">{{ eventForm.get('description')?.value.length }}/500 caractères max.</small></label>
+					<textarea rows="5" formControlName="description" maxlength="500"
+						placeholder="500 caractères max" class="input input--textarea" required>
+					</textarea>
+					<small *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched"  class="text-danger">obligatoire avec caractères 500 max</small>
+				</div>
+				<div class="col-12 d-flex justify-content-center">
+					<button [disabled]="!eventForm.valid"  class="btn btn-main mt-3" type="submit">Créer</button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>
+</section>
