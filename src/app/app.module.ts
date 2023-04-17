@@ -29,6 +29,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
 
 import { ModalComponent } from './components/modal/modal.component';
+
+import { ImageLoadedDirective } from './image-loaded.directive';
+
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
 }
@@ -52,6 +55,7 @@ export function tokenGetter() {
     SvgComponent,
     AlertPwaComponent,
     ModalComponent,
+    ImageLoadedDirective,
   ],
   imports: [
     BrowserModule,
