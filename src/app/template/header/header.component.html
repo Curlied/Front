@@ -5,7 +5,7 @@
         <img ngSrc="./assets/images/logo.svg" alt="logo" height="30" width="100">
       </a>
     </div>
-    <div class="search">
+    <div hideIsProd class="search">
       <app-svg icon="search" class="search__icon"></app-svg>
       <input type="search" class="search__input" placeholder="Chercher un événement">
     </div>
@@ -21,7 +21,7 @@
             <span class="d-lg-none nav__label">Home</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li hideIsProd class="nav-item">
           <a routerLink="messages">
             <div class="indicator__container">
               <app-svg icon="message" class="nav__icon"></app-svg>
@@ -33,7 +33,7 @@
             <span class="d-lg-none nav__label">Nouveau(x) message(s)</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li hideIsProd class="nav-item">
           <div class="dropdown">
             <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="indicator__container">
