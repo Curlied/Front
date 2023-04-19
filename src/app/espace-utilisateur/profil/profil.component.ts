@@ -76,7 +76,6 @@ export class ProfilComponent implements OnInit {
     this.httpService.getMyProfilUsersForSpace().subscribe({
       next: (res: any) => {
         this.profilData = res.body;
-        console.log(this.profilData)
       },
       error: (err: any) => {
         this.responseService.ErrorF(err);
