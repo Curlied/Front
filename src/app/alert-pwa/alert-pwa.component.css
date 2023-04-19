@@ -1,0 +1,16 @@
+.alert-pwa{
+  position: fixed;
+  bottom: 5px;
+  background: aliceblue;
+  min-width: 50vw;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .alert-pwa{
+    width: 90vw;
+  }
+}

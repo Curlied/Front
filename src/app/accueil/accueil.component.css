@@ -1,75 +1,210 @@
-.form-check-input:checked {
-    background-color: var(--main-color) !important;
-    border-color: var(--main-color) !important;
+.filters {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100%;
+  display: flex;
+  align-items: end;
+}
+
+.filters__toggle {
+  align-items: flex-end;
+  padding: var(--gap-s);
+  fill: var(--main-white);
+  stroke: var(--main-white);
+  border-radius: 6rem;
+  background-color: var(--main-color);
+}
+
+.filter__icon {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+}
+
+.filters__category {
+  background-color: var(--main-color);
+  transform: translate(10px, 10px);
+  max-width: 100%;
+  gap: var(--gap-l);
+  flex-direction: row;
+  padding: var(--gap-l);
+  overflow-x: auto;
+}
+
+.filters__actions {
+  background-color: var(--main-color);
+  transform: translate(10px, 10px);
+  width: 100%;
+  padding: var(--gap-md);
+  padding-top: 0;
+}
+
+.filter {
+  column-gap: var(--gap-md);
+}
+
+.filter__icon {
+  fill: var(--main-white);
+  color: var(--main-color);
+  display: block;
+  width: 4rem;
+  height: 4rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
 }
 
 .gradient {
-  background-image: linear-gradient(#78BCF7, #2828C9); 
+  background-image: linear-gradient(#78bcf7, #2828c9);
 }
 
-.CheckBox {
-  width : 30px;
-  height : 30px;
-  background-color: white !important;
-}
- 
-.event-card, .filters {
-  border-radius: 40px;
+.filters__category.show,
+.filters__category.collapsing {
+  display: flex;
 }
 
-.img-event {
-  border-radius: 25px;
+.event__container {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--gap-xxl);
+  margin-top: var(--gap-xxl);
+  align-items: flex-start;
+}
+
+.event__card {
+  gap: var(--gap-xl);
+  flex-direction: column;
+  background-color: var(--main-white);
+  padding: var(--gap-md);
+  border-radius: 3rem;
+}
+
+.event__img {
+  height: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  height: 20rem;
   width: 100%;
-  height: 340px;
-  background-repeat: no-repeat;
-  background-position: center; 
-  background-size: cover;
+  display: block;
 }
 
-.img-radius {
-  border-radius: 25px;
+.event__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 3rem;
+  height: 100%;
+  flex: 1;
 }
 
-h2::after {
-  content: none;
+.event__icon {
+  width: 6rem;
+  height: 6rem;
+  color: var(--main-white);
+  fill: var(--main-color);
 }
 
-h2 {
-  text-transform: initial;
+.event__price {
+  font-size: var(--font-size-md);
 }
 
-.container {
-  max-width: 1000px;
-  min-height: 82vh;
+.event__description {
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: var(--gap-xs);
 }
 
-.filter-category {
-  max-width: 100%;
-  overflow: overlay;
-}
-
-input[type="date"] {
-  background-color: transparent !important;
-  border-radius: 10px !important;
-  border: 1px solid #707070 !important;
+.event__icons {
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {
+  .event__card {
+    flex-direction: row;
+  }
+
+  .event__img {
+    height: 40rem;
+    width: 30rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .event__icons {
+    justify-content: center;
+    column-gap: 5rem;
+  }
+
+  .filters__container {
+    position: sticky;
+    top: 10rem;
+    height: 100vh;
+  }
+
   .filters {
-    position: fixed;
+    height: 60rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: initial;
+    top: 0;
+    right: 0;
+    bottom: initial;
+    align-items: flex-start;
+    max-width: 20rem;
   }
-  .event-card {
-    margin-bottom: 10rem !important;
+
+  .filters__category {
+    background-color: var(--main-white);
+    transform: none;
+    width: 100%;
   }
-  .filter-category {
-    max-height: 50vh;
-    overflow-x: scroll;
-    padding-right: 1.5rem;
+
+  .filters__actions {
+    background-color: var(--main-white);
+    transform: none;
   }
+
+  .filter__icon {
+    width: 6rem;
+    height: 6rem;
+    fill: var(--main-color);
+    color: var(--main-white);
+  }
+
+  .filters__category {
+    flex-direction: column;
+    overflow-x: auto;
+    margin-top: 0;
+  }
+
+  .filters__actions {
+    display: flex;
+    flex-direction: column;
+  }
+
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
   }
-  input[type="date"] {
-    width: 125px;
+
+  .event__container {
+    row-gap: 14rem;
+    margin-top: 0;
+  }
+
+  .event__card {
+    padding: var(--gap-xl);
+  }
+
+  .event__icons {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1200px) {
+  .event__icons {
+    column-gap: 10rem;
   }
 }

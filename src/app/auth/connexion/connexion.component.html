@@ -1,33 +1,34 @@
 <div class="main">
-  <div class="first">
-    <img src="./assets/images/phone1.png" class="tel1">
-    <img src="./assets/images/phone2.png" class="tel2">
+  <div class="hero">
+    <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
+      alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
+    <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
+      alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
   </div>
-  <div class="second">
-    <div class="form-container">
-      <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5">
-        <h1 class="welcome mb-0">Bienvenue sur</h1>
-        <img src="./assets/images/logo.svg" class="ms-3">
+  <div class="form">
+    <div class="form__container">
+      <div class="d-sm-flex text-center text-sm-start justify-content-center mb-5 align-items-center gap-3">
+        <h1 class="heading--primary">Bienvenue sur</h1>
+        <img ngSrc="./assets/images/logo.svg" alt="logo" height="30" width="100">
+        <h1 hideIsProd>de dev</h1>
       </div>
-      <form (ngSubmit)="login()" [formGroup]="loginForm">
-        <div class="form-group">
-          <label for="email">Adresse email</label>
-          <input type="email" formControlName="email" class="form-control" id="email" placeholder="prenom.nom@ynov.com"
-            required>
+      <form class="form__form" (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="form__group">
+          <label for="email" class="label">Adresse email</label>
+          <input type="email" formControlName="email" class="input input--email" id="email"
+            placeholder="prenom.nom@ynov.com" required>
         </div>
-        <div class="form-group">
-          <label for="password">Mot de passe</label>
-          <input type="password" formControlName="password" class="form-control" id="password" required>
+        <div class="form__group">
+          <label for="password" class="label">Mot de passe</label>
+          <input type="password" formControlName="password" class="input input--password" id="password" required>
         </div>
-        <div class="button mt-5">
+        <div class="form__actions">
           <button class="btn btn-main" type="submit">Se connecter</button>
-          <div class="px-4">
-            <a class="text-decoration-none fw-bold color-main" routerLink="/inscription">S'inscrire</a>
-          </div>
+          <a class="link" routerLink="/inscription">S'inscrire</a>
         </div>
       </form>
-      <div class="mt-4 text-center">
-        <small class="color-main text-decoration-underline">Mot de passe oublié ?</small>
+      <div class="form__footer">
+        <small class="link">Mot de passe oublié ?</small>
       </div>
     </div>
   </div>

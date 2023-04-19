@@ -1,6 +1,6 @@
 .bg-img {
   background: linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.6)),
-    url("https://curlied.sfo3.digitaloceanspaces.com/curliedImages/background/bg-evenement1.jpg");
+  url("https://stockage.ams3.digitaloceanspaces.com/images/global_pictures/event.webp");
   height: 100vh;
   background-attachment: fixed !important;
   background-position: center;
@@ -9,6 +9,11 @@
 }
 
 .logo {
-  width: 150px;
+  width: 15rem;
   height: auto;
 }
+
+.colorbackdiv {
+  background-color: white;
+}
+

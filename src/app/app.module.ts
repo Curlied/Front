@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,11 +22,20 @@ import { ProfilComponent } from './espace-utilisateur/profil/profil.component';
 import { MessagesComponent } from './espace-utilisateur/messages/messages.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './auth.interceptor';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgOptimizedImage } from '@angular/common';
+import { SvgComponent } from './components/svg/svg.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
+
+import { ModalComponent } from './components/modal/modal.component';
+
+import { ImageLoadedDirective } from './image-loaded.directive';
+import { IsProdDirective } from './directive/is-prod.directive';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
 }
-import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -45,18 +54,30 @@ import { SvgComponent } from './components/svg/svg.component';
     MessagesComponent,
     AdminComponent,
     SvgComponent,
+    AlertPwaComponent,
+    ModalComponent,
+    ImageLoadedDirective,
+    IsProdDirective,
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
       },
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerImmediately',
     }),
   ],
   providers: [

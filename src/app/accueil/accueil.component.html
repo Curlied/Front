@@ -1,60 +1,78 @@
-<section class="gradient">
+<section class="app--container">
   <div class="container">
-    <div class="row mt-5">
-      <div class="col-md-3">
+    <div class="row">
+      <div class="col-lg-3 filters__container">
         <form (ngSubmit)="submitSearch()" [formGroup]="searchFormGroup">
-        <div class="filters bg-white px-5 py-4 p-md-4 me-md-5 mb-4 mb-md-0">
-          <div class="d-flex justify-content-between d-md-block filter-category">
-            <div class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <label class="ps-0 d-flex align-items-center justify-content-center" for="tous"><img src="./assets/images/categories/all.svg" height="50" alt="..."></label>
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="tous" id="tous">
+          <div class="filters d-flex flex-column">
+            <div class="d-lg-none filters__toggle filters__mobile">
+              <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse"
+                data-bs-target=".multi-collapse" aria-controls="filters__wrapper" aria-expanded="false"
+                aria-label="Toggle filters">
+                <app-svg icon="filtres" class="filter__icon"></app-svg>
+              </button>
             </div>
-            <div *ngFor="let category of arrayCategories" class="d-block text-center d-md-flex justify-content-center align-items-center mb-4 mx-2 mx-md-0">
-              <label class="ps-0" for="{{category.name}}"><img src="./assets/images/{{category.url_icon}}" height="50" alt="..."></label>
-              <input class="form-check-input CheckBox m-auto ms-md-3 mt-2 my-md-0 d-block" type="radio" formControlName="category" value="{{category._id}}" id="{{category.name}}">
+            <div class="d-lg-flex filters__category collapse multi-collapse" id="filters__wrapper">
+              <div class="filter d-flex align-items-center">
+                <label class="d-flex align-items-center justify-content-center" for="tous">
+                  <app-svg icon="all" class="filter__icon"></app-svg>
+                </label>
+                <input class="input--checkbox" type="radio" name="category" formControlName="category" value="tous"
+                  id="tous">
+              </div>
+              <div *ngFor="let category of arrayCategories" class="filter d-flex align-items-center">
+                <label for="{{category.name}}">
+                  <app-svg icon="{{category.url_icon}}" class="filter__icon"></app-svg>
+                </label>
+                <input class="input--checkbox" type="radio" name="category" formControlName="category"
+                  value="{{category._id}}" id="{{category.name}}">
+              </div>
+            </div>
+            <div class="d-lg-flex flex-column filters__actions multi-collapse collapse">
+              <label for="date" class="label">Date</label>
+              <input type="date" class="input" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
+                formControlName="date">
+              <div class="text-center mt-3">
+                <button class="btn btn-tertiary" type="submit">Filtrer</button>
+              </div>
             </div>
           </div>
-          <div class="form-group mt-3 mt-md-0">
-            <label for="date">Date</label>
-            <input type="date" class="form-control mb-0" min="{{dateMin | date:'yyyy-MM-dd'}}"  id="date" name="date" formControlName="date">
-          </div>
-          <div class="text-center mt-3">
-            <button class="btn btn-main" type="submit">Filtrer</button>
+        </form>
+      </div>
+      <div class="col-lg-9 d-flex flex-column event__container" infiniteScroll [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
+        <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
+          <img class="img-fluid event__img" ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}"
+            height="500" width="388">
+          <div class="event__info">
+            <div class="event__content">
+              <h2 class="heading--secondary">{{ event.name }}</h2>
+              <p class="paragraph event__description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue.
+                Enim,consectetur in dui
+              </p>
+            </div>
+            <div class="d-flex event__icons">
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
+                <app-svg icon="{{event.categoryComplet.url_icon}}" class="event__icon"></app-svg>
+                <small class="icon__label">{{ event.categoryComplet.name }}</small>
+              </div>
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
+                <app-svg icon="calendar" class="event__icon"></app-svg>
+                <small class="icon__label">{{ event.date_time | date: 'dd/MM/yyyy'}}</small>
+              </div>
+              <div class="d-flex justify-content-center flex-column text-center align-items-center">
+                <app-svg icon="member" class="event__icon"></app-svg>
+                <small class="icon__label">{{ event.nbUserActual}}/{{ event.user_max}}</small>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center color-main event__actions">
+              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir
+                plus</button>
+              <p class="event__price mb-0">Gratuit</p>
+            </div>
           </div>
         </div>
-      </form>
       </div>
- 
-      <div class="col-md-9">
-        <div class="event-card bg-white p-5 d-flex align-items-start mb-4" *ngFor="let event of arrayEvent " >
-          <div class="img-event" style="background-image: url('/assets/images/events/{{ event.url_image }}')"></div>
-          <div class="ps-sm-5">
-            <h2 class="fw-bold mb-2 text-start">{{ event.name }}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue. Enim, consectetur in
-            dui …</p>
-            <div class="d-flex justify-content-between mt-5">
-              <div class="text-center">
-                <img class="img-fluid img-radius" src="./assets/images/{{ event.categoryComplet.url_icon }}" width="40" alt="...">
-                <small class="fw-bold color-main d-block">{{ event.categoryComplet.name }}</small>
-              </div>
-              <div class="text-center">
-                <img class="img-fluid img-radius" src="./assets/images/date.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">{{ event.date_time | date: 'dd/MM/yyyy'}}</small>
-              </div>
-              <div class="text-center">
-                <img class="img-fluid img-radius" src="./assets/images/people.svg" width="40" alt="...">
-                <small class="fw-bold color-main d-block">{{ event.nbUserActual}}/{{ event.user_max}}</small>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center color-main mt-5">
-              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir plus</button>
-              <p class="mb-0">Gratuit</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </div>
 </section>
