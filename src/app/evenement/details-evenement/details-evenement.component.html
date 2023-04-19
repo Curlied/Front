@@ -24,9 +24,8 @@
           </div>
           <div class="details__body d-flex justify-content-between">
             <div class="detail__category d-flex flex-column align-items-center">
-              <img ngSrc="{{ event.category.url_icon }}" height="20"
-                alt="Image illustrant la catégorie {{event.category.name}}">
-              <p class="details__label">{{ event.category.name }} €</p>
+              <app-svg icon="{{ event.category.url_icon }}" class="member__icons"></app-svg>
+              <p class="details__label">{{ event.category.name }}</p>
             </div>
             <div class="detail__date d-flex flex-column align-items-center">
               <app-svg icon="calendar" class="details__icon"></app-svg>
@@ -97,8 +96,8 @@
                   <div class="member__img">
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
-                  <p class="member__username">{{ participant.username || "Aucun" }}  </p>
-                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button> 
+                  <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button>
                 </div>
               </div>
             </div>
