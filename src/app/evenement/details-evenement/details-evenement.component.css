@@ -20,12 +20,13 @@
 
 .details__img {
   width: 100%;
+  height: 40rem;
 }
 
 .details__img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .details__info {
@@ -46,6 +47,8 @@
 
 .details__icon,
 .member__icons {
+  fill: var(--main-color);
+  color: var(--main-white);
   width: 5rem;
   height: 5rem;
   display: block;
@@ -133,7 +136,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .details__container {
     flex-direction: row;
   }

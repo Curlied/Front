@@ -11,7 +11,7 @@
           <div class="details__header d-flex">
             <div class="details__img">
               <img class="img-fluid" ngSrc="{{bucketEvent + event.url_image[0] || event.category.url_image }}"
-                alt="Image d'illustration de l'évenement : {{event.name}}" height="500" width="388">
+                alt="Image d'illustration de l'évenement : {{event.name}}" width="200" height="300">
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -24,7 +24,7 @@
           </div>
           <div class="details__body d-flex justify-content-between">
             <div class="detail__category d-flex flex-column align-items-center">
-              <app-svg icon="{{event.category.url_icon}}" class="details__icon"></app-svg>
+              <app-svg icon="{{ event.category.url_icon }}" class="details__icon"></app-svg>
               <p class="details__label">{{ event.category.name }}</p>
             </div>
             <div class="detail__date d-flex flex-column align-items-center">
@@ -34,13 +34,13 @@
               </p>
             </div>
             <div class="detail__price d-flex flex-column align-items-center">
-              <app-svg icon="devise" class="details__icon"></app-svg>
+              <app-svg icon="euro" class="details__icon"></app-svg>
               <p class="details__label">
                 {{ event.price }} €
               </p>
             </div>
             <div class="detail__location d-flex flex-column align-items-center">
-              <app-svg icon="pin" class="details__icon"></app-svg>
+              <app-svg icon="localisation" class="details__icon"></app-svg>
               <p class="details__label">
                 {{ event.place }}
               </p>
@@ -53,17 +53,17 @@
               </button>
             </ng-template> 
             <ng-template #Participate> -->
-              <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
-                  Annuler
-                </button>
-              </ng-template>
-              <ng-template #RequestParticipe>
-                <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
-                  Rejoindre
-                </button>
-              </ng-template>
-              <!-- <div class="details__contact">
+            <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
+              <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
+                Annuler
+              </button>
+            </ng-template>
+            <ng-template #RequestParticipe>
+              <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
+                Rejoindre
+              </button>
+            </ng-template>
+            <!-- <div class="details__contact">
                 <a class="btn btn-main">
                   Contacter
                 </a>
@@ -93,13 +93,12 @@
               <hr class="waitingRoom__separator" />
               <h2 class="member__title">En attente</h2>
               <div class="member__container d-flex flex-column">
-                <div class="member__item d-flex"
-                  *ngFor="let participant of event.users_waiting">
+                <div class="member__item d-flex" *ngFor="let participant of event.users_waiting">
                   <div class="member__img">
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
-                  <p class="member__username">{{ participant.username || "Aucun" }}  </p>
-                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button> 
+                  <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button>
                 </div>
                 <div *ngIf="event.users_waiting.length == 0">
                   <p class="no__member__waiting">Pas d'utilisateurs en attente</p>
