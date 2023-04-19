@@ -1,5 +1,6 @@
 .bg-img {
-  background-color: red;
+  background: linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.6)),
+  url("https://stockage.ams3.digitaloceanspaces.com/images/global_pictures/event.webp");
   height: 100vh;
   background-attachment: fixed !important;
   background-position: center;
@@ -11,3 +12,8 @@
   width: 15rem;
   height: auto;
 }
+
+.colorback {
+  background-color: white;
+}
+
