@@ -68,6 +68,8 @@
   display: flex;
   align-items: flex-start;
   column-gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .user__profil {
@@ -177,6 +179,12 @@
 
 .modal__link {
   font-size: var(--font-size-md);
+}
+
+@media (min-width: 992px) {
+  .user__actions {
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 1200px) {
