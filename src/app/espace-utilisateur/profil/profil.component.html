@@ -41,7 +41,7 @@
                                     <app-svg icon="crown" class="crown"></app-svg>
                                 </div>
                                 <p class="paragraph event__categ">{{ eventCreate.categoryInfo.name }}</p>
-                                <img class="event__img" ngSrc="{{eventCreate.url_image[0]}}" height="200" width="200">
+                                <img class="event__img" ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}" height="200" width="200">
                             </div>
                         </div>
                         <div *ngFor="let eventParticipate of allEventsData.eventsParticipate" class="col-md-6 col-lg-4">
@@ -51,7 +51,7 @@
                                     <h3 class="heading--tertiary">{{eventParticipate.name }}</h3>
                                     <p class="paragraph">{{ eventParticipate.categoryInfo.name }}</p>
                                 </div>
-                                <img class="event__img" ngSrc="{{eventParticipate.url_image[0]}}" height="200"
+                                <img class="event__img" ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}" height="200"
                                     width="200">
                             </div>
                         </div>
