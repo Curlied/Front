@@ -1,0 +1,16 @@
+.cgu {
+  padding: 5rem 2rem;
+}
+
+.cgu .heading--secondary + .paragraph {
+  margin-top: 3rem;
+}
+
+.cgu .paragraph {
+  margin-top: 2rem;
+}
+
+.cgu__list {
+  margin-top: 2rem;
+  font-size: var(--font-size-md);
+}
