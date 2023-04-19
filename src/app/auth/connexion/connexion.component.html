@@ -1,9 +1,21 @@
 <div class="main">
   <div class="hero">
-    <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
-      alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
-    <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
-      alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
+    <div class="paragraph hero__paragraphe hero__paragraphe--top">
+      <p><strong>Pas d'amis disponibles ? Viens sur Curlied !</strong></p>
+      <p>"C'est encore annulé !<br>Je ne sais pas avec qui y aller.<br>Je ne sais pas quoi ramener."<br> Fini les
+        problèmes d'organisation.</p>
+    </div>
+    <div class="phone--1-1">
+      <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
+        alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
+    </div>
+    <div class="phone--2-1">
+      <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
+        alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
+    </div>
+    <p class="paragraph hero__paragraphe hero__paragraphe--bottom">
+      Un site dédié aux Ynoviens pour rejoindre, créer facilement des évènements et partager des moments inoubliables.
+    </p>
   </div>
   <div class="form">
     <div class="form__container">
@@ -27,7 +39,7 @@
           <a class="link" routerLink="/inscription">S'inscrire</a>
         </div>
       </form>
-      <div class="form__footer">
+      <div hideIsProd class="form__footer">
         <small class="link">Mot de passe oublié ?</small>
       </div>
     </div>

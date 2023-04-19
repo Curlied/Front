@@ -1,17 +1,19 @@
 <div class="main">
     <div class="hero">
         <div class="paragraph hero__paragraphe hero__paragraphe--top">
-            <p><strong>Lorem ipsum Lorem ipsum dolor sit</strong></p>
-            <p>amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi architecto alias</p>
+            <p><strong>Pas d'amis disponibles ? Viens sur Curlied !</strong></p>
+            <p>"C'est encore annulé !<br>Je ne sais pas avec qui y aller.<br>Je ne sais pas quoi ramener."<br> Fini les problèmes d'organisation.</p>
         </div>
-        <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
+        <div class="phone--1-1">
+            <img ngSrc="{{global_bucket_images + 'phone1.webp'}}" class="phone--1"
             alt="Telephone montrant un evenement tourné vers la gauche" height="400" width="450">
-        <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
+        </div>
+        <div class="phone--2-1">
+            <img ngSrc="{{global_bucket_images + 'phone2.webp'}}" class="phone--2"
             alt="Telephone montrant un evenement tourné vers la droite" height="400" width="450">
-        <p class="paragraph hero__paragraphe hero__paragraphe--bottom">
-            Lorem ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas nostrum, explicabo, sit quasi
-            architecto alias.
-        </p>
+        </div>
+            <p class="paragraph hero__paragraphe hero__paragraphe--bottom">
+            Un site dédié aux Ynoviens pour rejoindre, créer facilement des évènements et partager des moments inoubliables.</p>
     </div>
     <div class="form">
         <div class="form__container">
@@ -21,37 +23,36 @@
             </div>
             <form (ngSubmit)="register()" [formGroup]="profileForm">
                 <div class="form-group">
-                    <label for="username" class="label">Nom d'utilisateur</label>
+                    <label for="username" class="label">Nom d'utilisateur *</label>
                     <input type="text" formControlName="username" id="Nom d'utilisateur" class="input input--text"
                         required>
                 </div>
                 <div class="form-group">
-                    <label for="email" class="label">Adresse mail</label>
-                    <input type="text" formControlName="email" id="email" class="input input--email" required>
+                    <label for="email" class="label">Adresse mail *</label>
+                    <input type="email" formControlName="email" id="email" class="input input--email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="label">Mot de passe</label>
+                    <label for="password" class="label">Mot de passe *</label>
                     <input type="password" formControlName="password" id="password" class="input input--password"
                         required>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_password" class="label">Confirmer le mot de passe</label>
+                    <label for="confirm_password" class="label">Confirmer le mot de passe *</label>
                     <input type="password" formControlName="confirm_password" id="confirm_password"
                         class="input input--password" required>
                 </div>
                 <div class="form-group">
-                    <label for="birthday" class="label">Date de naissance</label>
+                    <label for="birthday" class="label">Date de naissance *</label>
                     <input type="date" formControlName="birth_date" max="{{currentDate | date:'yyyy-MM-dd'}}"
                         id="birthday" class="input input--date" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone_number" class="label">Numéro de téléphone</label>
+                    <label for="phone_number" class="label">Numéro de téléphone *</label>
                     <input type="text" formControlName="telephone" id="phone_number" class="input input--text" required>
                 </div>
                 <div class="form-group">
                     <label for="profile_pic" class="label">Photo de profil</label>
-                    <input type="file" (change)="uploadFile($event)" id="profile_pic" class="input input--text"
-                        required>
+                    <input type="file" (change)="uploadFile($event)" id="profile_pic" class="input input--text">
                 </div>
                 <div class="form__actions">
                     <button class="btn btn-main" type="submit">S'inscrire</button>

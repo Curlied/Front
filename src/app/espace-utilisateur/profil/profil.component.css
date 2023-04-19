@@ -26,6 +26,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  object-fit: cover;
 }
 
 .event__title {
@@ -39,10 +40,18 @@
   border-radius: 2rem;
   background-color: var(--main-white);
   overflow: hidden;
+  padding: 0;
 }
 
 .event__img {
   margin-top: auto;
+}
+
+.event__icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--main-white);
+  fill: var(--main-color);
 }
 
 .user {
@@ -66,7 +75,10 @@
 .user__actions {
   display: flex;
   align-items: flex-start;
+  justify-content: end;
   column-gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .user__profil {
@@ -84,6 +96,15 @@
 }
 
 .user__parameter {
+  fill: var(--main-dark);
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+}
+
+.user__friends {
+  color: var(--main-white);
   fill: var(--main-dark);
   display: block;
   width: 3rem;
@@ -176,6 +197,12 @@
 
 .modal__link {
   font-size: var(--font-size-md);
+}
+
+@media (min-width: 992px) {
+  .user__actions {
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 1200px) {
