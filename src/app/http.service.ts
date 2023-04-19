@@ -45,7 +45,7 @@ export class HttpService {
   }
   getConfirmation(data: any) {
     let params = new HttpParams().set('key', data);
-    return this.http.get(this.urlConfirmation, { params: params });
+    return this.http.put(this.urlConfirmation, { params: params });
   }
 
   postLogin(data: any) {
