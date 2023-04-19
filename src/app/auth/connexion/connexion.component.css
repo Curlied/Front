@@ -62,6 +62,10 @@
   align-items: center;
 }
 
+.form__group{
+  margin-bottom: 2rem;
+}
+
 .button {
   display: flex;
   align-items: center;

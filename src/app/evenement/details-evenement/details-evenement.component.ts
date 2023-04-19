@@ -41,7 +41,7 @@ export class DetailsEvenementComponent implements OnInit {
       name: 'description',
       property: 'og:description',
       content:
-        'Rencontrez de nouveaux amis et explorez des activités passionnantes avec notre application de rencontre amicale. Découvrez les événements locaux organisés par des gens comme vous, qui cherchent à se faire des amis et à s’amuser ensemble. Que vous soyez nouveau dans la ville ou que vous cherchiez simplement à élargir votre cercle social, notre application conviviale vous permettra de rencontrer des gens partageant les mêmes centres d’intérêts et de créer des amitiés durables.',
+        'Rencontrez de nouveaux amis et explorez des activités passionnantes avec notre application de rencontre amicale. Découvrez les évènements locaux organisés par des gens comme vous, qui cherchent à se faire des amis et à s’amuser ensemble. Que vous soyez nouveau dans la ville ou que vous cherchiez simplement à élargir votre cercle social, notre application conviviale vous permettra de rencontrer des gens partageant les mêmes centres d’intérêts et de créer des amitiés durables.',
     };
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
