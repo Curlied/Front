@@ -103,7 +103,6 @@ export class AccueilComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('pog');
     if (this.hasNextPage && !this.isSetup) {
       this.submitSearch(this.currentPage + 1, this.currentLimit, false);
     }
