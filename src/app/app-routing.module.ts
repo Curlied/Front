@@ -11,6 +11,8 @@ import { MessagesComponent } from './espace-utilisateur/messages/messages.compon
 import { AdminComponent } from './admin/admin.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -23,11 +25,13 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'administration', component: AdminComponent },
   { path: 'confirm', component: ConfirmationComponent },
-  { path: '**', component: ErrorComponent }
+  { path: 'mention-legal', component: MentionLegalComponent },
+  { path: 'sitemap', component: SitemapComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

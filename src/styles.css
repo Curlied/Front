@@ -319,6 +319,10 @@ select:not([type="search"]).ng-touched.ng-invalid {
   background-color: var(--main-red);
 }
 
+.bg-grey {
+  background-color: var(--main-grey);
+}
+
 .border-main-color {
   border: 1px solid var(--main-color);
 }
