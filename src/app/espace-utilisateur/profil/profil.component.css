@@ -46,6 +46,13 @@
   margin-top: auto;
 }
 
+.event__icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--main-white);
+  fill: var(--main-color);
+}
+
 .user {
   border-radius: 2rem;
 }
@@ -67,6 +74,7 @@
 .user__actions {
   display: flex;
   align-items: flex-start;
+  justify-content: end;
   column-gap: 3rem;
   flex-wrap: wrap;
   margin-top: 2rem;
@@ -87,6 +95,15 @@
 }
 
 .user__parameter {
+  fill: var(--main-dark);
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+}
+
+.user__friends {
+  color: var(--main-white);
   fill: var(--main-dark);
   display: block;
   width: 3rem;

@@ -1,7 +1,7 @@
 <div class="app--container">
     <div class="container">
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-12">
                 <div class="row user align-items-start" *ngIf="profilData">
                     <div class="col-12 col-md-3 col-lg-2 user__img d-flex justify-content-center">
                         <app-svg icon="profil" class="user__profil"></app-svg>
@@ -16,17 +16,18 @@
                         </p>
                         <p class="paragraph user__desc">{{ profilData.description }}</p>
                     </div>
-                    <div class="col-lg-3 user__actions">
-                        <button type="button" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#editModal">
+                    <div class="col-lg-3 user__actions justify-content-end mt-5 mt-lg-0">
+                        <button hideIsProd type="button" class="btn btn-main" data-bs-toggle="modal"
+                            data-bs-target="#editModal">
                             Modifier
                         </button>
-                        <button type="button" class="btn user__parameter" data-bs-toggle="modal"
+                        <button hideIsProd type="button" class="btn user__parameter" data-bs-toggle="modal"
                             data-bs-target="#settingsModal">
                             <app-svg icon="parameters" class="user__parameter"></app-svg>
                         </button>
-                        <button type="button" class="btn d-xl-none" data-bs-toggle="modal"
+                        <button hideIsProd type="button" class="btn user__friends" data-bs-toggle="modal"
                             data-bs-target="#friendListModal">
-                            Ajouter un amis
+                            <app-svg icon="member" class="user__friends"></app-svg>
                         </button>
                     </div>
                 </div>
@@ -55,45 +56,6 @@
                                 <img class="event__img" ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}"
                                     height="200" width="200">
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 d-none d-xl-block">
-                <div class="user__friends">
-                    <h2 class="heading--secondary text-center">Amis</h2>
-                    <div class="search">
-                        <app-svg icon="search" class="search__icon"></app-svg>
-                        <input type="search" class="search__input" placeholder="Chercher un événement">
-                    </div>
-                    <div class="friend">
-                        <div class="d-flex justify-content-between align-items-center friend__item">
-                            <div class="friend__info">
-                                <app-svg icon="profil" class="friend__profil"></app-svg>
-                                <p class="paragraph">Maxime</p>
-                            </div>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center friend__item">
-                            <div class="friend__info">
-                                <app-svg icon="profil" class="friend__profil"></app-svg>
-                                <p class="paragraph">Lisa</p>
-                            </div>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center friend__item">
-                            <div class="friend__info">
-                                <app-svg icon="profil" class="friend__profil"></app-svg>
-                                <p class="paragraph">Marie</p>
-                            </div>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center friend__item">
-                            <div class="friend__info">
-                                <app-svg icon="profil" class="friend__profil"></app-svg>
-                                <p class="paragraph">Pierre</p>
-                            </div>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
                         </div>
                     </div>
                 </div>
@@ -317,16 +279,16 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
-                            <p class="paragraph">Maxime</p>
+                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
                         </div>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
                             <p class="mb-0 ms-3 fw-bold">Lisa</p>
                         </div>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -334,14 +296,14 @@
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
                             <p class="mb-0 ms-3 fw-bold">Marie</p>
                         </div>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
                             <p class="mb-0 ms-3 fw-bold">Pierre</p>
                         </div>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
                 </div>
             </div>
