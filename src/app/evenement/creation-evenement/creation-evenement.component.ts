@@ -51,7 +51,7 @@ export class CreationEvenementComponent implements OnInit {
     place: new UntypedFormControl(''),
     time: new UntypedFormControl('', [Validators.required]),
     user_max: new UntypedFormControl('', [Validators.required]),
-    price: new UntypedFormControl('', [Validators.required]),
+    price: new UntypedFormControl('', [Validators.required,Validators.min(0)]),
     url_image: new UntypedFormControl()
   });
 
