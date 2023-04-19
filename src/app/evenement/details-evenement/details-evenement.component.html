@@ -10,7 +10,7 @@
         <main class="details__card d-flex flex-column">
           <div class="details__header d-flex">
             <div class="details__img">
-              <img class="img-fluid" ngSrc="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}"
+              <img class="img-fluid" ngSrc="{{bucketEvent + event.url_image[0] || event.category.url_image }}"
                 alt="Image d'illustration de l'évenement : {{event.name}}" width="200" height="300">
             </div>
             <div class="details__info d-flex flex-column">
@@ -24,7 +24,7 @@
           </div>
           <div class="details__body d-flex justify-content-between">
             <div class="detail__category d-flex flex-column align-items-center">
-              <app-svg icon="{{ event.category.url_icon }}" class="member__icons"></app-svg>
+              <app-svg icon="{{ event.category.url_icon }}" class="details__icon"></app-svg>
               <p class="details__label">{{ event.category.name }}</p>
             </div>
             <div class="detail__date d-flex flex-column align-items-center">
@@ -47,14 +47,14 @@
             </div>
           </div>
           <div class="details__footer d-flex justify-content-center">
-            <ng-template [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
+            <ng-template hideIsProd [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
               <button class="btn btn-main">
                 Modifier
               </button>
             </ng-template>
             <ng-template #Participate>
               <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-radius-style btn-danger" (click)="cancelParticipate(event._id)">
+                <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
                   Annuler
                 </button>
               </ng-template>
@@ -63,7 +63,7 @@
                   Rejoindre
                 </button>
               </ng-template>
-              <div class="details__contact">
+              <div hideIsProd class="details__contact">
                 <a class="btn btn-main">
                   Contacter
                 </a>
@@ -74,30 +74,34 @@
         <aside class="member d-flex flex-column">
           <h2 class="member__title">Participants</h2>
           <div class="member__container d-flex flex-column">
-            <div class="member__item member__item--creator d-flex justify-content-between">
+            <div class="member__item member__item--creator d-flex">
               <div class="member__img">
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
               <p class="member__username">{{ event.creator.username || "Aucun" }} </p>
             </div>
-            <div class="member__item d-flex justify-content-between" *ngFor="let participant of event.users_valide">
+            <div class="member__item d-flex" *ngFor="let participant of event.users_valide">
               <div class="member__img">
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
-              <p class="member__username">{{ participant.username || "Aucun" }} </p>
-              <button class="btn btn-main">Ajouter</button>
+              <div>
+                <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
+              </div>
             </div>
             <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
               <hr class="waitingRoom__separator" />
               <h2 class="member__title">En attente</h2>
               <div class="member__container d-flex flex-column">
-                <div class="member__item d-flex justify-content-between"
-                  *ngFor="let participant of event.users_waiting">
+                <div class="member__item d-flex" *ngFor="let participant of event.users_waiting">
                   <div class="member__img">
                     <app-svg icon="profil" class="member__icons"></app-svg>
                   </div>
                   <p class="member__username">{{ participant.username || "Aucun" }} </p>
                   <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button>
+                </div>
+                <div *ngIf="event.users_waiting.length == 0">
+                  <p class="no__member__waiting">Pas d'utilisateurs en attente</p>
                 </div>
               </div>
             </div>
