@@ -41,9 +41,9 @@ export class ConnexionComponent implements OnInit {
   
 
   ngOnInit(): void {
-    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Connexion - Trouvez des amis et partagez des expériences grâce à notre application de création d’événements '};
+    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Connexion - Trouvez des amis et partagez des expériences grâce à notre application de création d’évènements '};
     const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords', content:'evenement lyon, ynov, solitude,login,connexion, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
-    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Connectez-vous à notre application de création d’événements pour trouver des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble.'};
+    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Connectez-vous à notre application de création d’évènements pour trouver des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble.'};
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);
