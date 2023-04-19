@@ -47,28 +47,28 @@
             </div>
           </div>
           <div class="details__footer d-flex justify-content-center">
-            <!-- <ng-template [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
+            <ng-template hideIsProd [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
               <button class="btn btn-main">
                 Modifier
               </button>
-            </ng-template> 
-            <ng-template #Participate> -->
-            <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
-              <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
-                Annuler
-              </button>
             </ng-template>
-            <ng-template #RequestParticipe>
-              <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
-                Rejoindre
-              </button>
-            </ng-template>
-            <!-- <div class="details__contact">
+            <ng-template #Participate>
+              <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
+                <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
+                  Annuler
+                </button>
+              </ng-template>
+              <ng-template #RequestParticipe>
+                <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
+                  Rejoindre
+                </button>
+              </ng-template>
+              <div hideIsProd class="details__contact">
                 <a class="btn btn-main">
                   Contacter
                 </a>
               </div>
-              </ng-template> -->
+            </ng-template>
           </div>
         </main>
         <aside class="member d-flex flex-column">
