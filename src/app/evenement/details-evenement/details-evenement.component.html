@@ -11,7 +11,7 @@
           <div class="details__header d-flex">
             <div class="details__img">
               <img class="img-fluid" ngSrc="{{bucketEvent}}{{ event.url_image[0] || event.category.url_image }}"
-                alt="Image d'illustration de l'évenement : {{event.name}}">
+                alt="Image d'illustration de l'évenement : {{event.name}}" width="200" height="300">
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -34,13 +34,13 @@
               </p>
             </div>
             <div class="detail__price d-flex flex-column align-items-center">
-              <app-svg icon="devise" class="details__icon"></app-svg>
+              <app-svg icon="euro" class="details__icon"></app-svg>
               <p class="details__label">
                 {{ event.price }} €
               </p>
             </div>
             <div class="detail__location d-flex flex-column align-items-center">
-              <app-svg icon="pin" class="details__icon"></app-svg>
+              <app-svg icon="localisation" class="details__icon"></app-svg>
               <p class="details__label">
                 {{ event.place }}
               </p>
