@@ -31,6 +31,7 @@ import { AlertPwaComponent } from './alert-pwa/alert-pwa.component';
 import { ModalComponent } from './components/modal/modal.component';
 
 import { ImageLoadedDirective } from './image-loaded.directive';
+import { IsProdDirective } from './directive/is-prod.directive';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -56,6 +57,7 @@ export function tokenGetter() {
     AlertPwaComponent,
     ModalComponent,
     ImageLoadedDirective,
+    IsProdDirective,
   ],
   imports: [
     BrowserModule,
