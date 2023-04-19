@@ -47,8 +47,8 @@
             </div>
           </div>
           <div class="details__footer d-flex justify-content-center">
-            <ng-template hideIsProd [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
-              <button class="btn btn-main">
+            <ng-template [ngIf]="event.CurrentUserIsAdmin" [ngIfElse]="Participate">
+              <button hideIsProd class="btn btn-main">
                 Modifier
               </button>
             </ng-template>
