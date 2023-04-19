@@ -3,13 +3,14 @@
   flex-direction: column;
 }
 
-.details__card {
+:host ::ng-deep .details__card {
   background-color: var(--main-white);
   padding: var(--gap-md);
   border-radius: 3rem;
   color: black;
   box-shadow: 0px 0px 10px #00000040;
   row-gap: var(--gap-xxl);
+  min-width: none;
 }
 
 .details__header {
