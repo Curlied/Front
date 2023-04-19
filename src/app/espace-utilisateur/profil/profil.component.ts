@@ -7,6 +7,7 @@ import { HttpService } from '../../http.service';
 import { formatDate } from '@angular/common';
 import { AnyARecord } from 'dns';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -15,6 +16,9 @@ declare var $: any;
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
+
+  global_bucket_images =
+    environment.bucketImagesBasePath + environment.folderBucketEventPictures;
 
   public animation: boolean = false;
   public multiple: boolean = true;

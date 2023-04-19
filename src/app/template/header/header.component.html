@@ -13,15 +13,15 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <app-svg icon="hamburger" class="burger__icon"></app-svg>
     </button>
-    <div class="collapse navbar-collapse navbar__content" id="navbarContent">
+    <div class="collapse navbar-collapse navbar__content" id="navbarContent" #menuToggle>
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item" (click)="handleCloseMenu()">
           <a routerLink="">
             <app-svg icon="accueil" class="nav__icon"></app-svg>
             <span class="d-lg-none nav__label">Home</span>
           </a>
         </li>
-        <li hideIsProd class="nav-item">
+        <li hideIsProd class="nav-item" (click)="handleCloseMenu()">
           <a routerLink="messages">
             <div class="indicator__container">
               <app-svg icon="message" class="nav__icon"></app-svg>
@@ -71,31 +71,42 @@
                   <small class="notifications__title">Clarissa</small>
                   <small class="notifications__message">Demande d'ami</small>
                 </div>
-                <button class="btn btn-main ms-3 py-1"><small>Accepter</small></button>
+                <button class="btn btn-main"><small>Accepter</small></button>
               </div>
             </div>
           </div>
         </li>
         <ng-template [ngIf]='isConnected' [ngIfElse]="login">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <app-svg icon="profil" class="nav__icon"></app-svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="profil">Profil</a></li>
-              <li><a class="dropdown-item" (click)="logout()">Deconnexion</a></li>
-            </ul>
-          </li>
+
+          <li class="nav-item">
+            <div class="dropdown">
+              <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="indicator__container">
+                  <app-svg icon="profil" class="nav__icon"></app-svg>
+                  <span
+                    class="position-absolute start-100 translate-middle bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">Mon compte</span>
+                  </span>
+                </div>
+                <span class="d-lg-none nav__label">Mon compte</span>
+              </a>
+              <div class="dropdown-menu dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
+                <ul>
+                  <li (click)="handleCloseMenu()"><a class="dropdown-item" routerLink="profil">Profil</a></li>
+                  <li><a class="dropdown-item" (click)="logout()">Deconnexion</a></li>
+                </ul>
+              </div>
+            </div>
         </ng-template>
         <ng-template #login>
-          <li class="nav-item">
+          <li class="nav-item" (click)="handleCloseMenu()">
             <a class="d-flex nav__profile" routerLink="/connexion" title="connexion">
               <app-svg icon="profil" class="nav__icon"></app-svg>
               <span class="d-lg-none nav__label">Connexion</span>
             </a>
           </li>
         </ng-template>
-        <li class="nav-item">
+        <li class="nav-item" (click)="handleCloseMenu()">
           <a class="btn btn-main nav__btn" routerLink='/creationEvenement'>Créer un événement</a>
         </li>
       </ul>

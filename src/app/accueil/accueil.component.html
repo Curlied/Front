@@ -13,18 +13,19 @@
             </div>
             <div class="d-lg-flex filters__category collapse multi-collapse" id="filters__wrapper">
               <div class="filter d-flex align-items-center">
+                <input class="input--checkbox" type="radio" name="category" formControlName="category" value="tous"
+                  id="tous">
                 <label class="d-flex align-items-center justify-content-center" for="tous">
                   <app-svg icon="all" class="filter__icon"></app-svg>
                 </label>
-                <input class="input--checkbox" type="radio" name="category" formControlName="category" value="tous"
-                  id="tous">
               </div>
               <div *ngFor="let category of arrayCategories" class="filter d-flex align-items-center">
+                <input class="input--checkbox" type="radio" name="category" formControlName="category"
+                  value="{{category._id}}" id="{{category.name}}">
                 <label for="{{category.name}}">
                   <app-svg icon="{{category.url_icon}}" class="filter__icon"></app-svg>
                 </label>
-                <input class="input--checkbox" type="radio" name="category" formControlName="category"
-                  value="{{category._id}}" id="{{category.name}}">
+
               </div>
             </div>
             <div class="d-lg-flex flex-column filters__actions multi-collapse collapse">

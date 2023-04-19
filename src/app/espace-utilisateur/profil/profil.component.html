@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="row user align-items-start" *ngIf="profilData">
-                    <div class="col-3 col-lg-2 user__img">
+                    <div class="col-12 col-md-3 col-lg-2 user__img d-flex justify-content-center">
                         <app-svg icon="profil" class="user__profil"></app-svg>
                     </div>
-                    <div class="col-9 col-lg-7 user__info">
+                    <div class="col-12 col-md-9 col-lg-7 user__info">
                         <h2 class="heading--secondary">{{ profilData.username }}</h2>
                         <p class="paragraph user__age">
                             <span>{{ profilData.age }} ans</span>
@@ -42,7 +42,8 @@
                                     <app-svg icon="crown" class="crown"></app-svg>
                                 </div>
                                 <p class="paragraph event__categ">{{ eventCreate.categoryInfo.name }}</p>
-                                <img class="event__img" ngSrc="{{eventCreate.url_image[0]}}" height="200" width="200">
+                                <img class="event__img" ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}"
+                                    height="200" width="200">
                             </div>
                         </div>
                         <div *ngFor="let eventParticipate of allEventsData.eventsParticipate" class="col-md-6 col-lg-4">
@@ -52,8 +53,8 @@
                                     <h3 class="heading--tertiary">{{eventParticipate.name }}</h3>
                                     <p class="paragraph">{{ eventParticipate.categoryInfo.name }}</p>
                                 </div>
-                                <img class="event__img" ngSrc="{{eventParticipate.url_image[0]}}" height="200"
-                                    width="200">
+                                <img class="event__img" ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}"
+                                    height="200" width="200">
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,8 @@ export class AlertPwaComponent {
    * la plateforme ou est actuellement lancé le site (browser, ios, android...)
    */
   private loadAlertPwa() {
-    if (this.platform.ANDROID) {
+    const isDisableAlertPwa = localStorage.getItem('disable_alert_pwa');
+    if (this.platform.ANDROID && !isDisableAlertPwa) {
       window.addEventListener('beforeinstallprompt', (event: any) => {
         event.preventDefault();
         this.alertPwaEvent = event;
@@ -37,7 +38,7 @@ export class AlertPwaComponent {
       });
     }
 
-    if (this.platform.IOS && this.platform.SAFARI) {
+    if (this.platform.IOS && this.platform.SAFARI && !isDisableAlertPwa) {
       const isInStandaloneMode = ('standalone' in window.navigator) && ((<any>window.navigator)['standalone']);
       if (!isInStandaloneMode) {
         this.pwaPlatform = 'IOS';
@@ -46,7 +47,7 @@ export class AlertPwaComponent {
       }
     }
 
-    if (this.platform.isBrowser) { // Vérification si la plateforme est le navigateur
+    if (this.platform.isBrowser && !isDisableAlertPwa) { // Vérification si la plateforme est le navigateur
       window.addEventListener('beforeinstallprompt', (event: any) => {
         event.preventDefault();
         this.alertPwaEvent = event;
@@ -66,5 +67,7 @@ export class AlertPwaComponent {
       this.show.emit(false);
     });
   }
-
+  public disable() {
+    localStorage.setItem('disable_alert_pwa','true');
+  }
 }
