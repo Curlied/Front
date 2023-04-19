@@ -46,6 +46,8 @@
 
 .details__icon,
 .member__icons {
+  fill: var(--main-color);
+  color: var(--main-white);
   width: 5rem;
   height: 5rem;
   display: block;
