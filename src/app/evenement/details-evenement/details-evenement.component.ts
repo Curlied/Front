@@ -118,4 +118,16 @@ export class DetailsEvenementComponent implements OnInit {
       },
     });
   };
+
+  messageUser(userId: string, userName: string) {
+    this.router.navigate(['./messages'], {
+      queryParams: { user: userId, name: userName, isGroup: false },
+    });
+  }
+
+  messageGroup() {
+    this.router.navigate(['./messages'], {
+      queryParams: { group: this.event_id, isGroup: true },
+    });
+  }
 }

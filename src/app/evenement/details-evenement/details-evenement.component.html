@@ -72,7 +72,7 @@
           </div>
         </main>
         <aside class="member d-flex flex-column">
-          <h2 class="member__title">Participants</h2>
+          <h2 class="member__title" (click)="messageGroup()">Participants</h2>
           <div class="member__container d-flex flex-column">
             <div class="member__item member__item--creator d-flex">
               <div class="member__img">
@@ -81,12 +81,13 @@
               <p class="member__username">{{ event.creator.username || "Aucun" }} </p>
             </div>
             <div class="member__item d-flex" *ngFor="let participant of event.users_valide">
-              <div class="member__img">
-                <app-svg icon="profil" class="member__icons"></app-svg>
-              </div>
-              <div>
-                <p class="member__username">{{ participant.username || "Aucun" }} </p>
-                <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
+                <div class="member__img" (click)="messageUser(participant._id, participant.username)">
+                  <app-svg icon="profil" class="member__icons"></app-svg>
+                </div>
+                <div>
+                  <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                  <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
+                </div>
               </div>
             </div>
             <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
@@ -110,7 +111,6 @@
                 {{event.users_valide.length}} / {{event.user_max}}
               </p>
             </div>
-          </div>
         </aside>
       </div>
     </ng-template>
