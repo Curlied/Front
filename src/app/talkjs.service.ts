@@ -80,7 +80,15 @@ export class TalkjsService {
       );
       inbox = session.createInbox();
     }
-    inbox.select(conversation);
+    if (
+      groupId == '' &&
+      otherApplicationUser.username == 'Aucun utilisateur trouvé'
+    ) {
+      inbox.select();
+    } else {
+      inbox.select(conversation);
+    }
+
     return inbox;
   }
 }
