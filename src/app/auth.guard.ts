@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (localStorage.getItem('token') != undefined) {
-      console.log('token');
       return true;
     }
     this.router.navigateByUrl('/connexion');
