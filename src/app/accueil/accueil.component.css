@@ -20,6 +20,10 @@
   background-color: var(--main-color);
 }
 
+.filter label {
+  cursor: pointer;
+}
+
 .filter__icon {
   width: 2rem;
   height: 2rem;
@@ -62,7 +66,7 @@
 .filter {
   flex-direction: row-reverse;
   column-gap: var(--gap-md);
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .filter__icon {
@@ -71,6 +75,27 @@
   display: block;
   width: 4rem;
   height: 4rem;
+}
+
+.custom_tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.custom_tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.25rem 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.custom_tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .navbar-toggler:focus {
@@ -101,6 +126,7 @@
   padding: var(--gap-md);
   border-radius: 3rem;
   max-width: none;
+  width: 100%;
 }
 
 .event__img {
