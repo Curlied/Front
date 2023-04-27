@@ -2,7 +2,7 @@
   <div class="details d-flex align-items-center justify-content-center">
     <div *ngIf="!event || !event.category;else eventBlock">
       <div class="spinner-grow text-light" role="status">
-        <span class="visually-hidden">Loading...</span>
+        <span class="visually-hidden">Chargement...</span>
       </div>
     </div>
     <ng-template #eventBlock>
@@ -54,17 +54,17 @@
             </ng-template>
             <ng-template #Participate>
               <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
+                <button class="btn btn-danger mx-3" (click)="cancelParticipate(event._id)">
                   Annuler
                 </button>
               </ng-template>
               <ng-template #RequestParticipe>
-                <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
+                <button class="btn btn-main mx-3" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
                   Rejoindre
                 </button>
               </ng-template>
               <div hideIsProd class="details__contact">
-                <a class="btn btn-main">
+                <a class="btn btn-main mx-3">
                   Contacter
                 </a>
               </div>
@@ -72,23 +72,33 @@
           </div>
         </main>
         <aside class="member d-flex flex-column">
-          <h2 class="member__title" (click)="messageGroup()">Participants</h2>
+          <h2 class="member__title">Participants</h2>
           <div class="member__container d-flex flex-column">
             <div class="member__item member__item--creator d-flex">
               <div class="member__img">
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
               <p class="member__username">{{ event.creator.username || "Aucun" }} </p>
+              <div class="ms-auto" *ngIf="event.CurrentUserHasParticipant" (click)="messageUser(event.creator._id, event.creator.username)">
+                <app-svg icon="talk" class="talk__icon"></app-svg>
+              </div>
             </div>
             <div class="member__item d-flex" *ngFor="let participant of event.users_valide">
-                <div class="member__img" (click)="messageUser(participant._id, participant.username)">
-                  <app-svg icon="profil" class="member__icons"></app-svg>
-                </div>
-                <div>
-                  <p class="member__username">{{ participant.username || "Aucun" }} </p>
-                  <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
-                </div>
+              <div class="member__img">
+                <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
+              <div>
+                <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
+              </div>
+              <div class="ms-auto" *ngIf="(event.CurrentUserHasParticipant && !isCurrentUser(participant._id)) || event.CurrentUserIsAdmin" (click)="messageUser(participant._id, participant.username)">
+                <app-svg icon="talk" class="talk__icon"></app-svg>
+              </div>
+              </div>
+            </div>
+            <div class="mx-auto mb-3">
+              <button class="btn btn-main" *ngIf="event.CurrentUserHasParticipant || event.CurrentUserIsAdmin"
+                (click)="messageGroup()">Discuter</button>
             </div>
             <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
               <hr class="waitingRoom__separator" />

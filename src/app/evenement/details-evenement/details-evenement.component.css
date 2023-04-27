@@ -55,6 +55,23 @@
   display: block;
 }
 
+.talk__icon {
+  fill: var(--main-color);
+  color: var(--main-white);
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.talk__icon:hover {
+  fill: var(--main-white);
+  color: var(--main-color);
+}
+
 .details__icon {
   fill: var(--main-color);
   color: var(--main-white);
