@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-details-evenement',
@@ -19,7 +20,8 @@ export class DetailsEvenementComponent implements OnInit {
     private route: ActivatedRoute,
     private metaService: Meta,
     private httpService: HttpService,
-    private responseService: ResponseService
+    private responseService: ResponseService,
+    private jwt: JwtHelperService
   ) {}
 
   ngOnInit(): void {
@@ -54,9 +56,17 @@ export class DetailsEvenementComponent implements OnInit {
     this.metaService.removeTag("property='og:keywords'");
   }
 
+  isCurrentUser(userId: any) {
+    const token = localStorage.getItem('token') || '';
+    const decodedToken = this.jwt.decodeToken(token);
+    if (userId == decodedToken['userId']) return true;
+    return false;
+  }
+
   canParticipate!: boolean;
   event_id: any;
   user_id: any;
+  connected_user_id: any;
 
   getParamsOrRedirect() {
     this.route.queryParams.subscribe((params) => {
@@ -118,4 +128,16 @@ export class DetailsEvenementComponent implements OnInit {
       },
     });
   };
+
+  messageUser(userId: string, userName: string) {
+    this.router.navigate(['./messages'], {
+      queryParams: { user: userId, name: userName, isGroup: false },
+    });
+  }
+
+  messageGroup() {
+    this.router.navigate(['./messages'], {
+      queryParams: { group: this.event_id, isGroup: true },
+    });
+  }
 }

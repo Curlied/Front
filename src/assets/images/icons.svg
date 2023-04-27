@@ -178,11 +178,16 @@
         d="m146.55,79.14v15h87.72v-15h-87.72Zm144.79,0h-18.43v15h18.43c13.84,0,25.11,11.27,25.11,25.11v147.84c0,13.84-11.27,25.11-25.11,25.11H89.48c-13.84,0-25.11-11.27-25.11-25.11V119.25c0-13.84,11.27-25.11,25.11-25.11h18.43v-15h-18.43c-22.11,0-40.11,17.99-40.11,40.11v147.84c0,22.12,18,40.11,40.11,40.11h201.86c22.12,0,40.11-17.99,40.11-40.11V119.25c0-22.12-17.99-40.11-40.11-40.11Z">
       </path>
       <rect fill="currentcolor" x="80.06" y="124.5" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
-      <rect fill="currentcolor" x="161.04" y="124.5" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
-      <rect fill="currentcolor" x="242.02" y="124.5" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
-      <rect fill="currentcolor" x="80.06" y="206.47" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
-      <rect fill="currentcolor" x="161.04" y="206.47" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
-      <rect fill="currentcolor" x="242.02" y="206.47" width="58.74" height="55.38" rx="8.42" ry="8.42"></rect>
+      <rect fill="currentcolor" x="161.04" y="124.5" width="58.74" height="55.38" rx="8.42"
+        ry="8.42"></rect>
+      <rect fill="currentcolor" x="242.02" y="124.5" width="58.74" height="55.38" rx="8.42"
+        ry="8.42"></rect>
+      <rect fill="currentcolor" x="80.06" y="206.47" width="58.74" height="55.38" rx="8.42"
+        ry="8.42"></rect>
+      <rect fill="currentcolor" x="161.04" y="206.47" width="58.74" height="55.38" rx="8.42"
+        ry="8.42"></rect>
+      <rect fill="currentcolor" x="242.02" y="206.47" width="58.74" height="55.38" rx="8.42"
+        ry="8.42"></rect>
       <rect fill="currentcolor" x="110.91" y="56.28" width="32.64" height="45.72" rx="8.2" ry="8.2"></rect>
       <rect fill="currentcolor" x="237.27" y="56.28" width="32.64" height="45.72" rx="8.2" ry="8.2"></rect>
     </g>
@@ -287,8 +292,10 @@
     </g>
   </symbol>
   <symbol id="devise" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1671.126 1695.346">
-    <ellipse id="devise" cx="835.563" cy="847.673" rx="835.563" ry="847.673" transform="translate(0 0)"></ellipse>
-    <text fill="currentcolor" transform="translate(529.064 1168.673)" font-size="936" font-weight="700">
+    <ellipse id="devise" cx="835.563" cy="847.673" rx="835.563" ry="847.673"
+      transform="translate(0 0)"></ellipse>
+    <text fill="currentcolor" transform="translate(529.064 1168.673)" font-size="936"
+      font-weight="700">
       <tspan x="0" y="0">€</tspan>
     </text>
   </symbol>
@@ -307,5 +314,14 @@
         d="m314.94,143.52c-13.35-13.35-31.1-20.7-49.98-20.7s-36.63,7.35-49.98,20.7l-24.99,24.99-24.99-24.99c-13.35-13.35-31.1-20.7-49.98-20.7s-36.63,7.35-49.98,20.7c-27.56,27.56-27.56,72.4,0,99.95,13.78,13.78,31.88,20.67,49.98,20.67s36.2-6.89,49.98-20.67l24.99-24.99,24.99,24.99c13.78,13.78,31.88,20.67,49.98,20.67s36.2-6.89,49.98-20.67c27.56-27.56,27.56-72.4,0-99.95Zm-174.88,75c-13.8,13.8-36.25,13.8-50.05,0-13.8-13.8-13.8-36.25,0-50.05,6.68-6.68,15.57-10.37,25.03-10.37s18.34,3.68,25.03,10.37l24.99,24.99-.04.04.04.04-24.99,24.99Zm149.93,0c-13.8,13.8-36.25,13.8-50.05,0l-24.99-24.99.04-.04-.04-.04,24.99-24.99c13.8-13.8,36.25-13.8,50.05,0,13.8,13.8,13.8,36.25,0,50.05Z">
       </path>
     </g>
+  </symbol>
+  <symbol id="talk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107 107">
+    <g>
+      <circle cx="53.5" cy="53.5" r="53.5" stroke="none"></circle>
+      <circle cx="53.5" cy="53.5" r="53" fill="none"></circle>
+    </g>
+    <path
+      d="M30.714,48.968q-.856.083-13.258,11.58A3.068,3.068,0,0,1,12.3,58.271q.092-10.871-.074-12.4c-.055-.531.1-.859,0-.921C5.241,40.539,0,33.061,0,24.562,0,11,12.365,0,27.615,0S55.23,11,55.23,24.559C55.23,37.191,44.506,47.6,30.714,48.968Z"
+      transform="translate(25.885 22.817)" fill="currentcolor"></path>
   </symbol>
 </svg>
