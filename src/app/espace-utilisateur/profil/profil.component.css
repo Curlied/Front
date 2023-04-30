@@ -4,20 +4,26 @@
 }
 
 .events {
-  max-height: 50vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
   margin-top: 0;
 }
 
 .event__info {
   gap: var(--gap-md);
   padding: var(--gap-md);
-  align-items: flex-start;
+  align-items: center;
 }
 
 .event__categ {
-  padding: 0 var(--gap-md);
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.icon__categorie {
+  fill: none;
+  color: var(--main-color);
+  width: 3rem;
+  height: 3rem;
 }
 
 .event__img {
@@ -90,8 +96,8 @@
 
 .crown {
   display: block;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
 }
 
@@ -113,8 +119,8 @@
 }
 
 .friends {
-  max-height: 60rem;
-  overflow-y: scroll;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .friends__search {
