@@ -124,11 +124,13 @@
   column-gap: var(--gap-s);
   align-items: center;
 }
+
 .notifications__info {
-  flex: 1;
-  display: flex;
-  gap: var(--gap-s);
-  align-items: center;
+  width: 40%;
+}
+
+.notifications__info p {
+  margin-bottom: 0;
 }
 
 .notifications__title {
@@ -145,7 +147,7 @@
   color: black;
 }
 
-:host ::ng-deep li{
+:host ::ng-deep li {
   list-style: none;
 }
 
