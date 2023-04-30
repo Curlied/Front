@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="row user align-items-start" *ngIf="profilData">
-                    <div class="col-12 col-md-3 col-lg-2 user__img d-flex justify-content-center">
+                    <div class="col-12 col-md-3 col-lg-2 user__img">
                         <app-svg icon="profil" class="user__profil"></app-svg>
                     </div>
                     <div class="col-12 col-md-9 col-lg-7 user__info">
                         <h2 class="heading--secondary">{{ profilData.username }}</h2>
                         <p class="paragraph user__age">
                             <span>{{ profilData.age }} ans</span>
-                            <span class="ps-4">
+                            <span hideIsProd class="ps-4">
                                 B1 - Informatique
                             </span>
                         </p>
@@ -37,13 +37,28 @@
                         <div *ngFor="let eventCreate of allEventsData.eventsCreate" class="col-md-6 col-lg-4">
                             <div class="event__card" routerLink="/detailsEvenement"
                                 [queryParams]="{event: eventCreate._id}">
-                                <div class="d-flex justify-content-between event__info">
-                                    <h3 class="heading--tertiary">{{ eventCreate.name }}</h3>
-                                    <app-svg icon="crown" class="crown"></app-svg>
+                                <div class="event__info">
+                                    <div class="d-flex justify-content-between">
+                                        <h3 class="heading--tertiary">{{ eventCreate.name }}</h3>
+                                        <app-svg icon="crown" class="crown"></app-svg>
+                                    </div>
+                                    <div class="event__categ">
+                                        <app-svg icon="{{eventCreate.categoryInfo.url_icon}}"
+                                            class="icon__categorie"></app-svg>
+                                        <span class="ms-2">{{ eventCreate.categoryInfo.name }}</span>
+                                    </div>
                                 </div>
-                                <p class="paragraph event__categ">{{ eventCreate.categoryInfo.name }}</p>
-                                <img class="event__img" ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}"
-                                    height="200" width="200">
+
+                                <img class="event__img" *ngIf="eventCreate.url_image[0]; else defaultImgEventCreate"
+                                    ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}" height="200"
+                                    width="200">
+
+                                <ng-template #defaultImgEventCreate>
+                                    <img class="event__img"
+                                        ngSrc="/assets/images/bg-categories/{{ eventCreate.categoryInfo.url_icon}}.webp"
+                                        height="200" width="200">
+                                </ng-template>
+
                             </div>
                         </div>
                         <div *ngFor="let eventParticipate of allEventsData.eventsParticipate" class="col-md-6 col-lg-4">
@@ -51,10 +66,24 @@
                                 [queryParams]="{event: eventParticipate._id}">
                                 <div class="event__info">
                                     <h3 class="heading--tertiary">{{eventParticipate.name }}</h3>
-                                    <p class="paragraph">{{ eventParticipate.categoryInfo.name }}</p>
+                                    <div class="event__categ">
+                                        <app-svg icon="{{eventParticipate.categoryInfo.url_icon}}"
+                                            class="icon__categorie"></app-svg>
+                                        <span class="ms-2">{{ eventParticipate.categoryInfo.name }}</span>
+                                    </div>
                                 </div>
-                                <img class="event__img" ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}"
-                                    height="200" width="200">
+                                <img class="event__img"
+                                    *ngIf="eventParticipate.url_image[0]; else defaultImgEventParticipate"
+                                    ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}" height="200"
+                                    width="200">
+
+
+                                <ng-template #defaultImgEventParticipate>
+                                    <img class="event__img"
+                                        ngSrc="/assets/images/bg-categories/{{ eventParticipate.categoryInfo.url_icon}}.webp"
+                                        height="200" width="200">
+                                </ng-template>
+
                             </div>
                         </div>
                     </div>
