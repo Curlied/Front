@@ -50,12 +50,11 @@
                                 </div>
 
                                 <img class="event__img" *ngIf="eventCreate.url_image[0]; else defaultImgEventCreate"
-                                    ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}" height="200"
-                                    width="200">
+                                    ngSrc="{{event_bucket_images + eventCreate.url_image[0]}}" height="200" width="200">
 
                                 <ng-template #defaultImgEventCreate>
                                     <img class="event__img"
-                                        ngSrc="/assets/images/bg-categories/{{ eventCreate.categoryInfo.url_icon}}.webp"
+                                        ngSrc="{{global_bucket_images + eventCreate.categoryInfo.url_icon}}.webp"
                                         height="200" width="200">
                                 </ng-template>
 
@@ -74,13 +73,13 @@
                                 </div>
                                 <img class="event__img"
                                     *ngIf="eventParticipate.url_image[0]; else defaultImgEventParticipate"
-                                    ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}" height="200"
+                                    ngSrc="{{event_bucket_images + eventParticipate.url_image[0]}}" height="200"
                                     width="200">
 
 
                                 <ng-template #defaultImgEventParticipate>
                                     <img class="event__img"
-                                        ngSrc="/assets/images/bg-categories/{{ eventParticipate.categoryInfo.url_icon}}.webp"
+                                        ngSrc="{{global_bucket_images + eventParticipate.categoryInfo.url_icon}}.webp"
                                         height="200" width="200">
                                 </ng-template>
 

@@ -47,6 +47,7 @@
   background-color: var(--main-white);
   overflow: hidden;
   padding: 0;
+  cursor: pointer;
 }
 
 .event__img {

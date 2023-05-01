@@ -15,9 +15,8 @@
                 width="200" height="300">
 
               <ng-template #defaultImgEvent>
-                <img class="img-fluid" ngSrc="/assets/images/bg-categories/{{ event.category.url_icon}}.webp"
+                <img class="img-fluid" ngSrc="{{ bucket + event.category.url_icon}}.webp"
                   alt="Image d'illustration de l'évènement : {{event.name}}" width="200" height="300">
-
               </ng-template>
             </div>
             <div class="details__info d-flex flex-column">
