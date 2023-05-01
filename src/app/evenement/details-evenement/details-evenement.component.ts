@@ -14,6 +14,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class DetailsEvenementComponent implements OnInit {
   bucketEvent =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
+  bucket =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   event: any;
   constructor(
     private router: Router,

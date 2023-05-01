@@ -18,6 +18,8 @@ import { Meta, MetaDefinition } from '@angular/platform-browser';
 export class AccueilComponent implements OnInit {
   bucketEvent =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
+  bucket =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   arrayCategories!: any[];
   arrayEvent!: any[];
   arrayDepartement!: any[];

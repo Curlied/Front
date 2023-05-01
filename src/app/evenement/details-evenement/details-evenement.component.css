@@ -44,6 +44,8 @@
 
 .details__label {
   text-align: center;
+  font-weight: bold;
+  color: var(--main-color);
 }
 
 .details__icon,

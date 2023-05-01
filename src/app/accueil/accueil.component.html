@@ -43,8 +43,15 @@
       <div class="col-lg-9 d-flex flex-column event__container" infiniteScroll [infiniteScrollDistance]="2"
         [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
-          <img class="img-fluid event__img" ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}"
-            height="500" width="388">
+
+          <img class="img-fluid event__img" *ngIf="event.url_image[0]; else defaultImg"
+            ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}" height="500" width="388">
+
+          <ng-template #defaultImg>
+            <img class="img-fluid event__img" ngSrc="{{ bucket + event.categoryComplet.url_icon}}.webp"
+              alt="{{ event.name }}" height="500" width="388">
+          </ng-template>
+
           <div class="event__info">
             <div class="event__content">
               <h2 class="heading--secondary">{{ event.name }}</h2>
@@ -70,7 +77,9 @@
               <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir
                 plus</button>
               <p class="event__price mb-0" *ngIf="event.price > 0; else elseBlock">{{ event.price }} €</p>
-              <ng-template #elseBlock><p class="event__price mb-0">Gratuit</p></ng-template>
+              <ng-template #elseBlock>
+                <p class="event__price mb-0">Gratuit</p>
+              </ng-template>
             </div>
           </div>
         </div>
