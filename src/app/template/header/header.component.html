@@ -48,7 +48,7 @@
               </div>
               <span class="d-lg-none nav__label">Nouvelle(s) notification(s)</span>
             </a>
-            <div class="dropdown-menu dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
+            <div class="dropdown-menu dropdown__custom dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
               <small class="dropdown__notifications__title">Nouveau</small>
               <div class="d-flex notifications__item">
                 <app-svg icon="profil" class="nav__icon"></app-svg>
@@ -93,8 +93,8 @@
                 </div>
                 <span class="d-lg-none nav__label">Mon compte</span>
               </a>
-              <div class="dropdown-menu dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
-                <ul>
+              <div class="dropdown-menu dropdown__custom px-4 py-3" aria-labelledby="dropdownMenuButton1">
+                <ul class="p-0">
                   <li (click)="handleCloseMenu()"><a class="dropdown-item" routerLink="profil">Profil</a></li>
                   <li><a class="dropdown-item" (click)="logout()">Deconnexion</a></li>
                 </ul>

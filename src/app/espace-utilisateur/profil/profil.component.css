@@ -153,7 +153,8 @@
 .friend__profil,
 .notification__icon,
 .password__icon,
-.security__icon {
+.security__icon,
+.question__icon {
   width: 3rem;
   height: 3rem;
   display: block;
@@ -176,6 +177,10 @@
 .modal__menu {
   display: flex;
   flex-direction: column;
+}
+
+.nav-link {
+  color: black;
 }
 
 .nav-link.active {

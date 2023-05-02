@@ -356,12 +356,12 @@ select:not([type="search"]).ng-touched.ng-invalid {
 .btn-secondary {
   background-color: var(--main-white);
   color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .btn-secondary:hover {
-  background-color: transparent;
+  background-color: var(--main-color);
   color: var(--main-white);
-  border-color: var(--main-white);
 }
 
 .btn-tertiary {
