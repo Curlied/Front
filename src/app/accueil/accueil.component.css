@@ -217,11 +217,6 @@
     display: block;
   }
 
-  .filters__actions {
-    background-color: var(--main-white);
-    transform: none;
-  }
-
   .filter__icon {
     width: 6rem;
     height: 6rem;
@@ -238,6 +233,12 @@
   .filters__actions {
     display: flex;
     flex-direction: column;
+    background-color: var(--main-white);
+    transform: none;
+  }
+
+  .filters__actions input {
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar {
