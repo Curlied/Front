@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import Talk from 'talkjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class TalkjsService {
   private currentUser!: Talk.User;
-  constructor() {}
+  public haveUnreadMessages: boolean = false;
+  constructor(private jwt: JwtHelperService, private http: HttpClient) {}
 
   async createUser(applicationUser: any) {
     await Talk.ready;
@@ -91,4 +94,40 @@ export class TalkjsService {
 
     return inbox;
   }
+
+  async haveMessage() {
+    const token = localStorage.getItem('token') || '';
+    const decodedToken = this.jwt.decodeToken(token);
+    const user = {
+      id: decodedToken.userId,
+      username: decodedToken.username,
+      email: decodedToken.email,
+      welcomeMessage: 'Hey there! How are you? :-)',
+      role: 'default',
+    };
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer sk_test_VfPoBaCcKJSvcpqkKAfCCnneXKh7nLOb`
+    );
+    const conversations: any = await this.http
+      .get(
+        `https://api.talkjs.com/v1/t3a4xneH/users/${user.id}/conversations?hasUnread=true`,
+        { headers }
+      )
+      .toPromise();
+    let haveUnread = false;
+    for (const conversation of conversations.data) {
+      const lastMessage = conversation.lastMessage;
+      if (lastMessage === null) continue;
+      if (lastMessage.senderId !== user.id) {
+        if (!lastMessage.readBy.includes(user.id)) {
+          haveUnread = true;
+        }
+      }
+    }
+    this.haveUnreadMessages = haveUnread;
+    return haveUnread;
+  }
+
+  // Avec talkjs sur angular je voudrais savoir si l'utilisateur a un message non lus sur l'une de ses conversations
 }

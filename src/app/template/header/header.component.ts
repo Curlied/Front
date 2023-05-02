@@ -1,3 +1,4 @@
+import { TalkjsService } from 'src/app/talkjs.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ObservableService } from 'src/app/observable.service';
 declare var bootstrap: any;
@@ -10,15 +11,20 @@ declare var bootstrap: any;
 export class HeaderComponent implements OnInit {
   isConnected: any;
   isAdmin: any = false;
+  haveNewMessage: any = false;
   @ViewChild('menuToggle') menuToggle!: ElementRef;
 
-  constructor(private observableService: ObservableService) {}
+  constructor(
+    private observableService: ObservableService,
+    public talkjs: TalkjsService
+  ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.observableService.userStatut.subscribe(
       (data) => (this.isConnected = data)
     );
     this.observableService.isAdmin.subscribe((data) => (this.isAdmin = data));
+    await this.talkjs.haveMessage();
   }
 
   handleCloseMenu() {

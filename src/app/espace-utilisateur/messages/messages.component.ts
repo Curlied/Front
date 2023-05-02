@@ -26,7 +26,7 @@ export class MessagesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const token = localStorage.getItem('token') || '';
     const decodedToken = this.jwt.decodeToken(token);
-
+    this.talkService.haveUnreadMessages = false;
     this.route.queryParams.subscribe(async (params) => {
       const isGroup = params['isGroup'];
       if (isGroup == 'false') {
