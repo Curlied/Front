@@ -30,11 +30,12 @@ export class ProfilComponent implements OnInit {
   public animation: boolean = false;
   public multiple: boolean = true;
   arrayFile!: any[];
-
   profilData: any;
   personalInfoData: any;
   allEventsData: any;
   personalDescriptionData: string | undefined;
+  isLoading = false;
+  isProfilLoading = false;
 
   //#region VARIABLE FOR MODAL
   dataModalCancelMyEvent: any;
@@ -94,11 +95,13 @@ export class ProfilComponent implements OnInit {
   /** Fetch username, age, and all event resume created
    * */
   myProfil() {
+    this.isProfilLoading = true;
     this.clearData();
 
     this.httpService.getMyProfilUsersForSpace().subscribe({
       next: (res: any) => {
         this.profilData = res.body;
+        this.isProfilLoading = false;
       },
       error: (err: any) => {
         this.responseService.ErrorF(err);
@@ -151,11 +154,13 @@ export class ProfilComponent implements OnInit {
    * @returns
    */
   myEvents() {
+    this.isLoading = true;
     this.clearData();
 
     this.httpService.getAllEventsForUsersSpace().subscribe({
       next: (res: any) => {
         this.allEventsData = res.body;
+        this.isLoading = false;
       },
       error: (err: any) => {
         this.responseService.ErrorF(err);
