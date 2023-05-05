@@ -15,17 +15,18 @@
               <div class="filter d-flex align-items-center">
                 <input class="input--checkbox" type="radio" name="category" formControlName="category" value="tous"
                   id="tous">
-                <label class="d-flex align-items-center justify-content-center" for="tous">
+                <label class="custom_tooltip" for="tous">
                   <app-svg icon="all" class="filter__icon"></app-svg>
+                  <span class="tooltiptext">Tous</span>
                 </label>
               </div>
               <div *ngFor="let category of arrayCategories" class="filter d-flex align-items-center">
                 <input class="input--checkbox" type="radio" name="category" formControlName="category"
                   value="{{category._id}}" id="{{category.name}}">
-                <label for="{{category.name}}">
+                <label for="{{category.name}}" class="custom_tooltip">
                   <app-svg icon="{{category.url_icon}}" class="filter__icon"></app-svg>
+                  <span class="tooltiptext">{{category.name}}</span>
                 </label>
-
               </div>
             </div>
             <div class="d-lg-flex flex-column filters__actions multi-collapse collapse">
@@ -42,14 +43,20 @@
       <div class="col-lg-9 d-flex flex-column event__container" infiniteScroll [infiniteScrollDistance]="2"
         [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
         <div class="event__card d-flex align-items-start" *ngFor="let event of arrayEvent ">
-          <img class="img-fluid event__img" ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}"
-            height="500" width="388">
+
+          <img class="img-fluid event__img" *ngIf="event.url_image[0]; else defaultImg"
+            ngSrc="{{ bucketEvent + event.url_image[0]}}" alt="{{ event.name }}" height="500" width="388">
+
+          <ng-template #defaultImg>
+            <img class="img-fluid event__img" ngSrc="{{ bucket + event.categoryComplet.url_icon}}.webp"
+              alt="{{ event.name }}" height="500" width="388">
+          </ng-template>
+
           <div class="event__info">
             <div class="event__content">
               <h2 class="heading--secondary">{{ event.name }}</h2>
               <p class="paragraph event__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae efficitur nisi. Vivamus augue.
-                Enim,consectetur in dui
+                {{ event.description }}
               </p>
             </div>
             <div class="d-flex event__icons">
@@ -67,10 +74,19 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-center color-main event__actions">
-              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir
+              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En
+                savoir
                 plus</button>
-              <p class="event__price mb-0">Gratuit</p>
+              <p class="event__price mb-0" *ngIf="event.price > 0; else elseBlock">{{ event.price }} €</p>
+              <ng-template #elseBlock>
+                <p class="event__price mb-0">Gratuit</p>
+              </ng-template>
             </div>
+          </div>
+        </div>
+        <div class="loading" *ngIf="isLoading">
+          <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>

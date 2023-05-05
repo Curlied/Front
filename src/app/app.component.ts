@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public showTemplate: boolean = true;
-  private urls = ['/connexion', '/inscription', '/confirm','/error'];
+  private urls = ['/connexion', '/inscription', '/confirm', '/error'];
   alertInstallPwaShow: boolean = true;
+  constructor() {}
+
   ngDoCheck() {
     this.showTemplate = !this.urls.includes(location.pathname);
   }

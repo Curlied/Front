@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-details-evenement',
@@ -13,13 +14,18 @@ import { environment } from 'src/environments/environment';
 export class DetailsEvenementComponent implements OnInit {
   bucketEvent =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
+  bucket =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   event: any;
+  isLoading = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private metaService: Meta,
     private httpService: HttpService,
-    private responseService: ResponseService
+    private responseService: ResponseService,
+    private jwt: JwtHelperService
   ) {}
 
   ngOnInit(): void {
@@ -54,9 +60,17 @@ export class DetailsEvenementComponent implements OnInit {
     this.metaService.removeTag("property='og:keywords'");
   }
 
+  isCurrentUser(userId: any) {
+    const token = localStorage.getItem('token') || '';
+    const decodedToken = this.jwt.decodeToken(token);
+    if (userId == decodedToken['userId']) return true;
+    return false;
+  }
+
   canParticipate!: boolean;
   event_id: any;
   user_id: any;
+  connected_user_id: any;
 
   getParamsOrRedirect() {
     this.route.queryParams.subscribe((params) => {
@@ -71,11 +85,13 @@ export class DetailsEvenementComponent implements OnInit {
   }
 
   getDetailsEvent = (event_id: any) => {
+    this.isLoading = true;
     this.httpService.getDetailsEventById(event_id).subscribe({
       next: (res: any) => {
         this.event = res.body;
         this.canParticipate =
           this.event.users_valide.length + 1 < this.event.user_max;
+        this.isLoading = false;
       },
       error: (err) => {
         this.responseService.ErrorF(err);
@@ -118,4 +134,16 @@ export class DetailsEvenementComponent implements OnInit {
       },
     });
   };
+
+  messageUser(userId: string, userName: string) {
+    this.router.navigate(['./messages'], {
+      queryParams: { user: userId, name: userName, isGroup: false },
+    });
+  }
+
+  messageGroup() {
+    this.router.navigate(['./messages'], {
+      queryParams: { group: this.event_id, isGroup: true },
+    });
+  }
 }

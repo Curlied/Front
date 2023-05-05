@@ -4,20 +4,26 @@
 }
 
 .events {
-  max-height: 50vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
   margin-top: 0;
 }
 
 .event__info {
   gap: var(--gap-md);
   padding: var(--gap-md);
-  align-items: flex-start;
+  align-items: center;
 }
 
 .event__categ {
-  padding: 0 var(--gap-md);
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.icon__categorie {
+  fill: none;
+  color: var(--main-color);
+  width: 3rem;
+  height: 3rem;
 }
 
 .event__img {
@@ -41,6 +47,7 @@
   background-color: var(--main-white);
   overflow: hidden;
   padding: 0;
+  cursor: pointer;
 }
 
 .event__img {
@@ -90,8 +97,8 @@
 
 .crown {
   display: block;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
 }
 
@@ -113,8 +120,8 @@
 }
 
 .friends {
-  max-height: 60rem;
-  overflow-y: scroll;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .friends__search {
@@ -146,7 +153,8 @@
 .friend__profil,
 .notification__icon,
 .password__icon,
-.security__icon {
+.security__icon,
+.question__icon {
   width: 3rem;
   height: 3rem;
   display: block;
@@ -169,6 +177,10 @@
 .modal__menu {
   display: flex;
   flex-direction: column;
+}
+
+.nav-link {
+  color: black;
 }
 
 .nav-link.active {

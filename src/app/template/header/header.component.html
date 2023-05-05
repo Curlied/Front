@@ -21,7 +21,7 @@
             <span class="d-lg-none nav__label">Home</span>
           </a>
         </li>
-        <li hideIsProd class="nav-item" (click)="handleCloseMenu()">
+        <li class="nav-item" (click)="handleCloseMenu()">
           <a routerLink="messages">
             <div class="indicator__container">
               <app-svg icon="message" class="nav__icon"></app-svg>
@@ -45,31 +45,31 @@
               </div>
               <span class="d-lg-none nav__label">Nouvelle(s) notification(s)</span>
             </a>
-            <div class="dropdown-menu dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
+            <div class="dropdown-menu dropdown__custom dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
               <small class="dropdown__notifications__title">Nouveau</small>
               <div class="d-flex notifications__item">
                 <app-svg icon="profil" class="nav__icon"></app-svg>
                 <div class="notifications__info">
-                  <small class="notifications__title">Ryan</small>
-                  <small class="notifications__message">Je souhaite rejoindre Cinema Avengers !</small>
+                  <p class="notifications__title">Ryan</p>
+                  <p class="notifications__message">Je souhaite rejoindre Cinema Avengers !</p>
                 </div>
                 <button class="btn btn-main"><small>Accepter</small></button>
               </div>
               <div class="d-flex notifications__item">
                 <app-svg icon="profil" class="nav__icon"></app-svg>
                 <div class="notifications__info">
-                  <small class="notifications__title">Lisa</small>
-                  <small class="notifications__message">Demande d'ami</small>
+                  <p class="notifications__title">Lisa</p>
+                  <p class="notifications__message">Demande d'ami</p>
                 </div>
                 <button class="btn btn-main"><small>Accepter</small></button>
               </div>
               <hr class="my-3 bg-main">
               <small class="dropdown__notifications__title">Précédent</small>
               <div class="d-flex notifications__item">
-                <app-svg icon="notification" class="nav__icon"></app-svg>
+                <app-svg icon="profil" class="nav__icon"></app-svg>
                 <div class="notifications__info">
-                  <small class="notifications__title">Clarissa</small>
-                  <small class="notifications__message">Demande d'ami</small>
+                  <p class="notifications__title">Clarissa</p>
+                  <p class="notifications__message">Demande d'ami</p>
                 </div>
                 <button class="btn btn-main"><small>Accepter</small></button>
               </div>
@@ -90,8 +90,8 @@
                 </div>
                 <span class="d-lg-none nav__label">Mon compte</span>
               </a>
-              <div class="dropdown-menu dropdown__notifications px-4 py-3" aria-labelledby="dropdownMenuButton1">
-                <ul>
+              <div class="dropdown-menu dropdown__custom px-4 py-3" aria-labelledby="dropdownMenuButton1">
+                <ul class="p-0">
                   <li (click)="handleCloseMenu()"><a class="dropdown-item" routerLink="profil">Profil</a></li>
                   <li><a class="dropdown-item" (click)="logout()">Deconnexion</a></li>
                 </ul>
