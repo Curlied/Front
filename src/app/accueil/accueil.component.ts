@@ -18,6 +18,8 @@ import { Meta, MetaDefinition } from '@angular/platform-browser';
 export class AccueilComponent implements OnInit {
   bucketEvent =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
+  bucket =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   arrayCategories!: any[];
   arrayEvent!: any[];
   arrayDepartement!: any[];
@@ -49,7 +51,7 @@ export class AccueilComponent implements OnInit {
     const ogtitle: MetaDefinition = {
       name: 'title',
       property: 'og:title',
-      content: 'Curlied - Rejoins ou organise des événements',
+      content: 'Curlied - Rejoins ou organise des évènements',
     };
     const ogkeywords: MetaDefinition = {
       name: 'keywords',
@@ -61,7 +63,7 @@ export class AccueilComponent implements OnInit {
       name: 'description',
       property: 'og:description',
       content:
-        'Curlied est un site web permettant de créer ou de rejoindre des événements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt',
+        'Curlied est un site web permettant de créer ou de rejoindre des évènements divers pour rencontrer des personnes partageant les mêmes centres d’intérêt',
     };
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);

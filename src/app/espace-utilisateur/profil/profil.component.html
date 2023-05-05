@@ -10,7 +10,7 @@
                         <h2 class="heading--secondary">{{ profilData.username }}</h2>
                         <p class="paragraph user__age">
                             <span>{{ profilData.age }} ans</span>
-                            <span class="ps-4">
+                            <span hideIsProd class="ps-4">
                                 B1 - Informatique
                             </span>
                         </p>
@@ -37,18 +37,32 @@
                     </div>
                 </div>
                 <div class="user__events mt-5">
-                    <h2 class="heading--secondary event__title">Mes événements</h2>
+                    <h2 class="heading--secondary event__title">Mes évènements</h2>
                     <div class="events row gy-5" *ngIf="allEventsData">
                         <div *ngFor="let eventCreate of allEventsData.eventsCreate" class="col-md-6 col-lg-4">
                             <div class="event__card" routerLink="/detailsEvenement"
                                 [queryParams]="{event: eventCreate._id}">
-                                <div class="d-flex justify-content-between event__info">
-                                    <h3 class="heading--tertiary">{{ eventCreate.name }}</h3>
-                                    <app-svg icon="crown" class="crown"></app-svg>
+                                <div class="event__info">
+                                    <div class="d-flex justify-content-between">
+                                        <h3 class="heading--tertiary">{{ eventCreate.name }}</h3>
+                                        <app-svg icon="crown" class="crown"></app-svg>
+                                    </div>
+                                    <div class="event__categ">
+                                        <app-svg icon="{{eventCreate.categoryInfo.url_icon}}"
+                                            class="icon__categorie"></app-svg>
+                                        <span class="ms-2">{{ eventCreate.categoryInfo.name }}</span>
+                                    </div>
                                 </div>
-                                <p class="paragraph event__categ">{{ eventCreate.categoryInfo.name }}</p>
-                                <img class="event__img" ngSrc="{{global_bucket_images + eventCreate.url_image[0]}}"
-                                    height="200" width="200">
+
+                                <img class="event__img" *ngIf="eventCreate.url_image[0]; else defaultImgEventCreate"
+                                    ngSrc="{{event_bucket_images + eventCreate.url_image[0]}}" height="200" width="200">
+
+                                <ng-template #defaultImgEventCreate>
+                                    <img class="event__img"
+                                        ngSrc="{{global_bucket_images + eventCreate.categoryInfo.url_icon}}.webp"
+                                        height="200" width="200">
+                                </ng-template>
+
                             </div>
                         </div>
                         <div *ngFor="let eventParticipate of allEventsData.eventsParticipate" class="col-md-6 col-lg-4">
@@ -56,10 +70,24 @@
                                 [queryParams]="{event: eventParticipate._id}">
                                 <div class="event__info">
                                     <h3 class="heading--tertiary">{{eventParticipate.name }}</h3>
-                                    <p class="paragraph">{{ eventParticipate.categoryInfo.name }}</p>
+                                    <div class="event__categ">
+                                        <app-svg icon="{{eventParticipate.categoryInfo.url_icon}}"
+                                            class="icon__categorie"></app-svg>
+                                        <span class="ms-2">{{ eventParticipate.categoryInfo.name }}</span>
+                                    </div>
                                 </div>
-                                <img class="event__img" ngSrc="{{global_bucket_images + eventParticipate.url_image[0]}}"
-                                    height="200" width="200">
+                                <img class="event__img"
+                                    *ngIf="eventParticipate.url_image[0]; else defaultImgEventParticipate"
+                                    ngSrc="{{event_bucket_images + eventParticipate.url_image[0]}}" height="200"
+                                    width="200">
+
+
+                                <ng-template #defaultImgEventParticipate>
+                                    <img class="event__img"
+                                        ngSrc="{{global_bucket_images + eventParticipate.categoryInfo.url_icon}}.webp"
+                                        height="200" width="200">
+                                </ng-template>
+
                             </div>
                         </div>
                     </div>
@@ -222,15 +250,15 @@
                         aria-selected="false">
                         <app-svg icon="security" class="security__icon"></app-svg>
                         <span class="d-none d-xl-block modal__link">
-                            Confidentialité & Sécurité
+                            Confidentialité
                         </span>
                     </button>
-                    <button class="nav-link" id="v-pills-report-tab" data-bs-toggle="pill"
+                    <button class="nav-link tab-btn" id="v-pills-report-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-report" type="button" role="tab" aria-controls="v-pills-report"
                         aria-selected="false">
-                        <app-svg icon="question" class="icon"></app-svg>
+                        <app-svg icon="question" class="question__icon"></app-svg>
                         <span class="d-none d-xl-block modal__link">
-                            Signaler un problème
+                            Signaler problème
                         </span>
                     </button>
                 </div>
@@ -289,14 +317,14 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
-                            <p class="mb-0 ms-3 fw-bold">Maxime</p>
+                            <p class="mb-0 ms-3 fw-bold paragraph">Maxime</p>
                         </div>
                         <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
-                            <p class="mb-0 ms-3 fw-bold">Lisa</p>
+                            <p class="mb-0 ms-3 fw-bold paragraph">Lisa</p>
                         </div>
                         <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
@@ -304,14 +332,14 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
-                            <p class="mb-0 ms-3 fw-bold">Marie</p>
+                            <p class="mb-0 ms-3 fw-bold paragraph">Marie</p>
                         </div>
                         <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <img width="50" height="50" ngSrc="/assets/images/profil.svg" alt="">
-                            <p class="mb-0 ms-3 fw-bold">Pierre</p>
+                            <p class="mb-0 ms-3 fw-bold paragraph">Pierre</p>
                         </div>
                         <button type="button" class="btn btn-danger">Supprimer</button>
                     </div>

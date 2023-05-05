@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-details-evenement',
@@ -13,6 +14,8 @@ import { environment } from 'src/environments/environment';
 export class DetailsEvenementComponent implements OnInit {
   bucketEvent =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
+  bucket =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   event: any;
   isLoading = false;
 
@@ -21,7 +24,8 @@ export class DetailsEvenementComponent implements OnInit {
     private route: ActivatedRoute,
     private metaService: Meta,
     private httpService: HttpService,
-    private responseService: ResponseService
+    private responseService: ResponseService,
+    private jwt: JwtHelperService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class DetailsEvenementComponent implements OnInit {
       name: 'description',
       property: 'og:description',
       content:
-        'Rencontrez de nouveaux amis et explorez des activités passionnantes avec notre application de rencontre amicale. Découvrez les événements locaux organisés par des gens comme vous, qui cherchent à se faire des amis et à s’amuser ensemble. Que vous soyez nouveau dans la ville ou que vous cherchiez simplement à élargir votre cercle social, notre application conviviale vous permettra de rencontrer des gens partageant les mêmes centres d’intérêts et de créer des amitiés durables.',
+        'Rencontrez de nouveaux amis et explorez des activités passionnantes avec notre application de rencontre amicale. Découvrez les évènements locaux organisés par des gens comme vous, qui cherchent à se faire des amis et à s’amuser ensemble. Que vous soyez nouveau dans la ville ou que vous cherchiez simplement à élargir votre cercle social, notre application conviviale vous permettra de rencontrer des gens partageant les mêmes centres d’intérêts et de créer des amitiés durables.',
     };
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
@@ -56,9 +60,17 @@ export class DetailsEvenementComponent implements OnInit {
     this.metaService.removeTag("property='og:keywords'");
   }
 
+  isCurrentUser(userId: any) {
+    const token = localStorage.getItem('token') || '';
+    const decodedToken = this.jwt.decodeToken(token);
+    if (userId == decodedToken['userId']) return true;
+    return false;
+  }
+
   canParticipate!: boolean;
   event_id: any;
   user_id: any;
+  connected_user_id: any;
 
   getParamsOrRedirect() {
     this.route.queryParams.subscribe((params) => {
@@ -122,4 +134,16 @@ export class DetailsEvenementComponent implements OnInit {
       },
     });
   };
+
+  messageUser(userId: string, userName: string) {
+    this.router.navigate(['./messages'], {
+      queryParams: { user: userId, name: userName, isGroup: false },
+    });
+  }
+
+  messageGroup() {
+    this.router.navigate(['./messages'], {
+      queryParams: { group: this.event_id, isGroup: true },
+    });
+  }
 }

@@ -2,7 +2,7 @@
   <div class="details d-flex align-items-center justify-content-center">
     <div *ngIf="isLoading;else eventBlock">
       <div class="spinner-grow text-light" role="status">
-        <span class="visually-hidden">Loading...</span>
+        <span class="visually-hidden">Chargement...</span>
       </div>
     </div>
     <ng-template #eventBlock>
@@ -10,8 +10,14 @@
         <main class="details__card d-flex flex-column">
           <div class="details__header d-flex">
             <div class="details__img">
-              <img class="img-fluid" ngSrc="{{bucketEvent + event.url_image[0] || event.category.url_image }}"
-                alt="Image d'illustration de l'évenement : {{event.name}}" width="200" height="300">
+              <img class="img-fluid" *ngIf="event.url_image[0]; else defaultImgEvent"
+                ngSrc="{{bucketEvent + event.url_image[0]}}" alt="Image d'illustration de l'évènement : {{event.name}}"
+                width="200" height="300">
+
+              <ng-template #defaultImgEvent>
+                <img class="img-fluid" ngSrc="{{ bucket + event.category.url_icon}}.webp"
+                  alt="Image d'illustration de l'évènement : {{event.name}}" width="200" height="300">
+              </ng-template>
             </div>
             <div class="details__info d-flex flex-column">
               <h1 class="details__title">
@@ -54,19 +60,19 @@
             </ng-template>
             <ng-template #Participate>
               <ng-template [ngIf]="event.CurrentUserHasParticipant" [ngIfElse]="RequestParticipe">
-                <button class="btn btn-danger" (click)="cancelParticipate(event._id)">
+                <button class="btn btn-danger mx-3" (click)="cancelParticipate(event._id)">
                   Annuler
                 </button>
               </ng-template>
               <ng-template #RequestParticipe>
-                <button class="btn btn-main" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
+                <button class="btn btn-main mx-3" *ngIf="canParticipate" (click)="requestParticipate(event._id)">
                   Rejoindre
                 </button>
               </ng-template>
-              <div hideIsProd class="details__contact">
-                <a class="btn btn-main">
+              <div class="details__contact" *ngIf="event.CurrentUserHasParticipant || event.CurrentUserIsAdmin">
+                <button type="button" class="btn btn-main mx-3" (click)="messageGroup()">
                   Contacter
-                </a>
+                </button>
               </div>
             </ng-template>
           </div>
@@ -79,6 +85,10 @@
                 <app-svg icon="profil" class="member__icons"></app-svg>
               </div>
               <p class="member__username">{{ event.creator.username || "Aucun" }} </p>
+              <div class="ms-auto" *ngIf="event.CurrentUserHasParticipant"
+                (click)="messageUser(event.creator._id, event.creator.username)">
+                <app-svg icon="talk" class="talk__icon"></app-svg>
+              </div>
             </div>
             <div class="member__item d-flex" *ngFor="let participant of event.users_valide">
               <div class="member__img">
@@ -88,28 +98,37 @@
                 <p class="member__username">{{ participant.username || "Aucun" }} </p>
                 <p class="member__phone" *ngIf="event.CurrentUserIsAdmin">{{ participant.telephone || "Aucun" }}</p>
               </div>
-            </div>
-            <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
-              <hr class="waitingRoom__separator" />
-              <h2 class="member__title">En attente</h2>
-              <div class="member__container d-flex flex-column">
-                <div class="member__item d-flex" *ngFor="let participant of event.users_waiting">
-                  <div class="member__img">
-                    <app-svg icon="profil" class="member__icons"></app-svg>
-                  </div>
-                  <p class="member__username">{{ participant.username || "Aucun" }} </p>
-                  <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button>
-                </div>
-                <div *ngIf="event.users_waiting.length == 0">
-                  <p class="no__member__waiting">Pas d'utilisateurs en attente</p>
-                </div>
+              <div class="ms-auto"
+                *ngIf="(event.CurrentUserHasParticipant && !isCurrentUser(participant._id)) || event.CurrentUserIsAdmin"
+                (click)="messageUser(participant._id, participant.username)">
+                <app-svg icon="talk" class="talk__icon"></app-svg>
               </div>
             </div>
-            <div class="member__footer">
-              <p class="member__count">
-                {{event.users_valide.length}} / {{event.user_max}}
-              </p>
+          </div>
+          <div class="mx-auto mb-3">
+            <button class="btn btn-main" *ngIf="event.CurrentUserHasParticipant || event.CurrentUserIsAdmin"
+              (click)="messageGroup()">Discuter</button>
+          </div>
+          <div class="waintingRoom" *ngIf="event.CurrentUserIsAdmin">
+            <hr class="waitingRoom__separator" />
+            <h2 class="member__title">En attente</h2>
+            <div class="member__container d-flex flex-column">
+              <div class="member__item d-flex" *ngFor="let participant of event.users_waiting">
+                <div class="member__img">
+                  <app-svg icon="profil" class="member__icons"></app-svg>
+                </div>
+                <p class="member__username">{{ participant.username || "Aucun" }} </p>
+                <button class="btn btn-main" (click)="acceptParticipate(event._id, participant._id)">Accepter</button>
+              </div>
+              <div *ngIf="event.users_waiting.length == 0">
+                <p class="no__member__waiting">Pas d'utilisateurs en attente</p>
+              </div>
             </div>
+          </div>
+          <div class="member__footer">
+            <p class="member__count">
+              {{event.users_valide.length}} / {{event.user_max}}
+            </p>
           </div>
         </aside>
       </div>

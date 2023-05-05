@@ -23,9 +23,10 @@ declare var $: any;
   styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
-  global_bucket_images =
+  event_bucket_images =
     environment.bucketImagesBasePath + environment.folderBucketEventPictures;
-
+  global_bucket_images =
+    environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   public animation: boolean = false;
   public multiple: boolean = true;
   arrayFile!: any[];
