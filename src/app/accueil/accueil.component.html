@@ -67,10 +67,16 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-center color-main event__actions">
-              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En savoir
+              <button class="btn btn-main" routerLink="/detailsEvenement" [queryParams]="{ event: event._id }">En
+                savoir
                 plus</button>
               <p class="event__price mb-0">Gratuit</p>
             </div>
+          </div>
+        </div>
+        <div class="loading" *ngIf="isLoading">
+          <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>
