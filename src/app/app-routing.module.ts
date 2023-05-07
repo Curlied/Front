@@ -12,7 +12,6 @@ import { AdminComponent } from './admin/admin.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 import { ErrorComponent } from './error/error.component';
 import { MentionLegalComponent } from './mention-legal/mention-legal.component';
-import { SitemapComponent } from './sitemap/sitemap.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -39,7 +38,6 @@ const routes: Routes = [
   },
   { path: 'confirm', component: ConfirmationComponent },
   { path: 'mention-legal', component: MentionLegalComponent },
-  { path: 'sitemap', component: SitemapComponent },
   { path: '**', component: ErrorComponent },
 ];
 

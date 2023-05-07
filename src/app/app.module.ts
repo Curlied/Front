@@ -31,7 +31,6 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ImageLoadedDirective } from './image-loaded.directive';
 import { IsProdDirective } from './directive/is-prod.directive';
 import { MentionLegalComponent } from './mention-legal/mention-legal.component';
-import { SitemapComponent } from './sitemap/sitemap.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -59,7 +58,6 @@ export function tokenGetter() {
     ImageLoadedDirective,
     IsProdDirective,
     MentionLegalComponent,
-    SitemapComponent,
   ],
   imports: [
     BrowserModule,

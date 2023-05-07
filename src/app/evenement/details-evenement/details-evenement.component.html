@@ -1,6 +1,6 @@
 <section class="app--container">
   <div class="details d-flex align-items-center justify-content-center">
-    <div *ngIf="!event || !event.category;else eventBlock">
+    <div *ngIf="isLoading;else eventBlock">
       <div class="spinner-grow text-light" role="status">
         <span class="visually-hidden">Chargement...</span>
       </div>

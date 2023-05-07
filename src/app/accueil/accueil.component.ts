@@ -30,6 +30,7 @@ export class AccueilComponent implements OnInit {
   hasNextPage = true;
   hasPreviousPage = false;
   isSetup = true;
+  isLoading = false;
 
   searchFormGroup = new UntypedFormGroup({
     category: new UntypedFormControl('tous', [Validators.required]),
@@ -111,6 +112,7 @@ export class AccueilComponent implements OnInit {
   }
 
   submitSearch(page = 0, limit = 10, reset = true, setup = false) {
+    this.isLoading = true;
     if (reset) {
       this.arrayEvent = [];
       page = 0;
@@ -144,6 +146,8 @@ export class AccueilComponent implements OnInit {
         this.hasPreviousPage = res.body.hasPreviousPage;
         this.currentPage = this.currentPage + 1;
         this.currentLimit = res.body.limit;
+        this.isLoading = false;
+
         if (setup) {
           this.isSetup = false;
         }

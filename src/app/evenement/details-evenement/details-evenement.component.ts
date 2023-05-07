@@ -17,6 +17,8 @@ export class DetailsEvenementComponent implements OnInit {
   bucket =
     environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   event: any;
+  isLoading = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -83,11 +85,13 @@ export class DetailsEvenementComponent implements OnInit {
   }
 
   getDetailsEvent = (event_id: any) => {
+    this.isLoading = true;
     this.httpService.getDetailsEventById(event_id).subscribe({
       next: (res: any) => {
         this.event = res.body;
         this.canParticipate =
           this.event.users_valide.length + 1 < this.event.user_max;
+        this.isLoading = false;
       },
       error: (err) => {
         this.responseService.ErrorF(err);
