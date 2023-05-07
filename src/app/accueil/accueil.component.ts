@@ -34,7 +34,7 @@ export class AccueilComponent implements OnInit {
 
   searchFormGroup = new UntypedFormGroup({
     category: new UntypedFormControl('tous', [Validators.required]),
-    date: new UntypedFormControl(undefined),
+    date: new UntypedFormControl(null),
     department: new UntypedFormControl(''),
     numdepartment: new UntypedFormControl('tous', [Validators.required]),
   });
@@ -139,6 +139,9 @@ export class AccueilComponent implements OnInit {
     const data = this.searchFormGroup.value;
     data.page = page;
     data.limit = limit;
+    if (data.date == undefined) {
+      data.date = null;
+    }
     this.httpService.postSearchEventAllEventPage(data).subscribe({
       next: (res: any) => {
         this.arrayEvent = this.arrayEvent.concat(res.body.docs);
