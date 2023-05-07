@@ -36,7 +36,7 @@
             <div class="detail__date d-flex flex-column align-items-center">
               <app-svg icon="calendar" class="details__icon"></app-svg>
               <p class="details__label">
-                {{ event.date_time | date: 'dd/MM/yyyy HH:mm' }}
+                {{ event.date_time | date: 'dd/MM/yyyy HH:mm' : '+0200' }}
               </p>
             </div>
             <div class="detail__price d-flex flex-column align-items-center">
