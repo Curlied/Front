@@ -146,17 +146,4 @@ export class DetailsEvenementComponent implements OnInit {
       queryParams: { group: this.event_id, isGroup: true },
     });
   }
-
-  formatDate(dateString: string): string {
-    const options = {
-      timeZone: 'Europe/Paris',
-      day: '2-digit' as const,
-      month: '2-digit' as const,
-      hour: '2-digit' as const,
-      minute: '2-digit' as const,
-    };
-    return new Intl.DateTimeFormat('fr-FR', options).format(
-      new Date(dateString)
-    );
-  }
 }
