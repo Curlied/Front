@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import Talk from 'talkjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class TalkjsService {
   private currentUser!: Talk.User;
-  constructor() {}
+  public currentSession!: Talk.Session;
+  public haveUnreadMessages: boolean = false;
+  public obsHaveUnreadMessages = new BehaviorSubject<boolean>(false);
+
+  constructor(
+    private jwt: JwtHelperService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   async createUser(applicationUser: any) {
     await Talk.ready;
@@ -18,12 +30,22 @@ export class TalkjsService {
   }
 
   async createCurrentSession(userConnected: any) {
+    if (this.currentSession) {
+      return this.currentSession;
+    }
     await Talk.ready;
     this.currentUser = await this.createUser(userConnected);
     const session = new Talk.Session({
       appId: 't3a4xneH',
       me: this.currentUser,
     });
+    session.onMessage(() => {
+      const routeAttendue: string = '/messages';
+      if (this.router.url != routeAttendue)
+        this.obsHaveUnreadMessages.next(true);
+      else this.obsHaveUnreadMessages.next(false);
+    });
+    this.currentSession = session;
     return session;
   }
 
@@ -90,5 +112,39 @@ export class TalkjsService {
     }
 
     return inbox;
+  }
+
+  async haveMessage() {
+    const token = localStorage.getItem('token') || '';
+    const decodedToken = this.jwt.decodeToken(token);
+    const user = {
+      id: decodedToken.userId,
+      username: decodedToken.username,
+      email: decodedToken.email,
+      welcomeMessage: 'Hey there! How are you? :-)',
+      role: 'default',
+    };
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer sk_test_VfPoBaCcKJSvcpqkKAfCCnneXKh7nLOb`
+    );
+    const conversations: any = await this.http
+      .get(
+        `https://api.talkjs.com/v1/t3a4xneH/users/${user.id}/conversations?hasUnread=true`,
+        { headers }
+      )
+      .toPromise();
+    let haveUnread = false;
+    for (const conversation of conversations.data) {
+      const lastMessage = conversation.lastMessage;
+      if (lastMessage === null) continue;
+      if (lastMessage.senderId !== user.id) {
+        if (!lastMessage.readBy.includes(user.id)) {
+          haveUnread = true;
+        }
+      }
+    }
+    this.obsHaveUnreadMessages.next(haveUnread);
+    return haveUnread;
   }
 }

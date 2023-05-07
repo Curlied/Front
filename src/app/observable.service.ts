@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,17 @@ export class ObservableService {
   constructor(
     private router: Router,
     private cookieService: CookieService,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private jwt: JwtHelperService
   ) {
-    const isConnect = this.cookieService.get('user_id');
-
+    const token = localStorage.getItem('token') || '';
+    let isConnect = false;
+    if (token != '') {
+      const isExpired = this.jwt.isTokenExpired(token);
+      if (!isExpired) {
+        isConnect = true;
+      }
+    }
     if (isConnect) {
       this.userStatut.next(true);
     } else {
@@ -40,13 +48,14 @@ export class ObservableService {
     if (this.userStatut.getValue() == false) return;
     this.httpService.postDisconnect().subscribe({
       next: (success: any) => {
-        this.cookieService.delete('user_id');
+        // remove token from local storage to log user out
+        localStorage.removeItem('token');
         this.userStatut.next(false);
         this.router.navigateByUrl('connexion');
         this.isAdmin.next(false);
       },
       error: (err) => {
-        this.cookieService.delete('user_id');
+        localStorage.removeItem('token');
         this.userStatut.next(false);
         this.router.navigateByUrl('connexion');
         this.isAdmin.next(false);
