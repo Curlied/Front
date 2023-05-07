@@ -34,7 +34,7 @@ export class InscriptionComponent implements OnInit {
       Validators.minLength(3),
     ]),
     birth_date: new UntypedFormControl('', [Validators.required]),
-    telephone: new UntypedFormControl('', [Validators.required]),
+    telephone: new UntypedFormControl('', []),
     url_image: new UntypedFormControl(),
   });
 
@@ -42,29 +42,37 @@ export class InscriptionComponent implements OnInit {
     private httpService: HttpService,
     private responseService: ResponseService,
     private metaService: Meta
-  ) {
-    
-  }
-
+  ) {}
 
   ngOnInit(): void {
-  const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Inscrivez-vous pour rencontrer de nouveaux amis et vous amuser avec notre application de création d’évènements'};
-  const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords', content:'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly'};
-  const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Inscrivez-vous à notre site de rencontre amical pour rencontrer des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble. Notre application de création d’évènements vous permettra de vous amuser tout en élargissant votre cercle social.'};
-  this.metaService.addTag(ogtitle);
-  this.metaService.addTag(ogkeywords);
-  this.metaService.addTag(ogdesc);
-}
+    const ogtitle: MetaDefinition = {
+      name: 'title',
+      property: 'og:title',
+      content:
+        'Inscrivez-vous pour rencontrer de nouveaux amis et vous amuser avec notre application de création d’évènements',
+    };
+    const ogkeywords: MetaDefinition = {
+      name: 'keywords',
+      property: 'og:keywords',
+      content:
+        'evenement lyon, ynov, solitude,login,connexion,inscription,register, meet up, social,ydays,event,curlied,curled,pas d amis, kurled,kurlyed,curlid,curlide,curly',
+    };
+    const ogdesc: MetaDefinition = {
+      name: 'description',
+      property: 'og:description',
+      content:
+        'Inscrivez-vous à notre site de rencontre amical pour rencontrer des personnes partageant les mêmes centres d’intérêt que vous et organiser des sorties ensemble. Notre application de création d’évènements vous permettra de vous amuser tout en élargissant votre cercle social.',
+    };
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+  }
 
-ngOnDestroy() {
-  this.metaService.removeTag("property='og:title'");
-  this.metaService.removeTag("property='og:description'");
-  this.metaService.removeTag("property='og:keywords'");
- }
-
-
-
-  
+  ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+  }
 
   register() {
     let formData = new FormData();
