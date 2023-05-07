@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
   }
 
   handleCloseMenu() {
-    new bootstrap.Collapse(this.menuToggle.nativeElement);
+    if (window.matchMedia('(max-width: 991.98px)').matches) {
+      new bootstrap.Collapse(this.menuToggle.nativeElement);
+    }
   }
 
   logout() {
