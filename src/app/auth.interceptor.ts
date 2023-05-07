@@ -18,10 +18,13 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const idToken = localStorage.getItem('token');
     if (idToken) {
-      const cloned = request.clone({
-        headers: request.headers.set('Authorization', 'Bearer ' + idToken),
-      });
-      return next.handle(cloned);
+      if (!request.url.includes('talkjs')) {
+        const cloned = request.clone({
+          headers: request.headers.set('Authorization', 'Bearer ' + idToken),
+        });
+        return next.handle(cloned);
+      }
+      return next.handle(request);
     } else {
       return next.handle(request);
     }
