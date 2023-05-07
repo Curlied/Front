@@ -6,13 +6,14 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private jwt: JwtHelperService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -21,10 +22,17 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (localStorage.getItem('token') != undefined) {
+    const token = localStorage.getItem('token') || '';
+    if (token != '') {
+      const isExpired = this.jwt.isTokenExpired(token);
+      if (isExpired) {
+        this.router.navigateByUrl('/connexion');
+        return false;
+      }
       return true;
+    } else {
+      this.router.navigateByUrl('/connexion');
+      return false;
     }
-    this.router.navigateByUrl('/connexion');
-    return false;
   }
 }

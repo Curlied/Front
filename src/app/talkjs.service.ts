@@ -2,13 +2,22 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import Talk from 'talkjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class TalkjsService {
   private currentUser!: Talk.User;
+  public currentSession!: Talk.Session;
   public haveUnreadMessages: boolean = false;
-  constructor(private jwt: JwtHelperService, private http: HttpClient) {}
+  public obsHaveUnreadMessages = new BehaviorSubject<boolean>(false);
+
+  constructor(
+    private jwt: JwtHelperService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   async createUser(applicationUser: any) {
     await Talk.ready;
@@ -21,12 +30,22 @@ export class TalkjsService {
   }
 
   async createCurrentSession(userConnected: any) {
+    if (this.currentSession) {
+      return this.currentSession;
+    }
     await Talk.ready;
     this.currentUser = await this.createUser(userConnected);
     const session = new Talk.Session({
       appId: 't3a4xneH',
       me: this.currentUser,
     });
+    session.onMessage(() => {
+      const routeAttendue: string = '/messages';
+      if (this.router.url != routeAttendue)
+        this.obsHaveUnreadMessages.next(true);
+      else this.obsHaveUnreadMessages.next(false);
+    });
+    this.currentSession = session;
     return session;
   }
 
@@ -125,9 +144,7 @@ export class TalkjsService {
         }
       }
     }
-    this.haveUnreadMessages = haveUnread;
+    this.obsHaveUnreadMessages.next(haveUnread);
     return haveUnread;
   }
-
-  // Avec talkjs sur angular je voudrais savoir si l'utilisateur a un message non lus sur l'une de ses conversations
 }

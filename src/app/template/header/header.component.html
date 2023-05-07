@@ -21,15 +21,15 @@
             <span class="d-lg-none nav__label">Home</span>
           </a>
         </li>
-        <li class="nav-item" (click)="handleCloseMenu()">
+        <li class="nav-item" (click)="handleCloseMenu()" *ngIf="isMessages">
           <a routerLink="messages">
             <div class="indicator__container">
               <app-svg icon="message" class="nav__icon"></app-svg>
-              <span *ngIf="this.talkjs.haveUnreadMessages"
+              <span *ngIf="this.haveNewMessage"
                 class="notification-indicator position-absolute start-100 translate-middle bg-danger border border-light rounded-circle">
                 <span class="visually-hidden">Nouveau(x) message(s)</span>
               </span>
-              <span *ngIf="!this.talkjs.haveUnreadMessages">
+              <span *ngIf="!this.haveNewMessage">
                 <span class="visually-hidden">Nouveau(x) message(s)</span>
               </span>
             </div>
