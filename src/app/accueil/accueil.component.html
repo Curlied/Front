@@ -34,7 +34,7 @@
               <input type="date" class="input" min="{{dateMin | date:'yyyy-MM-dd'}}" id="date" name="date"
                 formControlName="date">
               <div class="text-center mt-3">
-                <button class="btn btn-tertiary" type="submit">Filtrer</button>
+                <button class="btn btn-tertiary" type="submit" [disabled]="isLoading">Filtrer</button>
               </div>
             </div>
           </div>
