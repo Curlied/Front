@@ -8,6 +8,7 @@ import { HttpService } from 'src/app/http.service';
 import { ResponseService } from 'src/app/response.service';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -41,7 +42,8 @@ export class InscriptionComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     private responseService: ResponseService,
-    private metaService: Meta
+    private metaService: Meta,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -92,6 +94,7 @@ export class InscriptionComponent implements OnInit {
     this.httpService.postRegister(formData).subscribe({
       next: (res: any) => {
         this.responseService.SuccessF(res);
+        this.router.navigate(['/connexion']);
       },
 
       error: (err: any) => {
