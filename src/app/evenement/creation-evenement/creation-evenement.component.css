@@ -21,10 +21,6 @@
   text-align: center;
 }
 
-app-footer {
-  display: none !important;
-}
-
 @media (min-width: 768px) {
   .event__card {
     padding: var(--gap-xxl);
