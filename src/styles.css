@@ -102,9 +102,10 @@ img:not(.loaded)::before {
   padding-top: var(--gap-l);
   padding-bottom: var(--gap-xl);
   background: var(--main-bg);
-  min-height: 100vh;
+  min-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 /*
