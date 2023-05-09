@@ -26,7 +26,7 @@ export class AccueilComponent implements OnInit {
   arrayCommune!: any[];
   dateMin!: any;
   currentPage = 0;
-  currentLimit = 10;
+  currentLimit = 5;
   hasNextPage = true;
   hasPreviousPage = false;
   isSetup = true;
@@ -92,7 +92,7 @@ export class AccueilComponent implements OnInit {
     });
 
     // get allEvent
-    this.submitSearch(0, 10, true, true);
+    this.submitSearch(0, 5, true, true);
 
     // get all departement
     this.httpService.getDepartementOnRegion().subscribe({
@@ -111,12 +111,12 @@ export class AccueilComponent implements OnInit {
     }
   }
 
-  submitSearch(page = 0, limit = 10, reset = true, setup = false) {
+  submitSearch(page = 0, limit = 5, reset = true, setup = false) {
     this.isLoading = true;
     if (reset) {
       this.arrayEvent = [];
       page = 0;
-      limit = 10;
+      limit = 5;
     }
     this.currentPage = page;
     this.currentLimit = limit;
