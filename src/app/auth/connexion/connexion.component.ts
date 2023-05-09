@@ -20,10 +20,10 @@ export class ConnexionComponent implements OnInit {
   global_bucket_images =
     environment.bucketImagesBasePath + environment.folderBucketGlobalPictures;
   loginForm = new UntypedFormGroup({
-    email: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
     ]),
   });
 

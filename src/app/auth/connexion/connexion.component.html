@@ -28,10 +28,14 @@
         <div class="form__group">
           <label for="email" class="label">Adresse email</label>
           <input type="email" formControlName="email" class="input input--email" id="email" required>
+          <h5 *ngIf="loginForm.controls['email'].value && loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+            Veuillez utilisez une adresse email valide</h5>
         </div>
         <div class="form__group">
           <label for="password" class="label">Mot de passe</label>
           <input type="password" formControlName="password" class="input input--password" id="password" required>
+          <h5 *ngIf="loginForm.controls['password'].value && loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            Le mot de passe doit comporter au moins 6 caractères</h5>
         </div>
         <div class="form__actions">
           <button class="btn btn-main" type="submit">Se connecter</button>

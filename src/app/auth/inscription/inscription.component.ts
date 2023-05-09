@@ -25,17 +25,17 @@ export class InscriptionComponent implements OnInit {
       Validators.required,
       Validators.minLength(6),
     ]),
-    email: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
     ]),
     confirm_password: new UntypedFormControl('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
     ]),
     birth_date: new UntypedFormControl('', [Validators.required]),
-    telephone: new UntypedFormControl('', []),
+    telephone: new UntypedFormControl('', [Validators.pattern(/(^[0-9]+$)/)]),
     url_image: new UntypedFormControl(),
   });
 
